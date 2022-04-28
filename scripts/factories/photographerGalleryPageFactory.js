@@ -43,10 +43,6 @@ function PhotographerGalleryPageFactory(data) {
         headerRight.setAttribute("alt", '');
         headerRight.classList.add('photographer__avatar-picture');
 
-        // article.appendChild(insertInfos);
-        // insertInfos.appendChild(insertLikes);
-        // insertInfos.appendChild(insertRate);
-
 
         article.appendChild(headerLeft);
         headerLeft.appendChild(headerLeftName);

@@ -22,7 +22,12 @@ function MediasGalleryPageFactory(data) {
 
         const insertLikes = document.createElement('p');
         insertLikes.classList.add('insert-likes');
-        insertLikes.textContent=(`nombre de likes ${mediaLikes}`);
+        insertLikes.textContent=(mediaLikes);
+
+        const insertHeart = document.createElement('p');
+        insertHeart.classList.add('insert-heart');
+        insertHeart.innerHTML="<i class='fa-solid fa-heart'></i>";
+        
 
         const insertRate = document.createElement('p');
         insertRate.classList.add('insert-rate');
@@ -36,10 +41,13 @@ function MediasGalleryPageFactory(data) {
         img.classList.add('media-card');
 
 
-        divGeneral.appendChild(img);
+   
+        // divGeneral.appendChild(article);
         divGeneral.appendChild(article);
-        article.appendChild(insertInfos);
+        article.appendChild(img);
+        divGeneral.appendChild(insertInfos);
         insertInfos.appendChild(insertLikes);
+        insertInfos.appendChild(insertHeart);
         insertInfos.appendChild(insertRate);
 
         // if media is a video

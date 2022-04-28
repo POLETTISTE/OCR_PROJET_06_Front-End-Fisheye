@@ -96,6 +96,7 @@ form input {
 }
 
 .insert-infos {
+    display: inline-flex;
     position:fixed;
     bottom:0;
     right:0;
@@ -104,8 +105,15 @@ form input {
     background-color:#DB8876;
 }
 
-/* MAIN PAGE GALLERY PICTURES */
+.insert-rate {
 
+}
+
+/* MAIN PAGE GALLERY PICTURES */
+.medias-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
 .media-card {
     width:350px;
     height:300px;

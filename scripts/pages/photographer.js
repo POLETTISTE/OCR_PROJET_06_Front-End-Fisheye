@@ -1,6 +1,7 @@
 let photographers;
 let medias;
 let paramsId;
+let mediasLikes;
 
     async function getPhotographerId() {
 
@@ -47,7 +48,6 @@ let paramsId;
     async function displayMediasInGalleryPage(medias) {
 
         const mediasMain = document.querySelector(".medias-main");
-        console.log(medias);
         
         medias.forEach((media) => {   
             const mediasGalleryModel = MediasGalleryPageFactory(media);
@@ -55,6 +55,8 @@ let paramsId;
             mediasMain.appendChild(mediaCardDOM);
         });
     }
+
+    // creer fonction footr pour display div rate / heart
 
 
     async function init() {
