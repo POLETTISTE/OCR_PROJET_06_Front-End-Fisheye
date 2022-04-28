@@ -2,11 +2,24 @@ function PhotographerGalleryPageFactory(data) {
     const { name, id, city, country, tagline, price, portrait} = data;
     
     const picture = `assets/photographers/${portrait}`;
+    
 
 
     function getPhotographerIdHeader() {
         const article = document.createElement( 'article' );
         article.classList.add('photograph-header-banner');
+
+        // const insertInfos = document.createElement('div');
+        // insertInfos.classList.add('insert-infos');
+
+        // const insertLikes = document.createElement('p');
+        // insertLikes.classList.add('insert-likes');
+        // insertLikes.textContent=name;
+
+        // const insertRate = document.createElement('p');
+        // insertRate.classList.add('insert-rate');
+        // insertRate.textContent=(`${price} €/jour`);
+
 
         // BLOC LEFT >>>  NAME / CITY/COUNTRY / TAGLINE
         const headerLeft = document.createElement ('div');
@@ -30,6 +43,9 @@ function PhotographerGalleryPageFactory(data) {
         headerRight.setAttribute("alt", '');
         headerRight.classList.add('photographer__avatar-picture');
 
+        // article.appendChild(insertInfos);
+        // insertInfos.appendChild(insertLikes);
+        // insertInfos.appendChild(insertRate);
 
 
         article.appendChild(headerLeft);

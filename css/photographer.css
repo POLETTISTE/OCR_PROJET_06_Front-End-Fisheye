@@ -95,6 +95,15 @@ form input {
     border-radius: 5px;
 }
 
+.insert-infos {
+    position:fixed;
+    bottom:0;
+    right:0;
+    width:376px;
+    height: 89px;
+    background-color:#DB8876;
+}
+
 /* MAIN PAGE GALLERY PICTURES */
 
 .media-card {

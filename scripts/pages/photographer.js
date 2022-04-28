@@ -56,6 +56,7 @@ let paramsId;
         });
     }
 
+
     async function init() {
         // Récupère les datas des photographes
         await getPhotographerId();
