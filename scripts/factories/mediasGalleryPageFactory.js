@@ -1,68 +1,69 @@
 function MediasGalleryPageFactory(data) {
 
-    const { id, photographerId, title, image, likes, date, price} = data;
+    const { id, photographerId, title, image, video, likes, date, price} = data;
 
-    const picture = `assets/images/${photographerId}/${image}`;
+    const mediaImage = `assets/images/${photographerId}/${image}`;
+    const mediaVideo = `assets/images/${photographerId}/${video}`;
 
-    let mediaLikes;
+
+    // // SAVOIR SI DATE CONTIENT LA PROPRIETE IMAGE OU VIDEO
+    // if (data.hasOwnProperty('image')) {
+    //     console.log("c'est une image");
+        
+    // }else if(data.hasOwnProperty('video')){
+    //     console.log("c'est une video");
+        
+    // }else{ 
+    //     console.log("error");
+    // }
+
+            
+    let mediaLikes=0;
         medias.forEach((media) => { 
-            mediaLikes = 0
-            mediaLikes+=media['likes'];
+            mediaLikes+= media["likes"]            
         });
 
     function getMediasOfPhotographer() {
-
-        const divGeneral = document.createElement('div');
         
         const article = document.createElement( 'article' );
-        article.classList.add('liste-media');
+        article.classList.add('media-card');
+    
+        const img = document.createElement('img');
+        img.setAttribute("src", mediaImage);
+        img.setAttribute("alt",' ');
+        img.classList.add('image-card');
 
-        const insertInfos = document.createElement('div');
-        insertInfos.classList.add('insert-infos');
+        const imgInfos = document.createElement('div');
+        imgInfos.classList.add("image-card-infos");
+
+        const imgTitle = document.createElement('h2');
+        imgTitle.textContent = title;
+        imgTitle.classList.add('media-title');
+
+        const imgLikes = document.createElement('h3');
+        imgLikes.textContent = likes;
+        imgLikes.classList.add('media-likes');
+        imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
+
+        
+        article.appendChild(img);
+        article.appendChild(imgInfos); 
+        imgInfos.appendChild(imgTitle);
+        imgInfos.appendChild(imgLikes);
+
+
+
+        return (article);
+    }
+
+    function getFixedBottomInfos() {
 
         const insertLikes = document.createElement('p');
         insertLikes.classList.add('insert-likes');
-        insertLikes.textContent=(mediaLikes);
+        insertLikes.innerHTML=`${mediaLikes} <i class='fa-solid fa-heart'></i>`;
 
-        const insertHeart = document.createElement('p');
-        insertHeart.classList.add('insert-heart');
-        insertHeart.innerHTML="<i class='fa-solid fa-heart'></i>";
-        
+        return (insertLikes);
 
-        const insertRate = document.createElement('p');
-        insertRate.classList.add('insert-rate');
-        insertRate.textContent=(`${price} €/jour`);
-
-        
-        // if media is a picture
-        const img = document.createElement('img');
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", '');
-        img.classList.add('media-card');
-
-
-   
-        // divGeneral.appendChild(article);
-        divGeneral.appendChild(article);
-        article.appendChild(img);
-        divGeneral.appendChild(insertInfos);
-        insertInfos.appendChild(insertLikes);
-        insertInfos.appendChild(insertHeart);
-        insertInfos.appendChild(insertRate);
-
-        // if media is a video
-        // <video controls width="250">
-
-        // <source src="/media/cc0-videos/flower.webm"
-        //         type="video/webm">
-
-        // <source src="/media/cc0-videos/flower.mp4"
-        //         type="video/mp4">
-
-        // Sorry, your browser doesn't support embedded videos.
-        // </video>
-
-        return (divGeneral);
     }
-    return { id, photographerId, title, image, likes, date, price, picture, getMediasOfPhotographer }
+    return { getMediasOfPhotographer, getFixedBottomInfos }
 }

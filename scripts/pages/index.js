@@ -25,13 +25,7 @@ let photographers;
 
         photographers.forEach((photographer) => {
             const photographerModel = PhotographersFactory(photographer);
-            // console.log("const photographerModel");
-            // console.log(photographerModel);
-
             const userCardDOM = photographerModel.getUserCardDOM();
-            // console.log("const userCardDOM");
-            // console.log(userCardDOM);
-
             photographersSection.appendChild(userCardDOM);
         });
     };

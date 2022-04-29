@@ -34,12 +34,14 @@ MQ mobile < 768px */
 }
 
 .photographer__avatar-name {
-    margin:0;
-    margin-top:20px;
-    color: #D3573C;
+    font-style: normal;
+    font-weight: 400;
     font-size: 36px;
-    line-height: 47px;
-    vertical-align: top;
+    line-height: 47px;    margin:0;
+    margin-top:10px;
+    text-align: center;
+    
+    color: #D3573C;
 
 }
 
@@ -55,32 +57,32 @@ MQ mobile < 768px */
 }
 
 .photographer__infos-city-country {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;    margin: 0;
+    text-align: center;
+    
     color: #901C1C;
-    font-size:13px;
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 17px;
-    vertical-align: top;
 
 
 }
 
 .photographer__infos-tagline {
-    font-size:10px;
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 12px;
-    vertical-align: top;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 13px;
+    margin: 0;
     margin-top:5px;
-
+    text-align: center;
+    color: #000000;
 }
 
 .photographer__infos-price {
-    font-size:9px;
-    color: #757575;
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 12px;
-    vertical-align: top;
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 12px;    
+    text-align: center;
+    margin: 0;
     margin-top:5px;
+    color: #757575;
 }
