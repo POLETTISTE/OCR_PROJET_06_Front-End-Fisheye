@@ -35,15 +35,9 @@ let mediasLikes;
     async function displayPhotographerInGalleryPage(photographers){
 
         const photographersHeader = document.querySelector(".photograph-header");
-        // const photographerPriceBottom = document.querySelector(".insert-info");
-
-        // const photographerPriceModel = PhotographerGalleryPageFactory(photographer);
-        // const photographerBottomCardDOM = photographerPriceModel.getPricePhotographer();
-        // photographerPriceBottom.appendChild(photographerBottomCardDOM);
 
         photographers.forEach((photographer) => {
-            // On itère pour que le photographe soit construit via la factory et declenche
-            // sa vue dans le HTML via les consignes de construction dans pages/photographer.js
+
             const photographerGalleryModel = PhotographerGalleryPageFactory(photographer);
             const userIdCardDOM = photographerGalleryModel.getPhotographerIdHeader();
             photographersHeader.appendChild(userIdCardDOM);
@@ -56,15 +50,11 @@ let mediasLikes;
         const photographerPriceBottom = document.querySelector(".medias-info");
         
         photographers.forEach((photographer) => {
-            const photographerPriceModel = PhotographerGalleryPageFactory(photographer);
-    
-           const photographerBottomCardDOM = photographerPriceModel.getPricePhotographer();
-    
-           photographerPriceBottom.appendChild(photographerBottomCardDOM);
             // On itère pour que le photographe soit construit via la factory et declenche
             // sa vue dans le HTML via les consignes de construction dans pages/photographer.js
-
-        
+            const photographerBottomCardDOM = 
+            PhotographerGalleryPageFactory(photographer).getPricePhotographer();
+            photographerPriceBottom.appendChild(photographerBottomCardDOM);
     });
 
     }
