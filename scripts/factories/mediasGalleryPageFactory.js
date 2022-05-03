@@ -4,34 +4,43 @@ function MediasGalleryPageFactory(data) {
 
     const mediaImage = `assets/images/${photographerId}/${image}`;
     const mediaVideo = `assets/images/${photographerId}/${video}`;
-
-
-    // // SAVOIR SI DATE CONTIENT LA PROPRIETE IMAGE OU VIDEO
-    // if (data.hasOwnProperty('image')) {
-    //     console.log("c'est une image");
-        
-    // }else if(data.hasOwnProperty('video')){
-    //     console.log("c'est une video");
-        
-    // }else{ 
-    //     console.log("error");
-    // }
-
             
     let mediaLikes=0;
         medias.forEach((media) => { 
             mediaLikes+= media["likes"]            
         });
 
+    let img = document.createElement('element');
+
+    let vid = document.createElement('element');
+
+
     function getMediasOfPhotographer() {
         
         const article = document.createElement( 'article' );
         article.classList.add('media-card');
+
+
+    // // SAVOIR SI DATA CONTIENT LA PROPRIETE IMAGE OU VIDEO
     
-        const img = document.createElement('img');
+    if (data.hasOwnProperty('image')) {
+        
+        img = document.createElement('img');
         img.setAttribute("src", mediaImage);
         img.setAttribute("alt",' ');
         img.classList.add('image-card');
+        
+    }else if(data.hasOwnProperty('video')){
+        
+        vid = document.createElement('video');
+        vid.setAttribute("src", mediaVideo);
+        vid.setAttribute('type', "video/mp4");
+        vid.classList.add('video-card');
+        
+    }else{ 
+        console.log('error in function getMediasOfPhotographer()')
+    }
+    
 
         const imgInfos = document.createElement('div');
         imgInfos.classList.add("image-card-infos");
@@ -47,6 +56,7 @@ function MediasGalleryPageFactory(data) {
 
         
         article.appendChild(img);
+        article.appendChild(vid);
         article.appendChild(imgInfos); 
         imgInfos.appendChild(imgTitle);
         imgInfos.appendChild(imgLikes);

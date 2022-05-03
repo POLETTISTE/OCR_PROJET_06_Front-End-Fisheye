@@ -146,6 +146,12 @@ form input {
     object-fit:cover;
     border-radius:5px;
 }
+.video-card {
+    width:350px;
+    height:300px;
+    object-fit:cover;
+    border-radius:5px;
+}
 .image-card-infos {
     display: flex;
     justify-content: space-between;
@@ -160,12 +166,6 @@ form input {
     line-height: 31.25px;
 }
 
-.video-card {
-    width:350px;
-    height:300px;
-    object-fit:cover;
-    border-radius:5px;
-}
 
 /* MAIN PAGE GALLERY INFOS BOTTOM */
 
