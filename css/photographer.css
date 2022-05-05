@@ -61,6 +61,7 @@
 }
 
 .modal {
+
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -85,6 +86,7 @@
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+    margin: 0;
 }
 
 form {
@@ -108,12 +110,22 @@ form div {
 }
 
 form input {
+    /* resolution problème input vs video-card */
+    z-index:1;
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
 }
 
+.hidden {
+    height: 1px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: -10000px;
+    width: 1px;
+ }
 
 
 /* MAIN PAGE GALLERY PICTURES */
