@@ -3,6 +3,14 @@ function PhotographerGalleryPageFactory(data) {
     
     const srcPicture = `assets/photographers/${portrait}`;
 
+    function getNameFormContact() {
+        const nameForm = document.createElement('h2');
+        nameForm.classList.add('photograph-form-name');
+        nameForm.textContent = name;
+
+        return(nameForm);
+    }
+
     function getPhotographerIdHeader() {
         const article = document.createElement( 'article' );
         article.classList.add('photograph-header-banner');
@@ -57,5 +65,5 @@ function PhotographerGalleryPageFactory(data) {
         return (p);
     }
 
-    return { getPhotographerIdHeader, getPricePhotographer }
+    return { getNameFormContact, getPhotographerIdHeader, getPricePhotographer }
 }

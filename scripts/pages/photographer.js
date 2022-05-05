@@ -32,6 +32,18 @@ let mediasLikes;
         medias = medias.filter(media => media["photographerId"] == paramsId);
     };
 
+    async function displayNamePhotographerontactForm(photographers) {
+        const photographerNameForm = document.querySelector("#contact_modal > div > header");
+        console.log('ok');
+        photographers.forEach((photographer) => {
+
+            const photographerFormContactName = PhotographerGalleryPageFactory(photographer);
+            const element = photographerFormContactName.getNameFormContact();
+            photographerNameForm.appendChild(element);
+            
+        });
+    };
+
     async function displayPhotographerInGalleryPage(photographers){
 
         const photographersHeader = document.querySelector(".photograph-header");
@@ -79,6 +91,7 @@ let mediasLikes;
     async function init() {
         // Récupère les datas des photographes
         await getPhotographerId();
+        displayNamePhotographerontactForm(photographers);
         displayPhotographerInGalleryPage(photographers);
         displayMediasInGalleryPage(medias);
         displayPhotographerPriceBottom(photographers);

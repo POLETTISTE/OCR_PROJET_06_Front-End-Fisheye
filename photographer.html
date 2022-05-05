@@ -15,13 +15,15 @@
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <div class="header-title">
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </div>
         </header>
         <!-- RAJOUTER LES CHAMPS INPUT MANQUANTS SELON MAQUETTE -->
 				<form method="post" action="">
 
-					<div role="group" aria-labelledby="coordonnees">
+					<div id="formdatas" role="group" aria-labelledby="coordonnees">
             <p id="coordonnees" class="hidden">Vos coordonnées</p>
 
               <label for="Prenom" id="form_prenom">Prénom</label>
@@ -34,7 +36,7 @@
               <input type="email" name="email" id="email" aria-labelledby="email" aria-describedby="form_email_contact" />
               
               <label for="Message" id="form_message">Votre message</label>
-              <input type="textarea" name="message" id="message" aria-labelledby="message" aria-describedby="form_message_contact" />
+              <textarea name="message" id="message" aria-labelledby="message" aria-describedby="form_message_contact" rows="10" ></textarea>
 					
 					</div>
           <button class="contact_button">Envoyer</button>

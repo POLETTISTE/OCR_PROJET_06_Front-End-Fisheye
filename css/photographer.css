@@ -60,6 +60,18 @@
     cursor: pointer;
 }
 
+#contact_modal {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    padding-top: 56px;
+    width:80%;
+
+
+}
+
 .modal {
 
     border-radius: 5px;
@@ -74,8 +86,18 @@
 }
 
 .modal header {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 130px;
+}
+
+.modal .header-title {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .modal header img {
@@ -85,8 +107,14 @@
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
-    margin: 0;
+    margin:0;
+    line-height: 83.33px;
+}
+
+.photograph-form-name {
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
 }
 
 form {
@@ -94,6 +122,7 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+
 }
 
 form label {
@@ -116,6 +145,14 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+#form_message {
+    padding-top: 10px;
+}
+
+textarea {
+    width:100%;
 }
 
 .hidden {
