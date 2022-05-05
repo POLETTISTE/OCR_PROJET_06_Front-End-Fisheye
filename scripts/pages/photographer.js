@@ -34,7 +34,7 @@ let mediasLikes;
 
     async function displayNamePhotographerontactForm(photographers) {
         const photographerNameForm = document.querySelector("#contact_modal > div > header");
-        console.log('ok');
+
         photographers.forEach((photographer) => {
 
             const photographerFormContactName = PhotographerGalleryPageFactory(photographer);

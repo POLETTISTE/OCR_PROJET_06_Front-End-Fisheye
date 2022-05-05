@@ -11,8 +11,10 @@ function MediasGalleryPageFactory(data) {
         });
 
     let img = document.createElement('element');
-
     let vid = document.createElement('element');
+    linkImage = document.createElement('a');
+    linkVideo = document.createElement('a');
+
 
 
     function getMediasOfPhotographer() {
@@ -24,18 +26,29 @@ function MediasGalleryPageFactory(data) {
     // // SAVOIR SI DATA CONTIENT LA PROPRIETE IMAGE OU VIDEO
     
     if (data.hasOwnProperty('image')) {
-        
+
+        linkImage = document.createElement('a');
+        linkImage.setAttribute('class', 'media-element');
+        linkImage.setAttribute('href', mediaImage);
+
         img = document.createElement('img');
         img.setAttribute("src", mediaImage);
-        img.setAttribute("alt",' ');
+        img.setAttribute("alt",'photo de la gallerie du photographe');
         img.classList.add('image-card');
+        // img.classList.add('media-element');
         
     }else if(data.hasOwnProperty('video')){
+
+        linkVideo = document.createElement('a');
+        linkVideo.setAttribute('class', 'media-element');
+        linkVideo.setAttribute('href', mediaVideo);
         
         vid = document.createElement('video');
         vid.setAttribute("src", mediaVideo);
         vid.setAttribute('type', "video/mp4");
+        vid.setAttribute('alt', 'video de la gallerie du photographe');
         vid.classList.add('video-card');
+        // vid.classList.add('media-element');
         
     }else{ 
         console.log('error in function getMediasOfPhotographer()')
@@ -55,8 +68,12 @@ function MediasGalleryPageFactory(data) {
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
 
         
-        article.appendChild(img);
-        article.appendChild(vid);
+        article.appendChild(linkImage);
+        article.appendChild(linkVideo);
+
+        linkImage.appendChild(img);
+        linkVideo.appendChild(vid);
+
         article.appendChild(imgInfos); 
         imgInfos.appendChild(imgTitle);
         imgInfos.appendChild(imgLikes);
@@ -75,5 +92,6 @@ function MediasGalleryPageFactory(data) {
         return (insertLikes);
 
     }
+
     return { getMediasOfPhotographer, getFixedBottomInfos }
 }

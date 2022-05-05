@@ -201,6 +201,11 @@ textarea {
     object-fit:cover;
     border-radius:5px;
 }
+
+.media-element {
+    cursor:pointer;
+}
+
 .image-card-infos {
     display: flex;
     justify-content: space-between;

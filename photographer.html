@@ -14,10 +14,10 @@
   <body>
     <div id="contact_modal">
 			<div class="modal">
-				<header>
+				<header aria-label="Contact form header" role="banner">
           <div class="header-title">
             <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
+            <img src="assets/icons/close.svg" alt="bouton fermer" onclick="closeModal()" />
           </div>
         </header>
         <!-- RAJOUTER LES CHAMPS INPUT MANQUANTS SELON MAQUETTE -->
@@ -27,23 +27,23 @@
             <p id="coordonnees" class="hidden">Vos coordonnées</p>
 
               <label for="Prenom" id="form_prenom">Prénom</label>
-              <input type="text" name="prenom" id="prenom" aria-labelledby="prenom" aria-describedby="form_prenom_contact" />
+              <input type="text" name="prenom" id="prenom" aria-labelledby="form_prenom" />
               
               <label for="Nom" id="form_nom">Nom</label>
-              <input type="text" name="nom" id="nom" aria-labelledby="nom" aria-describedby="form_nom_contact" />
+              <input type="text" name="nom" id="nom" aria-labelledby="form_nom"  />
               
               <label for="Email" id="form_email">Email</label>
-              <input type="email" name="email" id="email" aria-labelledby="email" aria-describedby="form_email_contact" />
+              <input type="email" name="email" id="email" aria-labelledby="form_email" />
               
               <label for="Message" id="form_message">Votre message</label>
-              <textarea name="message" id="message" aria-labelledby="message" aria-describedby="form_message_contact" rows="10" ></textarea>
+              <textarea name="message" id="message" aria-labelledby="form_message" rows="10" ></textarea>
 					
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <header>
+    <header aria-label="Main header" role="banner">
       <a href="index.html"><img src="assets/images/logo.png" class="logo" aria-label="retour à la page d'accueil" aria-current="page"/></a>
     </header>
     <main id="main">
@@ -59,5 +59,7 @@
     <script src="scripts/factories/mediasGalleryPageFactory.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/lightBox.js"></script>
+
   </body>
 </html>
