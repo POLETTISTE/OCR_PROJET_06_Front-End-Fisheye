@@ -15,4 +15,5 @@ send.addEventListener('click', sendMessage);
 function sendMessage(e) {
     e.preventDefault();
     alert("message envoyé");
+    closeModal();
 };
