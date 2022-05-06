@@ -80,22 +80,25 @@ function MediasGalleryPageFactory(data) {
     }
 
     function getLightbox() {
+  
 
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
         document.body.appendChild(lightbox);
 
-        const closeLightbox = document.createElement('button');
+        const closeLightbox = document.createElement('div');
         closeLightbox.classList.add('lightbox__close');
         closeLightbox.textContent = 'Fermer';
 
-        const nextLightbox = document.createElement('button');
+        const nextLightbox = document.createElement('div');
         nextLightbox.classList.add('lightbox__next');
-        nextLightbox.textContent = 'suivant';
+        nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
 
-        const prevLightbox = document.createElement('button');
+
+
+        const prevLightbox = document.createElement('div');
         prevLightbox.classList.add('lightbox__prev');
-        prevLightbox.textContent = 'précédent';
+        prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
 
         const lightboxContainer= document.createElement('div');
         lightboxContainer.classList.add('lightbox__container');
