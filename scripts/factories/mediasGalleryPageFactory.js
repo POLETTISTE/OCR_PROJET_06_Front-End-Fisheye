@@ -10,11 +10,8 @@ function MediasGalleryPageFactory(data) {
             mediaLikes+= media["likes"]            
         });
 
-    let img = document.createElement('element');
-    let vid = document.createElement('element');
-    // linkImage = document.createElement('a');
-    // linkVideo = document.createElement('a');
-
+    let img = document.createElement('div');
+    let vid = document.createElement('div');
 
 
     function getMediasOfPhotographer() {
@@ -84,8 +81,56 @@ function MediasGalleryPageFactory(data) {
 
     function getLightbox() {
 
+        const lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        document.body.appendChild(lightbox);
+
+        const medias = document.querySelectorAll('.media-element');
+        medias.forEach(media => {
+            media.addEventListener("click", e => {
+                lightbox.classList.add('active');
+                console.log(media)
+                let img = document.createElement('div');
+                let vid = document.createElement('div');
+
+                // if l'image a la class image-card alors cela
+                if(e.target.classList=="media-element image-card") {
+
+                    console.log('image')
+                    img = document.createElement('img');
+                    img.classList.add('media-lightbox');
+                    img.src = media.src;
+                // else l'image a la classe video-card alors cela
+
+                } else if (e.target.classList=="media-element video-card") {
+                    vid = document.createElement('video');
+                    vid.controls = true;
+                    vid.classList.add('media-lightbox');
+                    vid.src = media.src;
+                    console.log('video')
+
+                } else {
+                    console.log('error')
+                };
 
 
+
+                while (lightbox.firstChild) {
+                    lightbox.removeChild(lightbox.firstChild)
+                }
+                
+                lightbox.appendChild(img);
+                lightbox.appendChild(vid);
+            })
+        })
+
+        // modifier si presse echap alors disparait
+        lightbox.addEventListener('click', e => {
+            if (e.target === e.currentTarget) return lightbox.classList.remove('active');
+        })
+        return (lightbox);
+
+   
     }
 
     return { getMediasOfPhotographer, getFixedBottomInfos, getLightbox }

@@ -74,12 +74,12 @@ let mediasLikes;
 
     async function displayMediasInGalleryPage(medias) {
 
-        const mediasMain = document.querySelector(".medias-main");
         const mediasInfo = document.querySelector(".medias-info");
-        
-        const mediasGalleryInfos = MediasGalleryPageFactory(medias);
-        const infosCardDOM = mediasGalleryInfos.getFixedBottomInfos();
+        const infosCardDOM = MediasGalleryPageFactory(medias).getFixedBottomInfos();
+    
         mediasInfo.appendChild(infosCardDOM);
+        
+        const mediasMain = document.querySelector(".medias-main");
         
         medias.forEach((media) => {   
             const mediasGalleryModel = MediasGalleryPageFactory(media);
@@ -90,29 +90,12 @@ let mediasLikes;
     }
 
     async function displayLightbox() {
+        // ajouter localisation dans main pour le queryselector puis deplacer le reste dans factory
+        const mediasLightbox = document.querySelector("#main");
+        const displayMedias = MediasGalleryPageFactory(medias).getLightbox();
 
-        const lightbox = document.createElement('div');
-        lightbox.id = 'lightbox';
-        document.body.appendChild(lightbox);
+        mediasLightbox.appendChild(displayMedias);
 
-        const images = document.querySelectorAll('.media-element');
-        images.forEach(image => {
-            image.addEventListener("click", e => {
-                lightbox.classList.add('active');
-                const img = document.createElement('img');
-                img.classList.add('media-lightbox');
-                img.src = image.src;
-                while (lightbox.firstChild) {
-                    lightbox.removeChild(lightbox.firstChild)
-                }
-                lightbox.appendChild(img);
-            })
-        })
-
-        lightbox.addEventListener('click', e => {
-            if (e.target !== e.currentTarget) return
-            lightbox.classList.remove('active')
-        })
 
     }
 
