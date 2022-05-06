@@ -1,10 +1,13 @@
 #lightbox {
     position:fixed;
-    z-index:10;
     top:0;
-    width:100%;
-    height:100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index:10;
+
+    border-radius: 5px;
     display: none;
 }
 
@@ -15,6 +18,30 @@
 }
 
 .media-lightbox {
-    width:300px;
+
+    max-width:1050px;
+    /* height: 900px; */
+    object-fit: contain;
     height:300px;
+    border-radius: 5px;
+
+}
+
+.lightbox__close {
+
+}
+
+.lightbox__next, 
+.lightbox__prev {
+    border:none;
+    /* background-image:url('../assets/icons/arrow.svg'); */
+    background-image:url('../assets/images/195/Architecture_Contrast.jpg');
+    background-repeat: no-repeat;
+    width:80px;
+    height:140px;
+    color:red;
+}
+
+.lightbox__prev {
+
 }

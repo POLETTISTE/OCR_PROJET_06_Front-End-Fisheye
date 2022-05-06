@@ -85,18 +85,34 @@ function MediasGalleryPageFactory(data) {
         lightbox.id = 'lightbox';
         document.body.appendChild(lightbox);
 
+        const closeLightbox = document.createElement('button');
+        closeLightbox.classList.add('lightbox__close');
+        closeLightbox.textContent = 'Fermer';
+
+        const nextLightbox = document.createElement('button');
+        nextLightbox.classList.add('lightbox__next');
+        nextLightbox.textContent = 'suivant';
+
+        const prevLightbox = document.createElement('button');
+        prevLightbox.classList.add('lightbox__prev');
+        prevLightbox.textContent = 'précédent';
+
+        const lightboxContainer= document.createElement('div');
+        lightboxContainer.classList.add('lightbox__container');
+
+
+
+
         const medias = document.querySelectorAll('.media-element');
         medias.forEach(media => {
             media.addEventListener("click", e => {
                 lightbox.classList.add('active');
-                console.log(media)
                 let img = document.createElement('div');
                 let vid = document.createElement('div');
 
                 // if l'image a la class image-card alors cela
                 if(e.target.classList=="media-element image-card") {
 
-                    console.log('image')
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = media.src;
@@ -107,7 +123,6 @@ function MediasGalleryPageFactory(data) {
                     vid.controls = true;
                     vid.classList.add('media-lightbox');
                     vid.src = media.src;
-                    console.log('video')
 
                 } else {
                     console.log('error')
@@ -115,12 +130,18 @@ function MediasGalleryPageFactory(data) {
 
 
 
-                while (lightbox.firstChild) {
-                    lightbox.removeChild(lightbox.firstChild)
+                while (lightboxContainer.firstChild) {
+                    lightboxContainer.removeChild(lightboxContainer.firstChild)
                 }
                 
-                lightbox.appendChild(img);
-                lightbox.appendChild(vid);
+                lightbox.appendChild(lightboxContainer)
+                lightbox.appendChild(closeLightbox);
+                lightbox.appendChild(nextLightbox);
+                lightbox.appendChild(prevLightbox);
+
+                lightboxContainer.appendChild(img);
+                lightboxContainer.appendChild(vid);
+
             })
         })
 

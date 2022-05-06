@@ -32,7 +32,7 @@ let mediasLikes;
         medias = medias.filter(media => media["photographerId"] == paramsId);
     };
 
-    async function displayNamePhotographerontactForm(photographers) {
+    async function displayNamePhotographerContactForm(photographers) {
         const photographerNameForm = document.querySelector("#contact_modal > div > header");
 
         photographers.forEach((photographer) => {
@@ -102,7 +102,7 @@ let mediasLikes;
     async function init() {
         // Récupère les datas des photographes
         await getPhotographerId();
-        displayNamePhotographerontactForm(photographers);
+        displayNamePhotographerContactForm(photographers);
         displayPhotographerInGalleryPage(photographers);
         displayMediasInGalleryPage(medias);
         displayPhotographerPriceBottom(photographers);
