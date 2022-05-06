@@ -51,8 +51,8 @@ let mediasLikes;
         photographers.forEach((photographer) => {
 
             const photographerGalleryModel = PhotographerGalleryPageFactory(photographer);
-            const userIdCardDOM = photographerGalleryModel.getPhotographerIdHeader();
-            photographersHeader.appendChild(userIdCardDOM);
+            const element = photographerGalleryModel.getPhotographerIdHeader();
+            photographersHeader.appendChild(element);
             
         });
     };
@@ -66,6 +66,7 @@ let mediasLikes;
             // sa vue dans le HTML via les consignes de construction dans pages/photographer.js
             const photographerBottomCardDOM = 
             PhotographerGalleryPageFactory(photographer).getPricePhotographer();
+
             photographerPriceBottom.appendChild(photographerBottomCardDOM);
     });
 
@@ -82,10 +83,37 @@ let mediasLikes;
         
         medias.forEach((media) => {   
             const mediasGalleryModel = MediasGalleryPageFactory(media);
-            const mediaCardDOM = mediasGalleryModel.getMediasOfPhotographer();
-            mediasMain.appendChild(mediaCardDOM);
+            const element = mediasGalleryModel.getMediasOfPhotographer();
+            mediasMain.appendChild(element);
             
         });
+    }
+
+    async function displayLightbox() {
+
+        const lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        document.body.appendChild(lightbox);
+
+        const images = document.querySelectorAll('.media-element');
+        images.forEach(image => {
+            image.addEventListener("click", e => {
+                lightbox.classList.add('active');
+                const img = document.createElement('img');
+                img.classList.add('media-lightbox');
+                img.src = image.src;
+                while (lightbox.firstChild) {
+                    lightbox.removeChild(lightbox.firstChild)
+                }
+                lightbox.appendChild(img);
+            })
+        })
+
+        lightbox.addEventListener('click', e => {
+            if (e.target !== e.currentTarget) return
+            lightbox.classList.remove('active')
+        })
+
     }
 
     async function init() {
@@ -95,6 +123,7 @@ let mediasLikes;
         displayPhotographerInGalleryPage(photographers);
         displayMediasInGalleryPage(medias);
         displayPhotographerPriceBottom(photographers);
+        displayLightbox();
     };
     
     init();
