@@ -17,3 +17,4 @@ function sendMessage(e) {
     alert("message envoyé");
     closeModal();
 };
+

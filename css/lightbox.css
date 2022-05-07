@@ -4,9 +4,8 @@
     left:0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: white;
     z-index:10;
-
     border-radius: 5px;
     display: none;
 }
@@ -17,30 +16,42 @@
     align-items: center;
 }
 
+.lightbox__container {
+    width:1050px;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .media-lightbox {
-
-    max-width:1050px;
-    /* height: 900px; */
-    object-fit: contain;
-    height:300px;
+    width: 80%;
+    height:80%;
+    object-fit: cover;
     border-radius: 5px;
-
 }
 
 .lightbox__close {
-    color:red;
+    background: url('../assets/icons/arrow.svg');
+    position: absolute;
+    top:2%;
+    right:17%;
+    color:#901C1C;
+    font-size: 48px;
 
 }
+.lightbox__next {
+    position: absolute;
+    top:50%;
+    right:17%;
+    color:#901C1C;
+    font-size: 48px;
 
-.lightbox__next, 
-.lightbox__prev {
-    margin-right:20px;
-    margin-left:20px;
-    width:8px;
-    height:14px;
-    color:red;
 }
-
 .lightbox__prev {
-
+    position: absolute;
+    top:50%;
+    left:17%;
+    color:#901C1C;
+    font-size: 48px;
 }

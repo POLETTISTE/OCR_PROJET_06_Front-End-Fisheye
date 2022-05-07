@@ -56,7 +56,6 @@ function MediasGalleryPageFactory(data) {
         imgLikes.classList.add('media-likes');
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
 
-        
         article.appendChild(img);
         article.appendChild(vid);
 
@@ -88,13 +87,12 @@ function MediasGalleryPageFactory(data) {
 
         const closeLightbox = document.createElement('div');
         closeLightbox.classList.add('lightbox__close');
-        closeLightbox.textContent = 'Fermer';
+        closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`;  
+
 
         const nextLightbox = document.createElement('div');
         nextLightbox.classList.add('lightbox__next');
         nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
-
-
 
         const prevLightbox = document.createElement('div');
         prevLightbox.classList.add('lightbox__prev');
@@ -102,9 +100,6 @@ function MediasGalleryPageFactory(data) {
 
         const lightboxContainer= document.createElement('div');
         lightboxContainer.classList.add('lightbox__container');
-
-
-
 
         const medias = document.querySelectorAll('.media-element');
         medias.forEach(media => {
@@ -131,25 +126,28 @@ function MediasGalleryPageFactory(data) {
                     console.log('error')
                 };
 
-
-
+                //sert à vider la lighbox de son media des que l'on sert de la lightbox.
                 while (lightboxContainer.firstChild) {
                     lightboxContainer.removeChild(lightboxContainer.firstChild)
                 }
                 
                 lightbox.appendChild(lightboxContainer)
-                lightbox.appendChild(closeLightbox);
-                lightbox.appendChild(nextLightbox);
-                lightbox.appendChild(prevLightbox);
-
                 lightboxContainer.appendChild(img);
                 lightboxContainer.appendChild(vid);
 
+                lightbox.appendChild(closeLightbox);
+                lightbox.appendChild(nextLightbox);
+                lightbox.appendChild(prevLightbox);
             })
         })
 
-        // modifier si presse echap alors disparait
+        // ajouter si presse echap alors disparait
+
+        // si on clique sur la zone de la lightbox, alors cela enleve la classe active de la
+        //lightbox et ca la ferme.
+
         lightbox.addEventListener('click', e => {
+
             if (e.target === e.currentTarget) return lightbox.classList.remove('active');
         })
         return (lightbox);
