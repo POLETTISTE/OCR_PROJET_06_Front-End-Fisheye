@@ -1,8 +1,15 @@
+// ----- Affichage de la page photographer.html
+
+// ----- partie header informations du photographe 
+// ----- partie formulaire de contact
+// ----- partie bottom avec prix journalier
+
 function PhotographerGalleryPageFactory(data) {
     const { name, id, city, country, tagline, price, portrait} = data;
     
     const srcPicture = `assets/photographers/${portrait}`;
 
+    // Affichage du nom du photographe sur le formulaire de contact
     function getNameFormContact() {
         const nameForm = document.createElement('h2');
         nameForm.classList.add('photograph-form-name');
@@ -11,6 +18,7 @@ function PhotographerGalleryPageFactory(data) {
         return(nameForm);
     }
 
+    // Affichage des informations du photographe sur sa page dédiée
     function getPhotographerIdHeader() {
         const article = document.createElement( 'article' );
         article.classList.add('photograph-header-banner');
@@ -56,6 +64,7 @@ function PhotographerGalleryPageFactory(data) {
         return (article);
     }
 
+    // Affichage du prix journalier du photographe 
     function getPricePhotographer() {
 
         const p = document.createElement('p');

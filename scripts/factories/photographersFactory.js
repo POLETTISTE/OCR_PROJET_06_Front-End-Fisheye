@@ -1,3 +1,5 @@
+// ----- Affichage de la page index.html
+
 function PhotographersFactory(data) {
     const { name, id, city, country, tagline, price, portrait} = data;
     
@@ -6,39 +8,39 @@ function PhotographersFactory(data) {
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
 
-        // BLOC AVATAR + NAME
+        // Affichage avatar photographe + ses infos
         const avatarPictureAndName = document.createElement ('a');
         avatarPictureAndName.setAttribute('href', `photographer.html?id=${id}`);
         avatarPictureAndName.setAttribute('aria-label', 'collection des photos du photographe');
         avatarPictureAndName.setAttribute('aria-current', 'page');
         avatarPictureAndName.classList.add('photographer__avatar');
 
-        // picture AVATAR
+        // image du photographe
         const img = document.createElement( 'img');
         img.setAttribute("src", picture);
         img.setAttribute("alt", name);
         img.classList.add('photographer__avatar-picture');
 
-        // name AVATAR
+        // nom du photographe
         const h2 = document.createElement( 'h2' );
         h2.classList.add('photographer__avatar-name');
         h2.textContent = name;
 
-        //BLOC INFOS
+        //informations du photographe
         const infos = document.createElement ('div');
         infos.classList.add('photographer__infos');
 
-        //infos city + country
+        //informations du photographe ville + pays
         const paragraphCityCountry = document.createElement('p');
         paragraphCityCountry.classList.add('photographer__infos-city-country');
         paragraphCityCountry.textContent = `${city}, ${country}`;
 
-        // infos tagline
+        // informations du photographe tagline
         const paragraphTagline = document.createElement('p');
         paragraphTagline.classList.add('photographer__infos-tagline');
         paragraphTagline.textContent = tagline;
         
-        //infos price
+        //informations du photographe prix journalier
         const paragraphPrice = document.createElement('p');
         paragraphPrice.classList.add('photographer__infos-price');
         paragraphPrice.textContent = `${price} €/jour`;
@@ -56,6 +58,5 @@ function PhotographersFactory(data) {
         return (article);
     }
 
-    //Return only getUserCardDOM because all constructors are called inside, don't need to return here!
     return { getUserCardDOM }
 }

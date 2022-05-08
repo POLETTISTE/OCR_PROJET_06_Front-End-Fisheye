@@ -89,15 +89,17 @@ let mediasLikes;
         });
     }
 
+
     async function displayLightbox() {
         // ajouter localisation dans main pour le queryselector puis deplacer le reste dans factory
         const mediasLightbox = document.querySelector("#main");
         const displayMedias = MediasGalleryPageFactory(medias).getLightbox();
-
         mediasLightbox.appendChild(displayMedias);
 
-
     }
+    
+
+
 
     async function init() {
         // Récupère les datas des photographes
