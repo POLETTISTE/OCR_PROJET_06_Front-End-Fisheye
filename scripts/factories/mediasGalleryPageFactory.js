@@ -106,6 +106,8 @@ function MediasGalleryPageFactory(data) {
         medias.forEach(media => {
             media.addEventListener("click", e => {
                 lightbox.classList.add('active');
+                
+                // permet d'avoir une div vide au lieu de <img> ou <video> vide
                 let img = document.createElement('div');
                 let vid = document.createElement('div');
 
