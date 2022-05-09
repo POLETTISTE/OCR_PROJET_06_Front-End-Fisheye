@@ -1,11 +1,11 @@
-window.onload = () => {
-    // on recupere le select
-    const selectElt = document.querySelector('select');
 
-    //on récupère la 1ere div "custom-select"
+    //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)
     const selectDiv = document.querySelector('.custom-select');
 
-    // on crée le nouveau select
+    // on recupere le select (caché en display none car pas joli)
+    const selectElt = document.querySelector('select');
+
+    // on crée le nouveau select (design personnalisé)
     const newSelect = document.createElement('div');
 
     // on ajoute la classe 'new-select'
@@ -25,7 +25,7 @@ window.onload = () => {
     for (let option of selectElt.options) {
         // on cree une div pour cette option
         const newOption = document.createElement("div");
-
+        
         // on copie le contenu de l'option
         newOption.innerHTML = option.innerHTML;
 
@@ -39,7 +39,7 @@ window.onload = () => {
 
                     //on change le texte de notre "newSelect"
                     newSelect.innerHTML = this.innerHTML;
-                                        
+
                     break;
                 }
             }
@@ -62,8 +62,11 @@ window.onload = () => {
 
         // on retire le select-hide de notre menu
         this.nextSibling.classList.toggle("select-hide");
+
+        //on cache le newSelect pour éviter le doublon
+        this.classList.toggle("select-hide");
+        
         //on ajoute la classe active à newSelect(change le sens du chevron)
         this.classList.toggle("active");
 
     })
-}
