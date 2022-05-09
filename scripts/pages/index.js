@@ -1,21 +1,24 @@
+// ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE INDEX.HTML *****
+
+// DEFINITION DE VARIABLES GLOBALES:
 let photographers;
 
     async function getPhotographers() {
 
         await fetch('data/photographers.json')
+            // APPEL DE L'API:
             .then(function(res) {
                 if (res.ok) {
                 return res.json();
                 }
             })
+            // RENVOI LES DONNEES DE L'API:
             .then(function(data) {
-                // On ajoute les données de l'API dans la variable photographers
                 photographers = data.photographers;
-                // console.log(photographers);
 
             })
+            // SI UN PROBLEME EST SURVENU DANS LE PROCESSUS:
             .catch(function(err) {
-                // Une erreur est survenue
                 console.log("error in the function getPhotographers()"); 
             });
     };
@@ -31,7 +34,6 @@ let photographers;
     };
 
     async function init() {
-        // Récupère les datas des photographes
         await getPhotographers();
         displayData(photographers);
     };
