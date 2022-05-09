@@ -53,6 +53,8 @@ function MediasGalleryPageFactory(data) {
         imgLikes.classList.add('media-likes');
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
 
+
+
         // ELEMENTS D'ASSEMBLAGE
         article.appendChild(img);
         article.appendChild(vid);
@@ -73,7 +75,7 @@ function MediasGalleryPageFactory(data) {
 
 
     // AFFICHAGE LIGHTBOX: 
-    function getLightbox() {
+    function getLightbox(id) {
         // CREATION MODALE:
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
@@ -98,6 +100,20 @@ function MediasGalleryPageFactory(data) {
         prevLightbox.classList.add('lightbox__prev');
         prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
 
+        // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
+        prevLightbox.addEventListener('click', () => {
+            console.log("btn previous cliqué");
+
+            // data.map((item) => {
+            //     console.log(item["id"])
+            // })
+            
+            // const index = data.findIndex(object => {
+            // return object.id === 952343423;
+            // });
+
+            console.log(index); // 👉️ 0
+        });
         //EVEMENT AU CLIC SUR UN MEDIA DANS LA GALLERIE -> OUVERTURE LIGHTBOX
         const medias = document.querySelectorAll('.media-element');
         medias.forEach(media => {
@@ -161,20 +177,7 @@ function MediasGalleryPageFactory(data) {
             return lightbox.classList.remove('active')
         })
 
-        // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
-        prevLightbox.addEventListener('click', () => {
-            console.log("btn previous cliqué");
-
-            data.map((item) => {
-                console.log(item["id"])
-            })
-            
-            const index = data.findIndex(object => {
-            return object.id === 952343423;
-            });
-
-            console.log(index); // 👉️ 0
-        });
+     
          
         // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
         nextLightbox.addEventListener('click', () => {

@@ -79,9 +79,14 @@ let mediasLikes;
          // ITERATION POUR AFFICHER LES MEDIAS DU PHOTOGRAPHE:
         medias.forEach((media) => {   
             const mediasGalleryModel = MediasGalleryPageFactory(media);
+
             const element = mediasGalleryModel.getMediasOfPhotographer();
+            element.addEventListener("click", () => getLightbox(media.id));
             mediasMain.appendChild(element);
+
+
         });
+
     };
 
 
