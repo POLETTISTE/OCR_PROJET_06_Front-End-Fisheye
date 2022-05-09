@@ -1,30 +1,17 @@
-// ----- Affichage de la page photographer.html
+// ***** AFFICHAGE DE LA PAGE PHOTOGRAPHER.HTML *****
 
-// ----- partie header informations du photographe 
-// ----- partie formulaire de contact
-// ----- partie bottom avec prix journalier
 
 function PhotographerGalleryPageFactory(data) {
     const { name, id, city, country, tagline, price, portrait} = data;
-    
+
     const srcPicture = `assets/photographers/${portrait}`;
 
-    // Affichage du nom du photographe sur le formulaire de contact
-    function getNameFormContact() {
-        const nameForm = document.createElement('h2');
-        nameForm.classList.add('photograph-form-name');
-        nameForm.textContent = name;
-
-        return(nameForm);
-    }
-
-    // Affichage des informations du photographe sur sa page dédiée
+    // AFFICHAGE DES INFORMATIONS DU PHOTOGRAPHE SUR SA PAGE DEDIEE:
     function getPhotographerIdHeader() {
         const article = document.createElement( 'article' );
         article.classList.add('photograph-header-banner');
 
-
-        // BLOC LEFT >>>  NAME / CITY/COUNTRY / TAGLINE
+        // HEADER LEFT:
         const headerLeft = document.createElement ('div');
         const headerLeftName = document.createElement('h1');
         headerLeftName.classList.add('photographer-name');
@@ -36,41 +23,45 @@ function PhotographerGalleryPageFactory(data) {
         headerLeftTagline.classList.add('photographer-tagline');
         headerLeftTagline.textContent = tagline;
 
-        // BLOC CENTER >>> BUTTON CONTACT
+        // HEADER CENTER:
         const headerCenter = document.createElement ('div');
         const button = document.createElement('button');
         button.classList.add("contact_button");
         button.setAttribute('onclick', 'displayModal()');
         button.textContent = `Contactez-moi`;
 
-        // BLOC RIGHT >>> AVATAR
+        // HEADER RIGHT:
         const headerRight = document.createElement('img');
         headerRight.setAttribute("src", srcPicture);
         headerRight.setAttribute("alt", '');
         headerRight.classList.add('photographer__avatar-picture');
 
-
+        // ELEMENTS D'ASSEMBLAGE
         article.appendChild(headerLeft);
+        article.appendChild(headerCenter);
+        article.appendChild(headerRight);
         headerLeft.appendChild(headerLeftName);
         headerLeft.appendChild(headerLeftLocation);
         headerLeft.appendChild(headerLeftTagline);
-
-        article.appendChild(headerCenter);
         headerCenter.appendChild(button);
-
-        article.appendChild(headerRight);
-
-
         return (article);
     }
 
-    // Affichage du prix journalier du photographe 
-    function getPricePhotographer() {
+    // FORMULAIRE DE CONTACT
+    // AFFICHAGE DU NOM DU PHOTOGRAPHE SUR LE FORMULAIRE DE CONTACT:
+    function getNameFormContact() {
+        const nameForm = document.createElement('h2');
+        nameForm.classList.add('photograph-form-name');
+        nameForm.textContent = name;
+        return(nameForm);
+    }
 
+    // MEDIAS-INFOS
+    // AFFICHAGE DU PRIX JOURNALIER DU PHOTOGRAPHE EN BAS DE PAGE
+    function getPricePhotographer() {
         const p = document.createElement('p');
         p.classList.add('insert-rate');
         p.textContent = `${price}€ / jour`;
-    
         return (p);
     }
 

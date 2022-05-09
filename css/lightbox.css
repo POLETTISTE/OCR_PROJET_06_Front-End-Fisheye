@@ -23,7 +23,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .media-lightbox {
@@ -32,6 +31,7 @@
     height:75%;
     object-fit: cover;
     border-radius: 5px;
+
 }
 
 .lightbox__close {
@@ -42,8 +42,6 @@
     color:#901C1C;
     font-size: 48px;
     padding:20px;
-
-
 }
 .lightbox__next {
     position: absolute;
@@ -52,9 +50,8 @@
     color:#901C1C;
     font-size: 48px;
     padding:20px;
-
-
 }
+
 .lightbox__prev {
     position: absolute;
     top:45%;

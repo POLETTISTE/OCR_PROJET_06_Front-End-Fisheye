@@ -1,36 +1,28 @@
-// ----- Affichage de la page photographer.html
-
-// ----- gallerie de photos + recherche par tri + lightbox
+// ***** AFFICHAGE DE LA PAGE PHOTOGRAPHER.HTML *****
 
 function MediasGalleryPageFactory(data) {
 
     const { id, photographerId, title, image, video, likes, date, price} = data;
 
-    // ----- Définition de la source des médias
+    // DEFINITION DES VARIABLES GLOBALES
     const mediaImage = `assets/images/${photographerId}/${image}`;
     const mediaVideo = `assets/images/${photographerId}/${video}`;
+    let img = document.createElement('div');
+    let vid = document.createElement('div');
 
-    // ----- Somme des likes des photos du photographe
+    // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
     let mediaLikes=0;
         medias.forEach((media) => { 
             mediaLikes+= media["likes"]            
         });
 
-    // ----- définition des variables globales
-    let img = document.createElement('div');
-    let vid = document.createElement('div');
-    
-
-    // ----- Affichage de la gallerie des médias du photographe
+    // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
     function getMediasOfPhotographer() {
-        
         const article = document.createElement( 'article' );
         article.classList.add('media-card');
 
-    // Distinguer si data contient la propriété image ou video
-
+        // AFFICHAGE CARD MEDIAS AVEC DISTINCTION DES DATA IMAGES ET DATA VIDEOS
         if (data.hasOwnProperty('image')) {
-
             img = document.createElement('img');
             img.setAttribute("src", mediaImage);
             img.setAttribute("alt",'photo de la gallerie du photographe');
@@ -38,7 +30,6 @@ function MediasGalleryPageFactory(data) {
             img.classList.add('image-card');
             
         }else if(data.hasOwnProperty('video')){
-            
             vid = document.createElement('video');
             vid.setAttribute("src", mediaVideo);
             vid.setAttribute('type', "video/mp4");
@@ -48,7 +39,8 @@ function MediasGalleryPageFactory(data) {
         }else{ 
             console.log('error in function getMediasOfPhotographer()')
         }
-        
+
+        // AFFICHAGE INFOS CARD MEDIAS 
         const imgInfos = document.createElement('div');
         imgInfos.classList.add("image-card-infos");
 
@@ -61,6 +53,7 @@ function MediasGalleryPageFactory(data) {
         imgLikes.classList.add('media-likes');
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
 
+        // ELEMENTS D'ASSEMBLAGE
         article.appendChild(img);
         article.appendChild(vid);
         article.appendChild(imgInfos); 
@@ -70,55 +63,57 @@ function MediasGalleryPageFactory(data) {
         return (article);
     }
 
-    //Affichage de la somme des likes du photographes (voir ligne 13)
+    // AFFICHAGE SOMME DES LIKES DU PHOTOGRAPHE (VOIR LIGNE 13):
     function getFixedBottomInfos() {
-
         const insertLikes = document.createElement('p');
         insertLikes.classList.add('insert-likes');
         insertLikes.innerHTML=`${mediaLikes} <i class='fa-solid fa-heart'></i>`;
         return (insertLikes);
-
     }
 
-    // Affichage de la lightbox 
+
+    // AFFICHAGE LIGHTBOX: 
     function getLightbox() {
-  
+        // CREATION MODALE:
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
         document.body.appendChild(lightbox);
+        
+        // CREATION FENETRE QUI CONTIENT LE MEDIA
+        const lightboxContainer= document.createElement('div');
+        lightboxContainer.classList.add('lightbox__container');
 
+        // CREATION BOUTON FERMER:
         const closeLightbox = document.createElement('div');
         closeLightbox.classList.add('lightbox__close');
         closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`;  
 
+        // CREATION BOUTON SUIVANT:
         const nextLightbox = document.createElement('div');
         nextLightbox.classList.add('lightbox__next');
         nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
 
+        // CREATION BOUTON PRECEDENT:
         const prevLightbox = document.createElement('div');
         prevLightbox.classList.add('lightbox__prev');
         prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
 
-        const lightboxContainer= document.createElement('div');
-        lightboxContainer.classList.add('lightbox__container');
-
+        //EVEMENT AU CLIC SUR UN MEDIA DANS LA GALLERIE -> OUVERTURE LIGHTBOX
         const medias = document.querySelectorAll('.media-element');
         medias.forEach(media => {
             media.addEventListener("click", e => {
                 lightbox.classList.add('active');
-                
-                // permet d'avoir une div vide au lieu de <img> ou <video> vide
+                // PERMET D'AVOIR UNE DIV VIDE AU LIEU DE <img> OU <video>
                 let img = document.createElement('div');
                 let vid = document.createElement('div');
 
-                // if l'image a la class image-card alors cela
+                // SI LE MEDIA A LA CLASS IMAGE-CARD:
                 if(e.target.classList=="media-element image-card") {
-
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = media.src;
-                // else l'image a la classe video-card alors cela
 
+                // SI L'IMAGE A LA CLASSE VIDEO-CARD
                 } else if (e.target.classList=="media-element video-card") {
                     vid = document.createElement('video');
                     vid.controls = true;
@@ -129,39 +124,46 @@ function MediasGalleryPageFactory(data) {
                     console.log('error')
                 };
 
-                //sert à vider la lighbox de son media des que l'on sert de la lightbox.
+
+                /* ACCESSOIRE:
+                   AU CHARGEMENT DU MEDIA DANS LA LIGHBOX, IL EST
+                   IMMEDIATEMENT SUPPRIME MAIS RESTE AFFICHE.
+                   CELA PERMET DE NE PAS AVOIR PLUSIEURS MEDIAS
+                   DANS LA MEME LIGHTBOX AU RAFRAICHISSEMENT DE LA PAGE.
+                */
                 while (lightboxContainer.firstChild) {
                     lightboxContainer.removeChild(lightboxContainer.firstChild)
                 }
 
+                // ELEMENTS D'ASSEMBLAGE
                 lightbox.appendChild(lightboxContainer)
                 lightboxContainer.appendChild(img);
                 lightboxContainer.appendChild(vid);
-
                 lightbox.appendChild(closeLightbox);
                 lightbox.appendChild(nextLightbox);
                 lightbox.appendChild(prevLightbox);
             })
-        })
-
-        // ajouter si presse echap alors disparait
-
-        // si on clique sur la zone #lightbox désactive la classe 'active' de la
-        //lightbox et ca la ferme.
-
-        lightbox.addEventListener('click', e => {
-
-            if (e.target === e.currentTarget) return lightbox.classList.remove('active');
-        })
-
-
+        });
 
         
-        // ----- Ajout évenement sur bouton précédent sur la lightbox
+        // AJOUTER CODE SI CLAVIER ECHAP ALORS FERME LA LIGHTBOX
+        /*
+            ----- CODER ICI EVENEMENT CLAVIER-----
+        */
+
+       // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
+       lightbox.addEventListener('click', function(e) {
+           if (e.target === e.currentTarget) return lightbox.classList.remove('active');
+        });
+        
+        // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
+        closeLightbox.addEventListener('click', () => {
+            return lightbox.classList.remove('active')
+        })
+
+        // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
         prevLightbox.addEventListener('click', () => {
-
             console.log("btn previous cliqué");
-
 
             data.map((item) => {
                 console.log(item["id"])
@@ -172,21 +174,13 @@ function MediasGalleryPageFactory(data) {
             });
 
             console.log(index); // 👉️ 0
-
-        })
+        });
          
-        // ----- Ajout évenement sur bouton suivant sur la lightbox
+        // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
         nextLightbox.addEventListener('click', () => {
             console.log("btn next cliqué");
 
-        })
-        
-        // ----- Ajout évenement sur bouton fermer la lightbox
-        // ----- en désactivant la classe '.active', la lightbox repasse en display none.
-        closeLightbox.addEventListener('click', () => {
-            return lightbox.classList.remove('active')
-        })
-        
+        });
         
         return (lightbox);
     }

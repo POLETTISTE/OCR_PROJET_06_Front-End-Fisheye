@@ -7,13 +7,10 @@
 
     // on crée le nouveau select (design personnalisé)
     const newSelect = document.createElement('div');
-
     // on ajoute la classe 'new-select'
     newSelect.classList.add('new-select');
-
     // on lui donne le contenu de l'option actuellement choisie dans le select
     newSelect.innerHTML = selectElt.options[selectElt.selectedIndex].innerHTML;
-
     // on cree l'element dans le DOM
     selectDiv.appendChild(newSelect);
 

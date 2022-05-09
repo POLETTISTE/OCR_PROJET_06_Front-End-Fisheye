@@ -97,8 +97,6 @@ let mediasLikes;
         mediasLightbox.appendChild(displayMedias);
 
     }
-    
-
 
 
     async function init() {
