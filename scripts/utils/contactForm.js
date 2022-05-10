@@ -3,8 +3,6 @@ let lastName = document.querySelector('#nom');
 let email = document.querySelector('#email');
 let message = document.querySelector('#message');
 
-document.querySelector("#prenom")
-
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
