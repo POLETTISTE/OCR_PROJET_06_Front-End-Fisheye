@@ -87,17 +87,26 @@ function MediasGalleryPageFactory(data) {
         // CREATION FENETRE QUI CONTIENT LE MEDIA
         const lightboxContainer= document.createElement('div');
         lightboxContainer.classList.add('lightbox__container');
-
+        
         // CREATION BOUTON FERMER:
         const closeLightbox = document.createElement('div');
         closeLightbox.classList.add('lightbox__close');
         closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`;  
-
+        
+        // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
+        closeLightbox.addEventListener('click', () => {
+            return lightbox.classList.remove('active')
+        })
+        
+        // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
+       lightbox.addEventListener('click', function(e) {
+        if (e.target === e.currentTarget) return lightbox.classList.remove('active');
+        });
         // CREATION BOUTON SUIVANT:
         const nextLightbox = document.createElement('div');
         nextLightbox.classList.add('lightbox__next');
         nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
-
+        
         // CREATION BOUTON PRECEDENT:
         const prevLightbox = document.createElement('div');
         prevLightbox.classList.add('lightbox__prev');
@@ -105,10 +114,10 @@ function MediasGalleryPageFactory(data) {
 
         // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
         prevLightbox.addEventListener('click', () => {
+
             console.log("btn previous cliqué");
         });
-
-                 
+        
         // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
         nextLightbox.addEventListener('click', () => {
             console.log("btn next cliqué");
@@ -117,16 +126,8 @@ function MediasGalleryPageFactory(data) {
             console.log(id);
 
         });
+        
 
-        // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
-        closeLightbox.addEventListener('click', () => {
-            return lightbox.classList.remove('active')
-        })
-
-        // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
-       lightbox.addEventListener('click', function(e) {
-        if (e.target === e.currentTarget) return lightbox.classList.remove('active');
-        });
 
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> OUVERTURE LIGHTBOX
         const medias = document.querySelectorAll('.media-element');

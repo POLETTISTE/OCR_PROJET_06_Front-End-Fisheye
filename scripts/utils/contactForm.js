@@ -1,3 +1,10 @@
+let firstName = document.querySelector('#prenom');
+let lastName = document.querySelector('#nom');
+let email = document.querySelector('#email');
+let message = document.querySelector('#message');
+
+document.querySelector("#prenom")
+
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
@@ -14,7 +21,8 @@ send.addEventListener('click', sendMessage);
 
 function sendMessage(e) {
     e.preventDefault();
-    alert("message envoyé");
+    console.log("message envoyé");
+    console.log([firstName.value, lastName.value, email.value, message.value]);
     closeModal();
 };
 

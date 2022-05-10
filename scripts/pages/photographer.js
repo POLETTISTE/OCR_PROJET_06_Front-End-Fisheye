@@ -12,7 +12,7 @@ let prevMedia;
 //retourne l'index dans l'array du media -> findIndex?
 let mediaIDIndex;
 
-console.log(arrMedias);
+// console.log(arrMedias);
 
     async function getPhotographerId() {
         await fetch('data/photographers.json')
@@ -80,37 +80,39 @@ console.log(arrMedias);
     }
 
     async function displayMediasInGalleryPage(medias) {
+        // AFFICHAGE INFOS BOTTOM
         const mediasInfo = document.querySelector(".medias-info");
         const infosCardDOM = MediasGalleryPageFactory(medias).getFixedBottomInfos();
         mediasInfo.appendChild(infosCardDOM);
 
+        // AFFICHAGE MEDIAS GALLERIE
         const mediasMain = document.querySelector(".medias-main");
-         // ITERATION POUR AFFICHER LES MEDIAS DU PHOTOGRAPHE:
+        // AFFICHAGE LIGHTBOX
+        const mediasLightbox = document.querySelector("#main");
+
+
         medias.forEach((media) => { 
-            mediaID = media.id;
+            //ON PUSH DANS UN TABLEAU TOUTES LES ID DES MEDIAS
             arrMedias.push(media.id);
+
+            // CREATION DES MEDIAS CARDS GRACE A LA FACTORY / 
+            // FUNCTION GETMEDIASOFPHOTOGRAPHER:
             const mediasGalleryModel = MediasGalleryPageFactory(media);
             const element = mediasGalleryModel.getMediasOfPhotographer();
             console.log(element);
-            element.addEventListener("click", () => getLightbox(media.id));
-            // element.addEventListener("click", () => displayLightbox());
-            element.addEventListener("click", () => console.log(media.id));
+
             mediasMain.appendChild(element);
+
         });
-        // on recherche id dans l'array
+        // CREATION DE LA LIGHTBOX
+        const displayMedias = MediasGalleryPageFactory(medias);
+        const item = displayMedias.getLightbox();
+        console.log(item);
+        mediasLightbox.appendChild(item);
 
 
     };
 
-
-    async function displayLightbox() {
-        // AFFICHAGE DE LA LIGHTBOX 
-        const mediasLightbox = document.querySelector("#main");
-        console.log(mediasLightbox);
-        const displayMedias = MediasGalleryPageFactory(medias).getLightbox();
-        console.log(displayMedias);
-        mediasLightbox.appendChild(displayMedias);
-    };
 
 
     async function init() {
@@ -120,7 +122,6 @@ console.log(arrMedias);
         displayPhotographerInGalleryPage(photographers);
         displayMediasInGalleryPage(medias);
         displayPhotographerPriceBottom(photographers);
-        displayLightbox();
     };
     // APPEL DE TOUTES LES FONCTIONS
     init();
