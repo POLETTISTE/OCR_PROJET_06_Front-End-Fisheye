@@ -5,6 +5,14 @@ let photographers;
 let medias;
 let paramsId;
 let mediasLikes;
+let mediaID;
+let arrMedias = [];
+let nextMedia;
+let prevMedia;
+//retourne l'index dans l'array du media -> findIndex?
+let mediaIDIndex;
+
+console.log(arrMedias);
 
     async function getPhotographerId() {
         await fetch('data/photographers.json')
@@ -67,7 +75,7 @@ let mediasLikes;
             PhotographerGalleryPageFactory(photographer).getPricePhotographer();
             // CHARGEMENT DANS LA CLASSE ".MEDIAS-INFO" DU CONTENU DE LA VARIABLE:
             photographerPriceBottom.appendChild(photographerBottomCardDOM);
-    });
+        });
 
     }
 
@@ -75,17 +83,22 @@ let mediasLikes;
         const mediasInfo = document.querySelector(".medias-info");
         const infosCardDOM = MediasGalleryPageFactory(medias).getFixedBottomInfos();
         mediasInfo.appendChild(infosCardDOM);
+
         const mediasMain = document.querySelector(".medias-main");
          // ITERATION POUR AFFICHER LES MEDIAS DU PHOTOGRAPHE:
-        medias.forEach((media) => {   
+        medias.forEach((media) => { 
+            mediaID = media.id;
+            arrMedias.push(media.id);
             const mediasGalleryModel = MediasGalleryPageFactory(media);
-
             const element = mediasGalleryModel.getMediasOfPhotographer();
+            console.log(element);
             element.addEventListener("click", () => getLightbox(media.id));
+            // element.addEventListener("click", () => displayLightbox());
+            element.addEventListener("click", () => console.log(media.id));
             mediasMain.appendChild(element);
-
-
         });
+        // on recherche id dans l'array
+
 
     };
 
@@ -93,7 +106,9 @@ let mediasLikes;
     async function displayLightbox() {
         // AFFICHAGE DE LA LIGHTBOX 
         const mediasLightbox = document.querySelector("#main");
+        console.log(mediasLightbox);
         const displayMedias = MediasGalleryPageFactory(medias).getLightbox();
+        console.log(displayMedias);
         mediasLightbox.appendChild(displayMedias);
     };
 

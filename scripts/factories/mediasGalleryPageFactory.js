@@ -9,6 +9,7 @@ function MediasGalleryPageFactory(data) {
     const mediaVideo = `assets/images/${photographerId}/${video}`;
     let img = document.createElement('div');
     let vid = document.createElement('div');
+    
 
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
     let mediaLikes=0;
@@ -76,9 +77,11 @@ function MediasGalleryPageFactory(data) {
 
     // AFFICHAGE LIGHTBOX: 
     function getLightbox(id) {
+
         // CREATION MODALE:
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
+        // console.log(lightbox.id); // return 'lightbox'
         document.body.appendChild(lightbox);
         
         // CREATION FENETRE QUI CONTIENT LE MEDIA
@@ -103,18 +106,29 @@ function MediasGalleryPageFactory(data) {
         // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
         prevLightbox.addEventListener('click', () => {
             console.log("btn previous cliqué");
-
-            // data.map((item) => {
-            //     console.log(item["id"])
-            // })
-            
-            // const index = data.findIndex(object => {
-            // return object.id === 952343423;
-            // });
-
-            console.log(index); // 👉️ 0
         });
-        //EVEMENT AU CLIC SUR UN MEDIA DANS LA GALLERIE -> OUVERTURE LIGHTBOX
+
+                 
+        // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
+        nextLightbox.addEventListener('click', () => {
+            console.log("btn next cliqué");
+            // console.log(arrMedias);
+            console.log(mediaID);
+            console.log(id);
+
+        });
+
+        // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
+        closeLightbox.addEventListener('click', () => {
+            return lightbox.classList.remove('active')
+        })
+
+        // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
+       lightbox.addEventListener('click', function(e) {
+        if (e.target === e.currentTarget) return lightbox.classList.remove('active');
+        });
+
+        // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> OUVERTURE LIGHTBOX
         const medias = document.querySelectorAll('.media-element');
         medias.forEach(media => {
             media.addEventListener("click", e => {
@@ -167,23 +181,7 @@ function MediasGalleryPageFactory(data) {
             ----- CODER ICI EVENEMENT CLAVIER-----
         */
 
-       // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
-       lightbox.addEventListener('click', function(e) {
-           if (e.target === e.currentTarget) return lightbox.classList.remove('active');
-        });
-        
-        // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
-        closeLightbox.addEventListener('click', () => {
-            return lightbox.classList.remove('active')
-        })
 
-     
-         
-        // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
-        nextLightbox.addEventListener('click', () => {
-            console.log("btn next cliqué");
-
-        });
         
         return (lightbox);
     }
