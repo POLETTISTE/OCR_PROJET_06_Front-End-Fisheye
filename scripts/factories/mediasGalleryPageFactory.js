@@ -9,12 +9,12 @@ function MediasGalleryPageFactory(data) {
     const mediaVideo = `assets/images/${photographerId}/${video}`;
     let img = document.createElement('div');
     let vid = document.createElement('div');
-    
+
 
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
-    let mediaLikes=0;
+    let mediasLikes=0;
         medias.forEach((media) => { 
-            mediaLikes+= media["likes"]            
+            mediasLikes+= media["likes"];           
         });
 
     // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
@@ -54,8 +54,6 @@ function MediasGalleryPageFactory(data) {
         imgLikes.classList.add('media-likes');
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
 
-
-
         // ELEMENTS D'ASSEMBLAGE
         article.appendChild(img);
         article.appendChild(vid);
@@ -70,13 +68,15 @@ function MediasGalleryPageFactory(data) {
     function getFixedBottomInfos() {
         const insertLikes = document.createElement('p');
         insertLikes.classList.add('insert-likes');
-        insertLikes.innerHTML=`${mediaLikes} <i class='fa-solid fa-heart'></i>`;
+        insertLikes.innerHTML=`${mediasLikes} <i class='fa-solid fa-heart'></i>`;
         return (insertLikes);
     }
 
 
+
+
     // AFFICHAGE LIGHTBOX: 
-    function getLightbox(id) {
+    function getLightbox() {
 
         // CREATION MODALE:
         const lightbox = document.createElement('div');
@@ -114,21 +114,15 @@ function MediasGalleryPageFactory(data) {
 
         // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
         prevLightbox.addEventListener('click', () => {
-
             console.log("btn previous cliqué");
         });
         
         // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
         nextLightbox.addEventListener('click', () => {
             console.log("btn next cliqué");
-            // console.log(arrMedias);
-            console.log(mediaID);
-            console.log(id);
 
         });
         
-
-
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> OUVERTURE LIGHTBOX
         const medias = document.querySelectorAll('.media-element');
         medias.forEach(media => {
@@ -150,13 +144,15 @@ function MediasGalleryPageFactory(data) {
                     vid.controls = true;
                     vid.classList.add('media-lightbox');
                     vid.src = media.src;
+                    vid.id = media.id;
+
 
                 } else {
                     console.log('error')
                 };
 
 
-                /* ACCESSOIRE:
+                /* 
                    AU CHARGEMENT DU MEDIA DANS LA LIGHBOX, IL EST
                    IMMEDIATEMENT SUPPRIME MAIS RESTE AFFICHE.
                    CELA PERMET DE NE PAS AVOIR PLUSIEURS MEDIAS
@@ -175,14 +171,6 @@ function MediasGalleryPageFactory(data) {
                 lightbox.appendChild(prevLightbox);
             })
         });
-
-        
-        // AJOUTER CODE SI CLAVIER ECHAP ALORS FERME LA LIGHTBOX
-        /*
-            ----- CODER ICI EVENEMENT CLAVIER-----
-        */
-
-
         
         return (lightbox);
     }

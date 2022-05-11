@@ -4,11 +4,15 @@
 let photographers;
 let medias;
 let paramsId;
-let mediasLikes;
+// let mediasLikes;
 let mediaID;
+let previousButton;
+let nextButton;
+let countOfLikePerPicture;
 let arrMedias = [];
-let nextMedia;
-let prevMedia;
+console.log(arrMedias);
+
+
 //retourne l'index dans l'array du media -> findIndex?
 let mediaIDIndex;
 
@@ -108,11 +112,39 @@ let mediaIDIndex;
         const displayMedias = MediasGalleryPageFactory(medias);
         const item = displayMedias.getLightbox();
         console.log(item);
+
         mediasLightbox.appendChild(item);
 
 
     };
 
+
+    async function likeMedia() {
+
+    // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
+    let mediasLikes= () => {
+        medias.forEach((media) => { 
+            console.log(media["likes"]);
+            mediasLikes+= media["likes"];   
+        });
+    }
+      
+        // LIKE UNE PHOTO
+        let numberLike = document.querySelectorAll(".media-likes");
+        numberLike.forEach((medias) => {
+            medias.addEventListener('click', (e) => {
+                console.log(medias);
+                
+                countOfLikePerPicture = medias.textContent;
+                countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
+                countOfLikePerPicture+=1;
+                mediasLikes+=1;
+                countOfLikePerPicture = countOfLikePerPicture.toString();
+                medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
+            })
+            
+        });
+    }
 
 
     async function init() {
@@ -122,6 +154,7 @@ let mediaIDIndex;
         displayPhotographerInGalleryPage(photographers);
         displayMediasInGalleryPage(medias);
         displayPhotographerPriceBottom(photographers);
+        likeMedia();
     };
     // APPEL DE TOUTES LES FONCTIONS
     init();
