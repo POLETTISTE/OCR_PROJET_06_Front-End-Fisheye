@@ -4,19 +4,16 @@
 let photographers;
 let medias;
 let paramsId;
-// let mediasLikes;
+let mediasLikes = 0;
 let mediaID;
 let previousButton;
 let nextButton;
 let countOfLikePerPicture;
 let arrMedias = [];
-console.log(arrMedias);
-
-
-//retourne l'index dans l'array du media -> findIndex?
+let alreadyLiked = false;
 let mediaIDIndex;
 
-// console.log(arrMedias);
+
 
     async function getPhotographerId() {
         await fetch('data/photographers.json')
@@ -94,16 +91,15 @@ let mediaIDIndex;
         // AFFICHAGE LIGHTBOX
         const mediasLightbox = document.querySelector("#main");
 
-
         medias.forEach((media) => { 
             //ON PUSH DANS UN TABLEAU TOUTES LES ID DES MEDIAS
             arrMedias.push(media.id);
-
+        
             // CREATION DES MEDIAS CARDS GRACE A LA FACTORY / 
             // FUNCTION GETMEDIASOFPHOTOGRAPHER:
             const mediasGalleryModel = MediasGalleryPageFactory(media);
             const element = mediasGalleryModel.getMediasOfPhotographer();
-            console.log(element);
+            // console.log(element);
 
             mediasMain.appendChild(element);
 
@@ -111,41 +107,32 @@ let mediaIDIndex;
         // CREATION DE LA LIGHTBOX
         const displayMedias = MediasGalleryPageFactory(medias);
         const item = displayMedias.getLightbox();
-        console.log(item);
+        // console.log(item);
 
         mediasLightbox.appendChild(item);
 
 
     };
 
-
-    async function likeMedia() {
-
-    // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
-    let mediasLikes= () => {
-        medias.forEach((media) => { 
-            console.log(media["likes"]);
-            mediasLikes+= media["likes"];   
-        });
-    }
-      
+    function addLikes() {
         // LIKE UNE PHOTO
+        console.log(alreadyLiked);
+        
         let numberLike = document.querySelectorAll(".media-likes");
         numberLike.forEach((medias) => {
-            medias.addEventListener('click', (e) => {
-                console.log(medias);
-                
-                countOfLikePerPicture = medias.textContent;
-                countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
-                countOfLikePerPicture+=1;
-                mediasLikes+=1;
-                countOfLikePerPicture = countOfLikePerPicture.toString();
-                medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
+            medias.addEventListener('click', function(e) {
+                    console.log(medias);
+                if (alreadyLiked === false) {
+                    countOfLikePerPicture = medias.textContent;
+                    countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
+                    countOfLikePerPicture+=1;
+                    countOfLikePerPicture = countOfLikePerPicture.toString();
+                    medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
+                    alreadyLiked=true;
+                };
             })
-            
         });
     }
-
 
     async function init() {
         // INITIALISATION DE TOUTES LES FONCTIONS
@@ -154,7 +141,7 @@ let mediaIDIndex;
         displayPhotographerInGalleryPage(photographers);
         displayMediasInGalleryPage(medias);
         displayPhotographerPriceBottom(photographers);
-        likeMedia();
+        addLikes(medias);
     };
     // APPEL DE TOUTES LES FONCTIONS
     init();

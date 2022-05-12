@@ -73,8 +73,6 @@ function MediasGalleryPageFactory(data) {
     }
 
 
-
-
     // AFFICHAGE LIGHTBOX: 
     function getLightbox() {
 
@@ -175,5 +173,5 @@ function MediasGalleryPageFactory(data) {
         return (lightbox);
     }
 
-    return { getMediasOfPhotographer, getFixedBottomInfos, getLightbox }
+    return {getMediasOfPhotographer, getFixedBottomInfos, getLightbox }
 }
