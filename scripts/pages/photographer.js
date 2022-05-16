@@ -10,7 +10,6 @@ let previousButton;
 let nextButton;
 let countOfLikePerPicture;
 let arrMedias = [];
-let alreadyLiked = false;
 let mediaIDIndex;
 
 
@@ -119,8 +118,8 @@ let mediaIDIndex;
         
         let numberLike = document.querySelectorAll(".media-likes");
         numberLike.forEach((medias) => {
-            medias.addEventListener('click', function(e) {
-                    console.log(medias);
+            let alreadyLiked = false;
+            medias.addEventListener('click', function() {
                 if (alreadyLiked === false) {
                     countOfLikePerPicture = medias.textContent;
                     countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
@@ -128,7 +127,15 @@ let mediaIDIndex;
                     countOfLikePerPicture = countOfLikePerPicture.toString();
                     medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
                     alreadyLiked=true;
-                };
+                }else{
+                    countOfLikePerPicture = medias.textContent;
+                    countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
+                    countOfLikePerPicture-=1;
+                    countOfLikePerPicture = countOfLikePerPicture.toString();
+                    medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
+                    alreadyLiked=false;
+                    
+                }
             })
         });
     }

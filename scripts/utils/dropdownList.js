@@ -74,19 +74,19 @@
                 default:
                     console.log('Invalid sort');
                     break;
-                }
-       console.log(medias);
+        }
 
-
-       let mediasInfo = document.querySelector(".medias-info");
-       mediasInfo.innerHTML ="";
+        
+        // on supprime le contenu pour insérer le contenu trié
+        let mediasInfo = document.querySelector(".medias-info");
+        mediasInfo.innerHTML ="";
 
         let mediasMain = document.querySelector(".medias-main");
         mediasMain.innerHTML = "";
 
-       displayMediasInGalleryPage(medias);
-       displayPhotographerPriceBottom(photographers);
-    
+        displayMediasInGalleryPage(medias);
+        displayPhotographerPriceBottom(photographers);
+        
     
         // on retire le select-hide de notre menu
         this.nextSibling.classList.toggle("select-hide");
