@@ -83,9 +83,9 @@
         let mediasMain = document.querySelector(".medias-main");
         mediasMain.innerHTML = "";
 
-        addLikes();
         displayMediasInGalleryPage(medias);
         displayPhotographerPriceBottom(photographers);
+        addLikes();
         
     
         // on retire le select-hide de notre menu

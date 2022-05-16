@@ -12,6 +12,7 @@ function MediasGalleryPageFactory(data) {
 
 
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
+    mediasLikes=0;
     medias.forEach((media) => { 
         mediasLikes+= media["likes"];
     });

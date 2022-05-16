@@ -127,7 +127,7 @@ let mediaIDIndex;
                     countOfLikePerPicture+=1;
                     countOfLikePerPicture = countOfLikePerPicture.toString();
                     medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
-                    mediasLikes++;
+                    // mediasLikes++;
                     alreadyLiked=true;
 
                 }else{
@@ -136,7 +136,7 @@ let mediaIDIndex;
                     countOfLikePerPicture-=1;
                     countOfLikePerPicture = countOfLikePerPicture.toString();
                     medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
-                    mediasLikes--;
+                    // mediasLikes--;
                     alreadyLiked=false;
                 }
             })
