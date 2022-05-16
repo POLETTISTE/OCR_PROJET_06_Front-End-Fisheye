@@ -116,7 +116,6 @@ let mediaIDIndex;
 
     function addLikes() {
         // LIKE UNE PHOTO
-        console.log(alreadyLiked);
         
         let numberLike = document.querySelectorAll(".media-likes");
         numberLike.forEach((medias) => {
@@ -145,3 +144,7 @@ let mediaIDIndex;
     };
     // APPEL DE TOUTES LES FONCTIONS
     init();
+
+
+    
+

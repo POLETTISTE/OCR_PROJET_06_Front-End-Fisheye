@@ -1,4 +1,3 @@
-
     //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)
     const selectDiv = document.querySelector('.custom-select');
 
@@ -53,17 +52,80 @@
 
     // on ajoute l'écouteur d'evenement click sur newSelect
 
-    newSelect.addEventListener("click", function(e){
+    newSelect.addEventListener("click", FilteringMedias)
+
+    function FilteringMedias(e) {
         // on empeche la propagation du click
         e.stopPropagation();
+    
+    
+        newSelectValue = newSelect.textContent;
+    
+        switch (newSelectValue) {
+            case 'Popularité':
+                medias = medias.sort(compare_likes);
+                break;
+                case 'Date':
+                    medias = medias.sort(compare_date);
+                    break;
+            case 'Titre':
+                medias = medias.sort(compare_title);
+                break;
+                default:
+                    console.log('Invalid sort');
+                    break;
+                }
+       console.log(medias);
 
+
+       let mediasInfo = document.querySelector(".medias-info");
+       mediasInfo.innerHTML ="";
+
+        let mediasMain = document.querySelector(".medias-main");
+        mediasMain.innerHTML = "";
+
+       displayMediasInGalleryPage(medias);
+       displayPhotographerPriceBottom(photographers);
+    
+    
         // on retire le select-hide de notre menu
         this.nextSibling.classList.toggle("select-hide");
-
+    
         //on cache le newSelect pour éviter le doublon
         this.classList.toggle("select-hide");
         
         //on ajoute la classe active à newSelect(change le sens du chevron)
         this.classList.toggle("active");
 
-    })
+    }
+    
+    function compare_title( a, b ) {
+        if ( a.title.toLowerCase() < b.title.toLowerCase()){
+        return -1;
+        }
+        if ( a.title.toLowerCase() > b.title.toLowerCase()){
+        return 1;
+        }
+        return 0;
+    }
+    
+    function compare_likes ( a, b ) {
+        if ( a.likes > b.likes){
+            return -1;
+            }
+            if ( a.likes < b.likes){
+            return 1;
+            }
+            return 0;
+    }
+    
+    function compare_date ( a,b ) {
+        if ( a.date < b.date){
+            return -1;
+            }
+            if ( a.date > b.date){
+            return 1;
+            }
+            return 0;
+    
+    }
