@@ -4,12 +4,12 @@
 let photographers;
 let medias;
 let paramsId;
-let mediasLikes = 0;
+let mediasLikes= 0;
 let mediaID;
 let previousButton;
 let nextButton;
-let countOfLikePerPicture;
 let arrMedias = [];
+console.log(arrMedias);
 let mediaIDIndex;
 
 
@@ -103,11 +103,11 @@ let mediaIDIndex;
             mediasMain.appendChild(element);
 
         });
+
         // CREATION DE LA LIGHTBOX
         const displayMedias = MediasGalleryPageFactory(medias);
         const item = displayMedias.getLightbox();
         // console.log(item);
-
         mediasLightbox.appendChild(item);
 
 
@@ -119,6 +119,7 @@ let mediaIDIndex;
         let numberLike = document.querySelectorAll(".media-likes");
         numberLike.forEach((medias) => {
             let alreadyLiked = false;
+            let countOfLikePerPicture;
             medias.addEventListener('click', function() {
                 if (alreadyLiked === false) {
                     countOfLikePerPicture = medias.textContent;
@@ -126,15 +127,17 @@ let mediaIDIndex;
                     countOfLikePerPicture+=1;
                     countOfLikePerPicture = countOfLikePerPicture.toString();
                     medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
+                    mediasLikes++;
                     alreadyLiked=true;
+
                 }else{
                     countOfLikePerPicture = medias.textContent;
                     countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
                     countOfLikePerPicture-=1;
                     countOfLikePerPicture = countOfLikePerPicture.toString();
                     medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
+                    mediasLikes--;
                     alreadyLiked=false;
-                    
                 }
             })
         });

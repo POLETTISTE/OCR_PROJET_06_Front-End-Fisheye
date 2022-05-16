@@ -58,22 +58,21 @@
         // on empeche la propagation du click
         e.stopPropagation();
     
-    
         newSelectValue = newSelect.textContent;
     
         switch (newSelectValue) {
             case 'Popularité':
                 medias = medias.sort(compare_likes);
                 break;
-                case 'Date':
-                    medias = medias.sort(compare_date);
-                    break;
+            case 'Date':
+                medias = medias.sort(compare_date);
+                break;
             case 'Titre':
                 medias = medias.sort(compare_title);
                 break;
-                default:
-                    console.log('Invalid sort');
-                    break;
+            default:
+                console.log('Invalid sort');
+                break;
         }
 
         
@@ -84,6 +83,7 @@
         let mediasMain = document.querySelector(".medias-main");
         mediasMain.innerHTML = "";
 
+        addLikes();
         displayMediasInGalleryPage(medias);
         displayPhotographerPriceBottom(photographers);
         

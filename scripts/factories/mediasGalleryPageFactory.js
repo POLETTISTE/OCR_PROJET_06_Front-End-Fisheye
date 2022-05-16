@@ -12,10 +12,9 @@ function MediasGalleryPageFactory(data) {
 
 
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
-    let mediasLikes=0;
-        medias.forEach((media) => { 
-            mediasLikes+= media["likes"];           
-        });
+    medias.forEach((media) => { 
+        mediasLikes+= media["likes"];
+    });
 
     // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
     function getMediasOfPhotographer() {
@@ -53,6 +52,7 @@ function MediasGalleryPageFactory(data) {
         imgLikes.textContent = likes;
         imgLikes.classList.add('media-likes');
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
+        
 
         // ELEMENTS D'ASSEMBLAGE
         article.appendChild(img);
@@ -80,7 +80,7 @@ function MediasGalleryPageFactory(data) {
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
         // console.log(lightbox.id); // return 'lightbox'
-        document.body.appendChild(lightbox);
+        // document.body.appendChild(lightbox);
         
         // CREATION FENETRE QUI CONTIENT LE MEDIA
         const lightboxContainer= document.createElement('div');
@@ -113,6 +113,7 @@ function MediasGalleryPageFactory(data) {
         // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
         prevLightbox.addEventListener('click', () => {
             console.log("btn previous cliqué");
+
         });
         
         // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
