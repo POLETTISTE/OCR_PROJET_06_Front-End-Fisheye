@@ -3,6 +3,7 @@
 let photographers;
 let medias;
 let paramsId;
+let mediaLikes = 0;
 let clickedLikes=0;
 let previousButton;
 let nextButton;
@@ -115,38 +116,40 @@ async function displayLightbox(medias) {
 // LIKE UNE PHOTO + SOMME TOTALE LIKES
 function addLikes() {
     
-    let alreadyLiked = false;
-    let countOfLikePerPicture;
-
+    
     let numberLike = document.querySelectorAll(".media-likes");
+    let countOfLikePerPicture;
     mediasInfo = document.querySelector(".medias-info");
-
+    
+    
     numberLike.forEach((medias) => {
-
+        
+        let alreadyLiked = false;
+        
         medias.addEventListener('click', function() {
             if (alreadyLiked === false) {
-                alreadyLiked=true;
-                clickedLikes += 1;
                 countOfLikePerPicture = medias.textContent;
                 countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
                 countOfLikePerPicture+=1;
                 countOfLikePerPicture = countOfLikePerPicture.toString();
                 mediasInfo.innerHTML ="";
                 medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
-
+                alreadyLiked=true;
+                clickedLikes += 1;
+                
                 displayMediasLikesBottom(medias);
                 displayPhotographerPriceBottom(photographers);
-
+                
             }else{
-                alreadyLiked=false;                    
-                clickedLikes -=1;
                 countOfLikePerPicture = medias.textContent;
-                countOfLikePerPicture-=1;
                 countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
+                countOfLikePerPicture-=1;
                 countOfLikePerPicture = countOfLikePerPicture.toString();
                 mediasInfo.innerHTML ="";
                 medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
-
+                alreadyLiked=false;                    
+                clickedLikes -=1;
+                
                 displayMediasLikesBottom(medias);
                 displayPhotographerPriceBottom(photographers);
             }
