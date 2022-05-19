@@ -15,10 +15,7 @@ function MediasGalleryPageFactory(data) {
     medias.forEach((media) => { 
         mediasLikes+= media["likes"];
     });
-
     let totalOfLikes = mediasLikes + clickedLikes;
-
-
 
     // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
     function getMediasOfPhotographer() {
@@ -108,20 +105,11 @@ function MediasGalleryPageFactory(data) {
         function EscapeKey(e) {
             if(e.key === "Escape") {
                 e.preventDefault();
-                console.log('good');
-
                 lightbox.classList.remove('active')
             }
 
         };
 
-
-
-
-
-
-
-        
         // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
        lightbox.addEventListener('click', function(e) {
         if (e.target === e.currentTarget) return lightbox.classList.remove('active');

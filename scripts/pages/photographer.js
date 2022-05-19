@@ -10,7 +10,6 @@ let mediaID;
 let previousButton;
 let nextButton;
 let arrMedias = [];
-console.log(arrMedias);
 let mediaIDIndex;
 
 

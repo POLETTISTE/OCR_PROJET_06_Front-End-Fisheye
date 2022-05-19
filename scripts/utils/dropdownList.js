@@ -82,8 +82,11 @@
 
         let mediasMain = document.querySelector(".medias-main");
         mediasMain.innerHTML = "";
+        clickedLikes = 0;
+
 
         displayMediasInGalleryPage(medias);
+        displayMediasLikesBottom(medias);
         displayPhotographerPriceBottom(photographers);
         addLikes();
         
