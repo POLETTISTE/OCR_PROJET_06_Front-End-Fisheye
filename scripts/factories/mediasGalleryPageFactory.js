@@ -12,12 +12,6 @@ function MediasGalleryPageFactory(data) {
 
 
 
-    // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
-    mediasLikes=0;
-    medias.forEach((media) => { 
-        mediasLikes+= media["likes"];
-    });
-
     // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
     function getMediasOfPhotographer() {
         const article = document.createElement( 'article' );
@@ -68,6 +62,12 @@ function MediasGalleryPageFactory(data) {
 
     // AFFICHAGE SOMME DES LIKES DU PHOTOGRAPHE (VOIR LIGNE 13):
     function getFixedBottomInfos() {
+
+        // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
+        medias.forEach((media) => { 
+            mediaLikes = 0;
+            mediasLikes+= media["likes"];
+        });
         const insertLikes = document.createElement('p');
         insertLikes.classList.add('insert-likes');
         insertLikes.innerHTML=`${mediasLikes} <i class='fa-solid fa-heart'></i>`;

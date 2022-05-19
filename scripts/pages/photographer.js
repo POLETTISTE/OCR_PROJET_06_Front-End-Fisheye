@@ -79,11 +79,16 @@ let mediaIDIndex;
 
     }
 
-    async function displayMediasInGalleryPage(medias) {
+    async function displayMediasLikesBottom(medias) {
         // AFFICHAGE INFOS BOTTOM
         const mediasInfo = document.querySelector(".medias-info");
         const infosCardDOM = MediasGalleryPageFactory(medias).getFixedBottomInfos();
         mediasInfo.appendChild(infosCardDOM);
+
+    }
+
+    async function displayMediasInGalleryPage(medias) {
+
 
         // AFFICHAGE MEDIAS GALLERIE
         const mediasMain = document.querySelector(".medias-main");
@@ -115,6 +120,11 @@ let mediaIDIndex;
 
     function addLikes() {
         // LIKE UNE PHOTO
+
+
+        // a faire : mediaLikes = somme des likes json
+
+        // rajouter constante qui s'ajoute a medialikes;
         
         let numberLike = document.querySelectorAll(".media-likes");
         numberLike.forEach((medias) => {
@@ -122,21 +132,32 @@ let mediaIDIndex;
             let countOfLikePerPicture;
             medias.addEventListener('click', function() {
                 if (alreadyLiked === false) {
+                    mediasLikes= 0;
+
+                    mediasLikes+=1;
                     countOfLikePerPicture = medias.textContent;
                     countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
                     countOfLikePerPicture+=1;
+                    mediasInfo = document.querySelector(".medias-info");
+                    mediasInfo.innerHTML ="";
+                    displayMediasLikesBottom(medias);
+                    displayPhotographerPriceBottom(photographers);
                     countOfLikePerPicture = countOfLikePerPicture.toString();
                     medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
-                    // mediasLikes++;
                     alreadyLiked=true;
 
                 }else{
+                    mediasLikes= 1;
+                    mediasLikes-=1;
                     countOfLikePerPicture = medias.textContent;
                     countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
                     countOfLikePerPicture-=1;
+                    mediasInfo = document.querySelector(".medias-info");
+                    mediasInfo.innerHTML ="";
+                    displayMediasLikesBottom(medias);
+                    displayPhotographerPriceBottom(photographers);
                     countOfLikePerPicture = countOfLikePerPicture.toString();
                     medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
-                    // mediasLikes--;
                     alreadyLiked=false;
                 }
             })
@@ -149,6 +170,7 @@ let mediaIDIndex;
         displayNamePhotographerContactForm(photographers);
         displayPhotographerInGalleryPage(photographers);
         displayMediasInGalleryPage(medias);
+        displayMediasLikesBottom(medias);
         displayPhotographerPriceBottom(photographers);
         addLikes(medias);
     };
