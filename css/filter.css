@@ -36,7 +36,6 @@
     padding: 14px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    /* z-index:3; */
 }
 
 .new-select::after {

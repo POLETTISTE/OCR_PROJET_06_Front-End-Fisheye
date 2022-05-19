@@ -1,12 +1,14 @@
 // ***** AFFICHAGE DE LA PAGE INDEX.HTML *****
 
 function PhotographersFactory(data) {
+
     const { name, id, city, country, tagline, price, portrait} = data;
     
     const picture = `assets/photographers/${portrait}`;
     
     // CREATION DES CARDS DES PHOTOGRAPHES:
     function getUserCardDOM() {
+
         const article = document.createElement( 'article' );
 
         // CONSTRUCTION CARD PHOTOGRAPHE LIEN VERS PAGE DEDIEE:
@@ -46,7 +48,6 @@ function PhotographersFactory(data) {
         paragraphPrice.classList.add('photographer__infos-price');
         paragraphPrice.textContent = `${price} €/jour`;
 
-
         // ELEMENT DE CONSTRUCTION:
         article.appendChild(avatarPictureAndName);
         article.appendChild(infos);
@@ -57,7 +58,7 @@ function PhotographersFactory(data) {
         infos.appendChild(paragraphPrice);
 
         return (article);
-    }
+    };
 
     return { getUserCardDOM }
-}
+};

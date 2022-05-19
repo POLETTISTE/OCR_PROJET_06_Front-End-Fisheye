@@ -1,8 +1,8 @@
     //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)
     const selectDiv = document.querySelector('.custom-select');
-
     // on recupere le select (caché en display none car pas joli)
     const selectElt = document.querySelector('select');
+
 
     // on crée le nouveau select (design personnalisé)
     const newSelect = document.createElement('div');
@@ -10,6 +10,7 @@
     newSelect.classList.add('new-select');
     // on lui donne le contenu de l'option actuellement choisie dans le select
     newSelect.innerHTML = selectElt.options[selectElt.selectedIndex].innerHTML;
+
     // on cree l'element dans le DOM
     selectDiv.appendChild(newSelect);
 
@@ -59,7 +60,7 @@
         e.stopPropagation();
     
         newSelectValue = newSelect.textContent;
-    
+        
         switch (newSelectValue) {
             case 'Popularité':
                 medias = medias.sort(compare_likes);
@@ -74,7 +75,7 @@
                 console.log('Invalid sort');
                 break;
         }
-
+                    
         
         // on supprime le contenu pour insérer le contenu trié
         let mediasInfo = document.querySelector(".medias-info");
@@ -83,7 +84,6 @@
         let mediasMain = document.querySelector(".medias-main");
         mediasMain.innerHTML = "";
         clickedLikes = 0;
-
 
         displayMediasInGalleryPage(medias);
         displayMediasLikesBottom(medias);
@@ -123,12 +123,8 @@
     }
     
     function compare_date ( a,b ) {
-        if ( a.date < b.date){
-            return -1;
-            }
-            if ( a.date > b.date){
-            return 1;
-            }
-            return 0;
-    
-    }
+
+        if ( a.date < b.date){ return -1 };
+        if ( a.date > b.date){ return 1 };
+        return 0;
+    };

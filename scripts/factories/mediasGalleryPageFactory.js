@@ -12,18 +12,23 @@ function MediasGalleryPageFactory(data) {
         
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
     let mediasLikes = 0;
+
     medias.forEach((media) => { 
         mediasLikes+= media["likes"];
     });
+
     let totalOfLikes = mediasLikes + clickedLikes;
+
 
     // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
     function getMediasOfPhotographer() {
+
         const article = document.createElement( 'article' );
         article.classList.add('media-card');
 
         // AFFICHAGE CARD MEDIAS AVEC DISTINCTION DES DATA IMAGES ET DATA VIDEOS
         if (data.hasOwnProperty('image')) {
+
             img = document.createElement('img');
             img.setAttribute("src", mediaImage);
             img.setAttribute("alt",'photo de la gallerie du photographe');
@@ -31,6 +36,7 @@ function MediasGalleryPageFactory(data) {
             img.classList.add('image-card');
             
         }else if(data.hasOwnProperty('video')){
+
             vid = document.createElement('video');
             vid.setAttribute("src", mediaVideo);
             vid.setAttribute('type', "video/mp4");
@@ -38,8 +44,9 @@ function MediasGalleryPageFactory(data) {
             vid.classList.add('video-card');
 
         }else{ 
+
             console.log('error in function getMediasOfPhotographer()')
-        }
+        };
 
         // AFFICHAGE INFOS CARD MEDIAS 
         const imgInfos = document.createElement('div');
@@ -54,7 +61,6 @@ function MediasGalleryPageFactory(data) {
         imgLikes.classList.add('media-likes');
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
         
-
         // ELEMENTS D'ASSEMBLAGE
         article.appendChild(img);
         article.appendChild(vid);
@@ -63,7 +69,8 @@ function MediasGalleryPageFactory(data) {
         imgInfos.appendChild(imgLikes);
 
         return (article);
-    }
+    };
+
 
     // AFFICHAGE SOMME DES LIKES DU PHOTOGRAPHE (VOIR LIGNE 13):
     function getFixedBottomInfos() {
@@ -81,19 +88,20 @@ function MediasGalleryPageFactory(data) {
         // CREATION MODALE:
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
-        // console.log(lightbox.id); // return 'lightbox'
-        // document.body.appendChild(lightbox);
         
         // CREATION FENETRE QUI CONTIENT LE MEDIA
+
         const lightboxContainer= document.createElement('div');
         lightboxContainer.classList.add('lightbox__container');
         
         // CREATION BOUTON FERMER:
+
         const closeLightbox = document.createElement('div');
         closeLightbox.classList.add('lightbox__close');
         closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`;  
         
         // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
+
         closeLightbox.addEventListener('click', () => {
             return lightbox.classList.remove('active')
         })
@@ -107,7 +115,6 @@ function MediasGalleryPageFactory(data) {
                 e.preventDefault();
                 lightbox.classList.remove('active')
             }
-
         };
 
         // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
@@ -116,10 +123,13 @@ function MediasGalleryPageFactory(data) {
         });
 
 
-        // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> OUVERTURE LIGHTBOX
+        // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
         const medias = document.querySelectorAll('.media-element');
+
         medias.forEach(media => {
+
             media.addEventListener("click", e => {
+
                 lightbox.classList.add('active');
                 // PERMET D'AVOIR UNE DIV VIDE AU LIEU DE <img> OU <video>
                 let img = document.createElement('div');
@@ -127,18 +137,19 @@ function MediasGalleryPageFactory(data) {
 
                 // SI LE MEDIA A LA CLASS IMAGE-CARD:
                 if(e.target.classList=="media-element image-card") {
+
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = media.src;
 
                 // SI L'IMAGE A LA CLASSE VIDEO-CARD
                 } else if (e.target.classList=="media-element video-card") {
+
                     vid = document.createElement('video');
                     vid.controls = true;
                     vid.classList.add('media-lightbox');
                     vid.src = media.src;
                     vid.id = media.id;
-
 
                 } else {
                     console.log('error')
@@ -156,6 +167,7 @@ function MediasGalleryPageFactory(data) {
 
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', () => {
+
                     console.log("btn previous cliqué");
                     console.log(e.target);
                     console.log(media);
@@ -164,6 +176,7 @@ function MediasGalleryPageFactory(data) {
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
                 nextLightbox.addEventListener('click', () => {
+                    
                     console.log("btn next cliqué");
 
                 });

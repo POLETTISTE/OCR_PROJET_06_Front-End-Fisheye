@@ -6,27 +6,26 @@ let photographers;
     async function getPhotographers() {
 
         await fetch('data/photographers.json')
-            // APPEL DE L'API:
             .then(function(res) {
                 if (res.ok) {
                 return res.json();
                 }
             })
-            // RENVOI LES DONNEES DE L'API:
             .then(function(data) {
                 photographers = data.photographers;
 
             })
-            // SI UN PROBLEME EST SURVENU DANS LE PROCESSUS:
             .catch(function(err) {
-                console.log("error in the function getPhotographers()"); 
+                console.log(`${err} error in the function getPhotographerId()`);
             });
     };
 
     async function displayData(photographers) {
+        
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
+
             const photographerModel = PhotographersFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
@@ -34,6 +33,7 @@ let photographers;
     };
 
     async function init() {
+        
         await getPhotographers();
         displayData(photographers);
     };
