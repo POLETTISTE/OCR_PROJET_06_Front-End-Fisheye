@@ -9,6 +9,14 @@ function MediasGalleryPageFactory(data) {
     const mediaVideo = `assets/images/${photographerId}/${video}`;
     let img = document.createElement('div');
     let vid = document.createElement('div');
+        
+    // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
+    let mediasLikes = 0;
+    medias.forEach((media) => { 
+        mediasLikes+= media["likes"];
+    });
+
+    let totalOfLikes = mediasLikes + clickedLikes;
 
 
 
@@ -63,14 +71,9 @@ function MediasGalleryPageFactory(data) {
     // AFFICHAGE SOMME DES LIKES DU PHOTOGRAPHE (VOIR LIGNE 13):
     function getFixedBottomInfos() {
 
-        // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
-        medias.forEach((media) => { 
-            mediaLikes = 0;
-            mediasLikes+= media["likes"];
-        });
         const insertLikes = document.createElement('p');
         insertLikes.classList.add('insert-likes');
-        insertLikes.innerHTML=`${mediasLikes} <i class='fa-solid fa-heart'></i>`;
+        insertLikes.innerHTML=`${totalOfLikes} <i class='fa-solid fa-heart'></i>`;
         return (insertLikes);
     }
 

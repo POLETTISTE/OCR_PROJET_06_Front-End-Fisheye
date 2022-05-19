@@ -4,7 +4,8 @@
 let photographers;
 let medias;
 let paramsId;
-let mediasLikes= 0;
+let mediasLikes = 0;
+let clickedLikes = 0;
 let mediaID;
 let previousButton;
 let nextButton;
@@ -132,33 +133,32 @@ let mediaIDIndex;
             let countOfLikePerPicture;
             medias.addEventListener('click', function() {
                 if (alreadyLiked === false) {
-                    mediasLikes= 0;
-
-                    mediasLikes+=1;
                     countOfLikePerPicture = medias.textContent;
                     countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
                     countOfLikePerPicture+=1;
                     mediasInfo = document.querySelector(".medias-info");
                     mediasInfo.innerHTML ="";
-                    displayMediasLikesBottom(medias);
-                    displayPhotographerPriceBottom(photographers);
                     countOfLikePerPicture = countOfLikePerPicture.toString();
                     medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
                     alreadyLiked=true;
+                    clickedLikes += 1;
+                    displayMediasLikesBottom(medias);
+                    displayPhotographerPriceBottom(photographers);
 
                 }else{
-                    mediasLikes= 1;
-                    mediasLikes-=1;
+                    clickedLikes -=1;
                     countOfLikePerPicture = medias.textContent;
                     countOfLikePerPicture = parseInt(countOfLikePerPicture, 10);
                     countOfLikePerPicture-=1;
                     mediasInfo = document.querySelector(".medias-info");
                     mediasInfo.innerHTML ="";
-                    displayMediasLikesBottom(medias);
-                    displayPhotographerPriceBottom(photographers);
                     countOfLikePerPicture = countOfLikePerPicture.toString();
                     medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
-                    alreadyLiked=false;
+                    alreadyLiked=false;                    
+                    displayMediasLikesBottom(medias);
+                    displayPhotographerPriceBottom(photographers);
+
+
                 }
             })
         });
