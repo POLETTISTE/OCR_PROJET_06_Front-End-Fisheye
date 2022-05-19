@@ -11,6 +11,7 @@ function MediasGalleryPageFactory(data) {
     let vid = document.createElement('div');
 
 
+
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
     mediasLikes=0;
     medias.forEach((media) => { 
@@ -101,28 +102,8 @@ function MediasGalleryPageFactory(data) {
        lightbox.addEventListener('click', function(e) {
         if (e.target === e.currentTarget) return lightbox.classList.remove('active');
         });
-        // CREATION BOUTON SUIVANT:
-        const nextLightbox = document.createElement('div');
-        nextLightbox.classList.add('lightbox__next');
-        nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
-        
-        // CREATION BOUTON PRECEDENT:
-        const prevLightbox = document.createElement('div');
-        prevLightbox.classList.add('lightbox__prev');
-        prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
 
-        // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
-        prevLightbox.addEventListener('click', () => {
-            console.log("btn previous cliqué");
 
-        });
-        
-        // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
-        nextLightbox.addEventListener('click', () => {
-            console.log("btn next cliqué");
-
-        });
-        
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> OUVERTURE LIGHTBOX
         const medias = document.querySelectorAll('.media-element');
         medias.forEach(media => {
@@ -151,6 +132,29 @@ function MediasGalleryPageFactory(data) {
                     console.log('error')
                 };
 
+                // CREATION BOUTON SUIVANT:
+                const nextLightbox = document.createElement('div');
+                nextLightbox.classList.add('lightbox__next');
+                nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
+                
+                // CREATION BOUTON PRECEDENT:
+                const prevLightbox = document.createElement('div');
+                prevLightbox.classList.add('lightbox__prev');
+                prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
+
+                // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
+                prevLightbox.addEventListener('click', () => {
+                    console.log("btn previous cliqué");
+                    console.log(e.target);
+                    console.log(media);
+
+                });
+                
+                // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
+                nextLightbox.addEventListener('click', () => {
+                    console.log("btn next cliqué");
+
+                });
 
                 /* 
                    AU CHARGEMENT DU MEDIA DANS LA LIGHBOX, IL EST
