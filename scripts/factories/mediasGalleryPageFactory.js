@@ -100,6 +100,27 @@ function MediasGalleryPageFactory(data) {
         closeLightbox.addEventListener('click', () => {
             return lightbox.classList.remove('active')
         })
+
+        // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
+
+        document.addEventListener('keyup', EscapeKey);
+
+        function EscapeKey(e) {
+            if(e.key === "Escape") {
+                e.preventDefault();
+                console.log('good');
+
+                lightbox.classList.remove('active')
+            }
+
+        };
+
+
+
+
+
+
+
         
         // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
        lightbox.addEventListener('click', function(e) {
