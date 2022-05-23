@@ -203,6 +203,8 @@ function MediasGalleryPageFactory(data) {
                     actualMedia = arrMedias[previousIndex];
                     console.log(actualMedia);
                     media.setAttribute("src", actualMedia);
+                    // media.controls = true;
+
                     media.click();
 
                 });
@@ -217,6 +219,8 @@ function MediasGalleryPageFactory(data) {
                     actualMedia = arrMedias[nextIndex];
                     console.log(actualMedia);
                     media.setAttribute("src", actualMedia);
+                    // media.controls = true;
+
                     media.click();
 
                 });
