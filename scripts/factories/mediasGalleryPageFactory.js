@@ -193,12 +193,14 @@ function MediasGalleryPageFactory(data) {
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', () => {
 
-                    console.log("btn previous cliqué");
-                    console.log(e.target);
-                    console.log(media.getAttribute('src'));
+                    if (arrMedias.indexOf(actualMedia) === 0) {
+                        previousIndex = -1;
+                        console.log(nextIndex);
+                    }else {
+                        previousIndex = arrMedias.indexOf(actualMedia) - 1;
 
-                    // changer image principale actualMedia
-                    previousIndex = arrMedias.indexOf(actualMedia) - 1;
+                    }
+
                     console.log(previousIndex);
                     actualMedia = arrMedias[previousIndex];
                     console.log(actualMedia);
@@ -211,17 +213,21 @@ function MediasGalleryPageFactory(data) {
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
                 nextLightbox.addEventListener('click', () => {
-                    nextIndex = arrMedias.indexOf(actualMedia) + 1;
-                    console.log(nextIndex);
+                    if (arrMedias.indexOf(actualMedia) === (arrMedias.length)-1) {
+                        nextIndex = 0;
+                    }else {
+                        nextIndex = arrMedias.indexOf(actualMedia) + 1;
 
+                    }
                     
-                    console.log("btn next cliqué");
                     actualMedia = arrMedias[nextIndex];
                     console.log(actualMedia);
                     media.setAttribute("src", actualMedia);
                     // media.controls = true;
 
                     media.click();
+
+
 
                 });
 
