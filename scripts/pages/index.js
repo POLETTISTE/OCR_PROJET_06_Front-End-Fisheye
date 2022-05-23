@@ -15,8 +15,8 @@ let photographers;
                 photographers = data.photographers;
 
             })
-            .catch(function(err) {
-                console.log(`${err} error in the function getPhotographerId()`);
+            .catch((err) => {
+                console.log('error in the function getPhotographerId()', err);
             });
     };
 

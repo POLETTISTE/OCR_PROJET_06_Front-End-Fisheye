@@ -34,6 +34,8 @@ function MediasGalleryPageFactory(data) {
             img.setAttribute("alt",'photo de la gallerie du photographe');
             img.classList.add('media-element');
             img.classList.add('image-card');
+
+            arrMedias.push(mediaImage);
             
         }else if(data.hasOwnProperty('video')){
 
@@ -42,6 +44,9 @@ function MediasGalleryPageFactory(data) {
             vid.setAttribute('type', "video/mp4");
             vid.classList.add('media-element');
             vid.classList.add('video-card');
+
+            arrMedias.push(mediaVideo);
+
 
         }else{ 
 
@@ -134,13 +139,22 @@ function MediasGalleryPageFactory(data) {
                 // PERMET D'AVOIR UNE DIV VIDE AU LIEU DE <img> OU <video>
                 let img = document.createElement('div');
                 let vid = document.createElement('div');
-
+                let actualMedia = media.getAttribute('src');
+                let actualMediaIndex;
+                let previousIndex;
+                let nextIndex;
                 // SI LE MEDIA A LA CLASS IMAGE-CARD:
+
                 if(e.target.classList=="media-element image-card") {
 
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = media.src;
+                    actualMedia = media.getAttribute('src');
+                    actualMediaIndex = (arrMedias.indexOf(actualMedia));
+                    console.log(actualMediaIndex);
+
+                
 
                 // SI L'IMAGE A LA CLASSE VIDEO-CARD
                 } else if (e.target.classList=="media-element video-card") {
@@ -150,6 +164,11 @@ function MediasGalleryPageFactory(data) {
                     vid.classList.add('media-lightbox');
                     vid.src = media.src;
                     vid.id = media.id;
+                    console.log(media.getAttribute('src'));
+                    actualMedia = media.getAttribute('src');
+                    actualMediaIndex = (arrMedias.indexOf(actualMedia));
+                    console.log(actualMediaIndex);
+
 
                 } else {
                     console.log('error')
@@ -159,6 +178,7 @@ function MediasGalleryPageFactory(data) {
                 const nextLightbox = document.createElement('div');
                 nextLightbox.classList.add('lightbox__next');
                 nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
+
                 
                 // CREATION BOUTON PRECEDENT:
                 const prevLightbox = document.createElement('div');
@@ -170,7 +190,11 @@ function MediasGalleryPageFactory(data) {
 
                     console.log("btn previous cliqué");
                     console.log(e.target);
-                    console.log(media);
+                    console.log(media.getAttribute('src'));
+
+                    // changer image principale actualMedia
+                    previousIndex = arrMedias.indexOf(actualMedia) - 1;
+                    console.log(previousIndex);
 
                 });
                 

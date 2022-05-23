@@ -62,3 +62,4 @@ function PhotographersFactory(data) {
 
     return { getUserCardDOM }
 };
+

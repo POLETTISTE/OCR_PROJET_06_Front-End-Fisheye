@@ -8,6 +8,7 @@ let clickedLikes=0;
 let previousButton;
 let nextButton;
 let arrMedias = [];
+console.log(arrMedias);
 
 async function getPhotographerId() {
     
@@ -21,8 +22,8 @@ async function getPhotographerId() {
             photographers = data.photographers;
             medias = data.media;
         })
-        .catch(function(err) {
-            console.log(`${err} error in the function getPhotographerId() line 12`);
+        .catch((err) => {
+            console.log('error in the function getPhotographerId() line 12', err);
         });
 
     // AFFECTATION DE L'ID DU PHOTOGRAPHE DANS LA VARIABLE GLOBALE (LIGNE 6):
@@ -91,7 +92,6 @@ async function displayMediasInGalleryPage(medias) {
 
     medias.forEach((media) => { 
 
-        arrMedias.push(media.id);
 
         const mediasGalleryModel = MediasGalleryPageFactory(media);
         const element = mediasGalleryModel.getMediasOfPhotographer();
