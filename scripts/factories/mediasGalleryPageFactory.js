@@ -150,9 +150,14 @@ function MediasGalleryPageFactory(data) {
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = media.src;
-                    actualMedia = media.getAttribute('src');
-                    actualMediaIndex = (arrMedias.indexOf(actualMedia));
-                    console.log(actualMediaIndex);
+                    // img.src = actualMedia;
+                    // console.log(img.src);
+                    // console.log(media.getAttribute('src'));
+
+                    // actualMedia = media.getAttribute('src');
+                    // console.log(actualMedia);
+                    // actualMediaIndex = (arrMedias.indexOf(actualMedia));
+                    // console.log(actualMediaIndex);
 
                 
 
@@ -164,8 +169,8 @@ function MediasGalleryPageFactory(data) {
                     vid.classList.add('media-lightbox');
                     vid.src = media.src;
                     vid.id = media.id;
-                    console.log(media.getAttribute('src'));
-                    actualMedia = media.getAttribute('src');
+                    // actualMedia = media.getAttribute('src');
+                    
                     actualMediaIndex = (arrMedias.indexOf(actualMedia));
                     console.log(actualMediaIndex);
 
@@ -195,13 +200,24 @@ function MediasGalleryPageFactory(data) {
                     // changer image principale actualMedia
                     previousIndex = arrMedias.indexOf(actualMedia) - 1;
                     console.log(previousIndex);
+                    actualMedia = arrMedias[previousIndex];
+                    console.log(actualMedia);
+                    media.setAttribute("src", actualMedia);
+                    media.click();
 
                 });
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
                 nextLightbox.addEventListener('click', () => {
+                    nextIndex = arrMedias.indexOf(actualMedia) + 1;
+                    console.log(nextIndex);
+
                     
                     console.log("btn next cliqué");
+                    actualMedia = arrMedias[nextIndex];
+                    console.log(actualMedia);
+                    media.setAttribute("src", actualMedia);
+                    media.click();
 
                 });
 
