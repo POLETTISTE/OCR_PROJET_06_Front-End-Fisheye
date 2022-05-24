@@ -108,7 +108,8 @@ function MediasGalleryPageFactory(data) {
         // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
 
         closeLightbox.addEventListener('click', () => {
-            return lightbox.classList.remove('active')
+
+            closeTheLightBox();
         })
 
         // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
@@ -118,13 +119,12 @@ function MediasGalleryPageFactory(data) {
         function EscapeKey(e) {
             if(e.key === "Escape") {
                 e.preventDefault();
-                lightbox.classList.remove('active')
-            }
+                closeTheLightBox();            }
         };
 
         // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
        lightbox.addEventListener('click', function(e) {
-        if (e.target === e.currentTarget) return lightbox.classList.remove('active');
+        if (e.target === e.currentTarget) return closeTheLightBox();
         });
 
 
@@ -143,13 +143,28 @@ function MediasGalleryPageFactory(data) {
                 let actualMediaIndex;
                 let previousIndex;
                 let nextIndex;
+
+                // CREATION BOUTON SUIVANT:
+                const nextLightbox = document.createElement('div');
+                nextLightbox.classList.add('lightbox__next');
+                nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
+
+                
+                // CREATION BOUTON PRECEDENT:
+                const prevLightbox = document.createElement('div');
+                prevLightbox.classList.add('lightbox__prev');
+                prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
                 // SI LE MEDIA A LA CLASS IMAGE-CARD:
 
                 if(e.target.classList=="media-element image-card") {
 
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
-                    img.src = media.src;                
+                    img.src = media.src;     
+                    
+                    
+
+
 
                 // SI L'IMAGE A LA CLASSE VIDEO-CARD
                 } else if (e.target.classList=="media-element video-card") {
@@ -167,16 +182,6 @@ function MediasGalleryPageFactory(data) {
                     console.log('error')
                 };
 
-                // CREATION BOUTON SUIVANT:
-                const nextLightbox = document.createElement('div');
-                nextLightbox.classList.add('lightbox__next');
-                nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
-
-                
-                // CREATION BOUTON PRECEDENT:
-                const prevLightbox = document.createElement('div');
-                prevLightbox.classList.add('lightbox__prev');
-                prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
 
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', () => {
@@ -239,6 +244,11 @@ function MediasGalleryPageFactory(data) {
                 lightbox.appendChild(nextLightbox);
                 lightbox.appendChild(prevLightbox);
             })
+             closeTheLightBox = () => {
+                lightbox.classList.remove('active');
+
+
+            }
         });
         
         return (lightbox);
