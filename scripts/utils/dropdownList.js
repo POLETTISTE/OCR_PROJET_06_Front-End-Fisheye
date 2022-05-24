@@ -85,10 +85,11 @@ function FilteringMedias(e) {
     mediasMain.innerHTML = "";
     clickedLikes = 0;
 
-    displayMediasInGalleryPage(medias);
     displayMediasLikesBottom(medias);
     displayPhotographerPriceBottom(photographers);
     addLikes();
+    displayMediasInGalleryPage(medias);
+    displayLightbox(medias);
     
 
     // on retire le select-hide de notre menu
