@@ -150,14 +150,7 @@ function MediasGalleryPageFactory(data) {
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = media.src;
-                    // img.src = actualMedia;
-                    // console.log(img.src);
-                    // console.log(media.getAttribute('src'));
 
-                    // actualMedia = media.getAttribute('src');
-                    // console.log(actualMedia);
-                    // actualMediaIndex = (arrMedias.indexOf(actualMedia));
-                    // console.log(actualMediaIndex);
 
                 
 
@@ -172,7 +165,6 @@ function MediasGalleryPageFactory(data) {
                     // actualMedia = media.getAttribute('src');
                     
                     actualMediaIndex = (arrMedias.indexOf(actualMedia));
-                    console.log(actualMediaIndex);
 
 
                 } else {
@@ -195,17 +187,13 @@ function MediasGalleryPageFactory(data) {
 
                     if (arrMedias.indexOf(actualMedia) === 0) {
                         previousIndex = -1;
-                        console.log(nextIndex);
                     }else {
                         previousIndex = arrMedias.indexOf(actualMedia) - 1;
 
                     }
 
-                    console.log(previousIndex);
                     actualMedia = arrMedias[previousIndex];
-                    console.log(actualMedia);
                     media.setAttribute("src", actualMedia);
-                    // media.controls = true;
 
                     media.click();
 
@@ -221,9 +209,7 @@ function MediasGalleryPageFactory(data) {
                     }
                     
                     actualMedia = arrMedias[nextIndex];
-                    console.log(actualMedia);
                     media.setAttribute("src", actualMedia);
-                    // media.controls = true;
 
                     media.click();
 
