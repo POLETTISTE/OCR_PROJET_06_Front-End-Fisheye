@@ -186,7 +186,7 @@ function MediasGalleryPageFactory(data) {
                 prevLightbox.addEventListener('click', () => {
 
                     if (arrMedias.indexOf(actualMedia) === 0) {
-                        previousIndex = -1;
+                        previousIndex = (arrMedias.length -1);
                     }else {
                         previousIndex = arrMedias.indexOf(actualMedia) - 1;
 
@@ -194,6 +194,10 @@ function MediasGalleryPageFactory(data) {
 
                     actualMedia = arrMedias[previousIndex];
                     media.setAttribute("src", actualMedia);
+
+                    closeLightbox.remove();
+                    nextLightbox.remove();
+                    prevLightbox.remove();
 
                     media.click();
 
@@ -205,11 +209,14 @@ function MediasGalleryPageFactory(data) {
                         nextIndex = 0;
                     }else {
                         nextIndex = arrMedias.indexOf(actualMedia) + 1;
-
                     }
                     
                     actualMedia = arrMedias[nextIndex];
                     media.setAttribute("src", actualMedia);
+
+                    closeLightbox.remove();
+                    nextLightbox.remove();
+                    prevLightbox.remove();
 
                     media.click();
 
