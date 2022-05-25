@@ -108,9 +108,8 @@ function MediasGalleryPageFactory(data) {
         // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
 
         closeLightbox.addEventListener('click', () => {
-
             closeTheLightBox();
-        })
+        });
 
         // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
 
@@ -162,9 +161,6 @@ function MediasGalleryPageFactory(data) {
                     img.classList.add('media-lightbox');
                     img.src = media.src;     
                     
-                    
-
-
 
                 // SI L'IMAGE A LA CLASSE VIDEO-CARD
                 } else if (e.target.classList=="media-element video-card") {
@@ -246,8 +242,7 @@ function MediasGalleryPageFactory(data) {
             })
              closeTheLightBox = () => {
                 lightbox.classList.remove('active');
-
-
+                lightbox.innerHTML="";
             }
         });
         

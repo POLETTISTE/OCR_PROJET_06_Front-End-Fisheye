@@ -16,12 +16,28 @@ MQ mobile < 768px */
         grid-template-columns: repeat(2,1fr);
     }
 }
-
 @media screen and (max-width: 768px){
     .photographer_section {
         grid-template-columns: 1fr;
     }
+    .photographer_section article {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom:50px;
+        height:300px;
+    }
+    
+    .photographer_section article a {
+        width: fit-content;
+        height: auto;
+    }
 }
+
+
+
+
 
 .photographer__avatar {
     text-align: center;
@@ -29,9 +45,15 @@ MQ mobile < 768px */
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    
 }
+
+@media screen and (max-width: 768px) {
+    .photographer__avatar {
+        height:500px;
+        width: 100%;    }
+}
+
+
 
 .photographer__avatar-name {
     font-style: normal;
@@ -52,6 +74,16 @@ MQ mobile < 768px */
     width: 200px;
 }
 
+
+@media all and (max-width:767px) {
+ 
+    .photographer__avatar-picture-index {
+        bottom:0;
+    }
+}
+
+
+
 .photographer__infos {
     text-align: center;
 }
@@ -59,7 +91,8 @@ MQ mobile < 768px */
 .photographer__infos-city-country {
     font-weight: 400;
     font-size: 13px;
-    line-height: 17px;    margin: 0;
+    line-height: 17px;    
+    margin: 0;
     text-align: center;
     
     color: #901C1C;

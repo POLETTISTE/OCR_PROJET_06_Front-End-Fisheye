@@ -22,7 +22,7 @@ function PhotographersFactory(data) {
         const img = document.createElement( 'img');
         img.setAttribute("src", picture);
         img.setAttribute("alt", name);
-        img.classList.add('photographer__avatar-picture');
+        img.classList.add('photographer__avatar-picture','photographer__avatar-picture-index' );
 
         // CONSTRUCTION NOM PHOTOGRAPHE:
         const h2 = document.createElement( 'h2' );
