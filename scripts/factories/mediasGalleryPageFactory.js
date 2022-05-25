@@ -243,6 +243,9 @@ function MediasGalleryPageFactory(data) {
              closeTheLightBox = () => {
                 lightbox.classList.remove('active');
                 lightbox.innerHTML="";
+                newSelect.click();
+                newSelect.click();
+
             }
         });
         

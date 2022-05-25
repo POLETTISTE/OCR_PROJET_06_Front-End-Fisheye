@@ -55,9 +55,9 @@ selectDiv.appendChild(newMenu);
 
 newSelect.addEventListener("click", FilteringMedias)
 
-function FilteringMedias(e) {
+function FilteringMedias() {
     // on empeche la propagation du click
-    e.stopPropagation();
+    // e.stopPropagation();
 
     newSelectValue = newSelect.textContent;
     
@@ -93,13 +93,13 @@ function FilteringMedias(e) {
     
 
     // on retire le select-hide de notre menu
-    this.nextSibling.classList.toggle("select-hide");
+    newSelect.nextSibling.classList.toggle("select-hide");
 
     //on cache le newSelect pour éviter le doublon
-    this.classList.toggle("select-hide");
+    newSelect.classList.toggle("select-hide");
     
     //on ajoute la classe active à newSelect(change le sens du chevron)
-    this.classList.toggle("active");
+    newSelect.classList.toggle("active");
 
 }
 
