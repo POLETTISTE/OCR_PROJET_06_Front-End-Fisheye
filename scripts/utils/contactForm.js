@@ -24,6 +24,11 @@ function sendMessage(e) {
     e.preventDefault();
     console.log("message envoyé");
     console.log([firstName.value, lastName.value, email.value, message.value]);
+    firstName.value = "";
+    lastName.value = "";
+    email.value = "";
+    message.value = "";
+
     closeModal();
 };
 
