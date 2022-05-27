@@ -167,9 +167,9 @@ function MediasGalleryPageFactory(data) {
 
                     vid = document.createElement('video');
                     vid.controls = true;
+                    // vid.attributes.add('playsinline');
                     vid.classList.add('media-lightbox');
                     vid.src = media.src;
-                    vid.id = media.id;
                     
                     actualMediaIndex = (arrMedias.indexOf(actualMedia));
 

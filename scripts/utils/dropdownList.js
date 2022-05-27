@@ -55,9 +55,9 @@ selectDiv.appendChild(newMenu);
 
 newSelect.addEventListener("click", FilteringMedias)
 
-function FilteringMedias() {
+function FilteringMedias(e) {
     // on empeche la propagation du click
-    // e.stopPropagation();
+    e.stopPropagation();
 
     newSelectValue = newSelect.textContent;
     

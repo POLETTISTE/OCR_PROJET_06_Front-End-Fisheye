@@ -14,8 +14,9 @@
         flex-direction: column;
         margin:0;
         margin-top:40px;
-        margin-bottom:50px;
+        margin-bottom:100px;
         align-items: center;
+        bottom:0%;
     }
 }
 
@@ -41,9 +42,6 @@
 .custom-select {
     color:white;
     width: 170px;
-
-    z-index:1;
-    
 }
 
 /* On masque le select basique */
