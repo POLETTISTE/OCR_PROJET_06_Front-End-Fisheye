@@ -10,7 +10,7 @@
 @media all and (max-width:767px) {
     .photograph-header {
         width:100%;
-        height:300px;
+        height:400px;
         margin:0;
     }
 
@@ -27,7 +27,9 @@
 
 @media all and (max-width:767px) {
     .photograph-header-banner {
-        align-items: center;
+
+        flex-direction: column;
+        height:400px;
 
     }
 }
@@ -97,7 +99,13 @@
     cursor: pointer;
 }
 
+@media all and (max-width:767px) {
+    .contact_button {
+        margin-bottom: 20px;
+    }
 
+    
+}
 
 #contact_modal {
     position: absolute;
@@ -110,6 +118,8 @@
     display: none;
     margin:0 auto;
 }
+
+
 
 
 .modal {
@@ -218,7 +228,7 @@ textarea {
 @media all and (max-width:767px) {
     .medias-main {
       display: flex;
-      width:100%;
+      /* width:100%; */
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -238,6 +248,7 @@ textarea {
 @media all and (max-width:767px) {
     .media-card {
         margin-bottom:80px;
+        width: 300px;
 
     }
 }
@@ -254,18 +265,21 @@ textarea {
 .media-likes i {
     margin-left:5px;
 }
-.image-card {
-    width:350px;
-    height:300px;
-    object-fit:cover;
-    border-radius:5px;
-
-}
+.image-card,
 .video-card {
     width:350px;
     height:300px;
     object-fit:cover;
     border-radius:5px;
+}
+
+@media all and (max-width:767px) {
+    .image-card,
+    .video-card {
+        width:300px;
+        height:257px;
+    }
+
 }
 
 .media-element {
@@ -290,6 +304,7 @@ textarea {
 /* MAIN PAGE GALLERY INFOS BOTTOM */
 
 .medias-info {
+    z-index:3;
     display: flex;
     justify-content: space-around;
     margin-right: 36px;
@@ -304,6 +319,21 @@ textarea {
     font-weight:500;
 }
 
+@media all and (max-width:767px) {
+    .medias-info {
+        width:100px;
+        height:100px;
+        font-size : 10px;
+        height: auto;
+        bottom:-1%;
+        margin-right: 0;
+
+        align-items: center;
+
+    }
+}
+
+
 .insert-likes {
     font-weight: 500;
     font-size: 24px;
@@ -312,15 +342,38 @@ textarea {
 
 }
 
+
+
 .insert-likes i {
     margin-left:5px;
 }
 
 .insert-rates {
-
+    
     font-weight: 500;
     font-size: 24px;
     line-height: 31px;
     text-align: center;
+    
+}
+
+@media all and (max-width:767px) {
+    .insert-likes {
+        font-size: 10px;
+        margin:0;
+    }
+    .insert-likes i {
+        margin-left:2px;
+        margin:0;
+
+    }
+
+    .insert-rates {
+        text-align: center;
+        margin:0;
+
+
+    }
+
     
 }
