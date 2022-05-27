@@ -106,76 +106,65 @@ function MediasGalleryPageFactory(data) {
         lightboxContainer.classList.add('lightbox__container');
         
         // CREATION BOUTON FERMER:
-
         const closeLightbox = document.createElement('div');
         closeLightbox.classList.add('lightbox__close');
         closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`;  
         
         // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
-
-        closeLightbox.addEventListener('click', () => {
-            closeTheLightBox();
-        });
+        closeLightbox.addEventListener('click', () => { closeTheLightBox()});
 
         // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
-
         document.addEventListener('keyup', EscapeKey);
 
         function EscapeKey(e) {
             if(e.key === "Escape") {
                 e.preventDefault();
-                closeTheLightBox();            }
+                closeTheLightBox();            
+            }
         };
 
         // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
-       lightbox.addEventListener('click', function(e) {
-        if (e.target === e.currentTarget) return closeTheLightBox();
-        });
-
+        lightbox.addEventListener('click', function(e) { if (e.target === e.currentTarget) return closeTheLightBox()});
 
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
         const medias = document.querySelectorAll('.media-element');
 
         medias.forEach(media => {
+            let img = document.createElement('div');
+            let vid = document.createElement('div');
+            let actualMedia = media.getAttribute('src');
+            let actualMediaIndex;
+            let previousIndex;
+            let nextIndex;
 
-            media.addEventListener("click", e => {
-
+            media.addEventListener("click", () => {
                 lightbox.classList.add('active');
-                // PERMET D'AVOIR UNE DIV VIDE AU LIEU DE <img> OU <video>
-                let img = document.createElement('div');
-                let vid = document.createElement('div');
-                let actualMedia = media.getAttribute('src');
-                let actualMediaIndex;
-                let previousIndex;
-                let nextIndex;
 
                 // CREATION BOUTON SUIVANT:
                 const nextLightbox = document.createElement('div');
                 nextLightbox.classList.add('lightbox__next');
                 nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
 
-                
                 // CREATION BOUTON PRECEDENT:
                 const prevLightbox = document.createElement('div');
                 prevLightbox.classList.add('lightbox__prev');
                 prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
                 // SI LE MEDIA A LA CLASS IMAGE-CARD:
 
-                if(e.target.classList=="media-element image-card") {
+                if(media.classList=="media-element image-card") {
 
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
-                    img.src = media.src;     
-                    
+                    img.src = actualMedia;    
+ 
 
-                // SI L'IMAGE A LA CLASSE VIDEO-CARD
-                } else if (e.target.classList=="media-element video-card") {
+                  // SI L'IMAGE A LA CLASSE VIDEO-CARD
+                } else if (media.classList=="media-element video-card") {
 
                     vid = document.createElement('video');
                     vid.controls = true;
-                    // vid.attributes.add('playsinline');
                     vid.classList.add('media-lightbox');
-                    vid.src = media.src;
+                    vid.src = actualMedia;
                     
                     actualMediaIndex = (arrMedias.indexOf(actualMedia));
 
@@ -197,13 +186,16 @@ function MediasGalleryPageFactory(data) {
                     console.log(previousIndex);
                     
                     actualMedia = arrMedias[previousIndex];
+                    console.log(actualMedia);
+                    console.log(actualMedia);
                     
-                    media.setAttribute("src", actualMedia);
                     
+                    console.log(media);
+                    media.click();
+                    // media.setAttribute("src", actualMedia);
                     closeLightbox.remove();
                     nextLightbox.remove();
                     prevLightbox.remove();
-                    media.click();
                     
                 });
                 
@@ -214,18 +206,13 @@ function MediasGalleryPageFactory(data) {
                     }else {
                         nextIndex = arrMedias.indexOf(actualMedia) + 1;
                     }
-                    
+                
                     actualMedia = arrMedias[nextIndex];
                     media.setAttribute("src", actualMedia);
-
                     closeLightbox.remove();
                     nextLightbox.remove();
                     prevLightbox.remove();
-
                     media.click();
-
-
-
                 });
 
                 /* 
@@ -246,12 +233,11 @@ function MediasGalleryPageFactory(data) {
                 lightbox.appendChild(nextLightbox);
                 lightbox.appendChild(prevLightbox);
             })
-             closeTheLightBox = () => {
+            closeTheLightBox = () => {
                 lightbox.classList.remove('active');
                 lightbox.innerHTML="";
                 newSelect.click();
                 newSelect.click();
-
             }
         });
         
