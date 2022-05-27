@@ -99,14 +99,19 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 20px;
+
 }
+
+/* @media all and (min-width:768px) and (max-width:991px) {
+    .contact_button {
+    }
+} */
 
 @media all and (max-width:767px) {
     .contact_button {
         margin-bottom: 20px;
     }
-
-    
 }
 
 #contact_modal {
@@ -297,15 +302,15 @@ textarea {
 .media-card {
     box-sizing: content-box;
     width:350px;
-    margin-bottom: 30px;
-
+    margin-bottom: 40px;
 }
+
+
 
 @media all and (max-width:767px) {
     .media-card {
         margin-bottom:80px;
         width: 300px;
-
     }
 }
 
@@ -338,6 +343,7 @@ textarea {
 
 }
 
+
 .media-element {
     cursor:pointer;
 }
@@ -347,6 +353,7 @@ textarea {
     justify-content: space-between;
     align-items: center;
     color: #901C1C;
+    height:50px;
 }
 
 .image-card-infos h2,

@@ -227,11 +227,11 @@ function MediasGalleryPageFactory(data) {
 
                 // ELEMENTS D'ASSEMBLAGE
                 lightbox.appendChild(lightboxContainer)
+                lightboxContainer.appendChild(prevLightbox);
                 lightboxContainer.appendChild(img);
                 lightboxContainer.appendChild(vid);
-                lightbox.appendChild(closeLightbox);
-                lightbox.appendChild(nextLightbox);
-                lightbox.appendChild(prevLightbox);
+                lightboxContainer.appendChild(nextLightbox);
+                lightboxContainer.appendChild(closeLightbox);
             })
             closeTheLightBox = () => {
                 lightbox.classList.remove('active');
