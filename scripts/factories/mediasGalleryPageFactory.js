@@ -9,15 +9,21 @@ function MediasGalleryPageFactory(data) {
     const mediaVideo = `assets/images/${photographerId}/${video}`;
     let img = document.createElement('div');
     let vid = document.createElement('div');
+    let totalOfLikes;
+    let mediasLikes;
         
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
-    let mediasLikes = 0;
+    function mediaLikesCalcul() {
+        mediasLikes = 0;
+    
+        medias.forEach((media) => { 
+            mediasLikes+= media["likes"];
+        });
+    
+        totalOfLikes = mediasLikes + clickedLikes;
 
-    medias.forEach((media) => { 
-        mediasLikes+= media["likes"];
-    });
-
-    let totalOfLikes = mediasLikes + clickedLikes;
+    }
+    mediaLikesCalcul();
 
 
     // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
