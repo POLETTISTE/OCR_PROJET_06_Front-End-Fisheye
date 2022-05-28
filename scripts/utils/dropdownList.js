@@ -97,7 +97,13 @@ function FilteringMedias(e) {
 
     //on cache le newSelect pour éviter le doublon
 
-    // newSelect.classList.toggle("select-hide");
+    newMenu.childNodes.forEach((item)=>{
+        if (item.textContent === newSelect.textContent) {
+            item.classList.add("select-hide");
+        }else{
+            item.classList.remove("select-hide");
+        }
+    });
 
     //on ajoute la classe active à newSelect(change le sens du chevron)
     newSelect.classList.toggle("active");
