@@ -32,6 +32,9 @@ MQ mobile < 768px */
     .photographer_section article a {
         width: fit-content;
         height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -49,8 +52,9 @@ MQ mobile < 768px */
 
 @media screen and (max-width: 768px) {
     .photographer__avatar {
+        width: 100%;    
         height:500px;
-        width: 100%;    }
+    }
 }
 
 
@@ -73,6 +77,16 @@ MQ mobile < 768px */
     height: 200px;
     width: 200px;
 }
+
+@media all and (max-width:767px) {
+
+    .photographer__avatar-picture-photographer {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+
 
 
 @media all and (max-width:767px) {

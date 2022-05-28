@@ -36,7 +36,7 @@ function PhotographerGalleryPageFactory(data) {
         const headerRight = document.createElement('img');
         headerRight.setAttribute("src", srcPicture);
         headerRight.setAttribute("alt", '');
-        headerRight.classList.add('photographer__avatar-picture');
+        headerRight.classList.add('photographer__avatar-picture','photographer__avatar-picture-photographer' );
 
         // ELEMENTS D'ASSEMBLAGE
         article.appendChild(headerLeft);
