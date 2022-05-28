@@ -96,8 +96,9 @@ function FilteringMedias(e) {
     newSelect.nextSibling.classList.toggle("select-hide");
 
     //on cache le newSelect pour éviter le doublon
-    newSelect.classList.toggle("select-hide");
-    
+
+    // newSelect.classList.toggle("select-hide");
+
     //on ajoute la classe active à newSelect(change le sens du chevron)
     newSelect.classList.toggle("active");
 

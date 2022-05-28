@@ -186,10 +186,7 @@ function MediasGalleryPageFactory(data) {
                     console.log(previousIndex);
                     
                     actualMedia = arrMedias[previousIndex];
-                    console.log(actualMedia);
-                    console.log(actualMedia);
-                    
-                    
+                    console.log(actualMedia);                    
                     console.log(media);
                     media.click();
                     // media.setAttribute("src", actualMedia);

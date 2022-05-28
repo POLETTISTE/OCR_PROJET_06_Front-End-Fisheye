@@ -111,7 +111,7 @@
 
 .contact_button {
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 700;
     color: white;
     padding: 11px;
     width: 170px;
@@ -121,7 +121,12 @@
     border-radius: 5px;
     cursor: pointer;
     margin-right: 90px;
+}
 
+.contact_button:hover,
+.contact_button:focus {
+    background-color: #DB8876;
+    color: black;
 }
 
 @media all and (max-width:991px) {

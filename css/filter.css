@@ -42,8 +42,9 @@
 .custom-select {
     color:white;
     width: 170px;
+    height:200px;
+    z-index: 4;
 }
-
 /* On masque le select basique */
 .custom-select select{
     display: none;
