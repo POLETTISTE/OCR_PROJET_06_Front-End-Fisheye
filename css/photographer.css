@@ -27,11 +27,14 @@
 
 @media all and (max-width:767px) {
     .photograph-header-banner {
-
         flex-direction: column;
         height:auto;
 
     }
+}
+
+.photographer-introduction {
+    width:auto;
 }
 
 .photographer-name {
@@ -85,6 +88,24 @@
 }
 
 
+.contact-avatar-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media all and (min-width:768px) and (max-width:991px) {
+    .contact-avatar-flex {
+        flex-direction: column-reverse;
+    }
+}
+
+@media all and (max-width:767px){
+    .contact-avatar-flex {
+        flex-direction: column-reverse;
+    }
+}
+
 
 
 
@@ -99,14 +120,15 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 90px;
 
 }
 
-/* @media all and (min-width:768px) and (max-width:991px) {
+@media all and (max-width:991px) {
     .contact_button {
+        margin-right: 0;
     }
-} */
+}
 
 @media all and (max-width:767px) {
     .contact_button {

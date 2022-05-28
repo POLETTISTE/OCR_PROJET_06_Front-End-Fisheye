@@ -26,6 +26,10 @@ function PhotographerGalleryPageFactory(data) {
         headerLeftTagline.textContent = tagline;
 
         // HEADER CENTER:
+        const headerCenterRight = document.createElement ('div');
+        headerCenterRight.classList.add('contact-avatar-flex');
+
+
         const headerCenter = document.createElement ('div');
         const button = document.createElement('button');
         button.classList.add("contact_button");
@@ -33,19 +37,23 @@ function PhotographerGalleryPageFactory(data) {
         button.textContent = `Contactez-moi`;
 
         // HEADER RIGHT:
-        const headerRight = document.createElement('img');
-        headerRight.setAttribute("src", srcPicture);
-        headerRight.setAttribute("alt", '');
-        headerRight.classList.add('photographer__avatar-picture','photographer__avatar-picture-photographer' );
+        const headerRight = document.createElement('div');
+        const imgAvatar = document.createElement('img');
+        imgAvatar.setAttribute("src", srcPicture);
+        imgAvatar.setAttribute("alt", '');
+        imgAvatar.classList.add('photographer__avatar-picture','photographer__avatar-picture-photographer' );
 
         // ELEMENTS D'ASSEMBLAGE
         article.appendChild(headerLeft);
-        article.appendChild(headerCenter);
-        article.appendChild(headerRight);
+        article.appendChild(headerCenterRight);
+
         headerLeft.appendChild(headerLeftName);
         headerLeft.appendChild(headerLeftLocation);
         headerLeft.appendChild(headerLeftTagline);
+        headerCenterRight.appendChild(headerCenter);
+        headerCenterRight.appendChild(headerRight);
         headerCenter.appendChild(button);
+        headerRight.appendChild(imgAvatar);
 
         return (article);
     };
