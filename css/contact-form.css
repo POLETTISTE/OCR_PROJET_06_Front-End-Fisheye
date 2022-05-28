@@ -1,0 +1,196 @@
+
+.contact_button {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 180px;
+}
+
+.contact_button:hover,
+.contact_button:focus {
+    background-color: #DB8876;
+    color: black;
+}
+
+@media all and (max-width:991px) {
+    .contact_button {
+        margin-right: 0;
+    }
+}
+
+@media all and (max-width:767px) {
+    .contact_button {
+        margin-bottom: 20px;
+    }
+}
+
+#contact_modal {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    padding-top: 56px;
+    width:80%;
+    display: none;
+    margin:0 auto;
+    z-index:4;
+}
+
+
+
+
+#modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+    z-index: 4;
+
+}
+
+@media all and (max-width:767px) {
+    #modal {
+        width:80%;
+        justify-content: center;
+    }
+}
+
+#modal header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+}
+
+
+
+
+#modal .header-title {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+@media all and (max-width:767px) {
+    #modal .header-title {
+        flex-wrap: wrap-reverse;
+        justify-content: end;
+    }
+}
+
+#modal header img {
+    cursor: pointer;
+}
+
+#modal header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    margin:0;
+    line-height: 83.33px;
+}
+
+@media all and (max-width:767px) {
+    #modal header h2 {
+        line-height: normal;
+        display: flex;
+        justify-content: left;
+        width:100%;
+        font-size: 45px;
+    }
+}
+
+.photograph-form-name {
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    height: auto;
+
+}
+
+@media all and (max-width:767px) {
+    .photograph-form-name {
+        justify-content: center;
+    }
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 3;
+    margin-top: 20px;
+
+}
+
+@media all and (max-width:767px) {
+    form {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+#formdatas {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+    background-color: #DB8876;
+
+}
+
+
+
+form input {
+    /* resolution problème input vs video-card */
+    font-size: 24px;
+    z-index:2;
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+    color:rgba(0, 0, 0, 0.7);
+    font-family: "DM Sans", sans-serif;
+    
+}
+
+#form_message {
+    padding-top: 10px;
+}
+
+textarea {
+    width:100%;
+    font-size: 24px;
+    color:rgba(0, 0, 0, 0.7);
+}
+
+.hidden {
+    height: 1px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: -10000px;
+    width: 1px;
+ }
+

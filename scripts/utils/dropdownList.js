@@ -97,7 +97,7 @@ function FilteringMedias(e) {
 
     //on cache le newSelect pour éviter le doublon
 
-    newMenu.childNodes.forEach((item)=>{
+    newMenu.childNodes.forEach((item) => {
         if (item.textContent === newSelectValue) {
             item.classList.add("select-hide");
         }else{
