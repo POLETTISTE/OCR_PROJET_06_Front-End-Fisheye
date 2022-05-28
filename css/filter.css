@@ -42,7 +42,7 @@
 .custom-select {
     color:white;
     width: 170px;
-    height:200px;
+    height:150px;
     z-index: 4;
 }
 /* On masque le select basique */
@@ -84,4 +84,14 @@
 
 .select-hide {
     display:none;
+}
+
+#filter > div > div.select-items > div:nth-child(2) {
+    padding: 14px;
+}
+
+#filter > div > div.select-items > div:nth-child(3) {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 14px;
 }
