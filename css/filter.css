@@ -5,6 +5,7 @@
     margin: 0 100px;
     position:relative;
     height:70px;
+    cursor: pointer;
 }
 
 @media all and (max-width:767px) {
@@ -58,6 +59,7 @@
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    font-weight: 700;
 }
 
 .new-select.active {

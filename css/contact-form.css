@@ -143,8 +143,6 @@ form {
     }
 }
 
-
-
 form label {
     color: #312E2E;
     font-size: 36px;
@@ -165,8 +163,9 @@ form label {
 form input {
     /* resolution problème input vs video-card */
     font-size: 24px;
+    font-weight: 700;
     z-index:2;
-    width: 100%;
+    width: 97%;
     height: 68px;
     border: none;
     border-radius: 5px;
@@ -180,9 +179,16 @@ form input {
 }
 
 textarea {
-    width:100%;
+    width:97%;
     font-size: 24px;
+    font-weight: 700;
     color:rgba(0, 0, 0, 0.7);
+}
+
+#send_button:hover,
+#send_button:focus {
+    background-color: #901C1C;
+    color:white;
 }
 
 .hidden {
