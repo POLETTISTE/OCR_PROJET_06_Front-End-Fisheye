@@ -47,23 +47,26 @@
     color:#901C1C;
     font-size: 48px;
     padding:20px;
+    cursor: pointer;
+
 }
 
 
 .lightbox__next {
     position: relative;
-    
     color:#901C1C;
     font-size: 48px;
     padding:20px;
+    cursor: pointer;
+
 }
 
 .lightbox__prev {
     position: relative;
-    
     color:#901C1C;
     font-size: 48px;
     padding:20px;
+    cursor: pointer;
     
     
 }
