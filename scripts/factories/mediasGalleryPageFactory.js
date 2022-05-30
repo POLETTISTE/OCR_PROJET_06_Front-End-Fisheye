@@ -114,12 +114,12 @@ function MediasGalleryPageFactory(data) {
         closeLightbox.addEventListener('click', () => { closeTheLightBox()});
 
         // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
-        document.addEventListener('keyup', EscapeKey);
+        document.addEventListener('keyup', EscapeLightbox);
 
-        function EscapeKey(e) {
+        function EscapeLightbox(e) {
             if(e.key === "Escape") {
                 e.preventDefault();
-                closeTheLightBox();            
+                closeTheLightBox();           
             }
         };
 

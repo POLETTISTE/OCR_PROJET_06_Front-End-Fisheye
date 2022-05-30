@@ -17,6 +17,15 @@ function closeModal() {
     modal.style.display = "none";
 };
 
+document.addEventListener('keyup', EscapeModal);
+
+function EscapeModal(e) {
+    if(e.key === "Escape") {
+        e.preventDefault();
+        closeModal();           
+    }
+};
+
 send.addEventListener('click', sendMessage);
 
 function sendMessage(e) {
@@ -31,4 +40,5 @@ function sendMessage(e) {
 
     closeModal();
 };
+
 
