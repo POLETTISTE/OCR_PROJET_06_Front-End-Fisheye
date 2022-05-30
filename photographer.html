@@ -21,26 +21,28 @@
           </div>
         </header>
         <!-- RAJOUTER LES CHAMPS INPUT MANQUANTS SELON MAQUETTE -->
-				<form method="post" action="">
+        <aside role="form">
+          <form method="post" action="">
 
-					<div id="formdatas" role="group" aria-labelledby="coordonnees">
-            <p id="coordonnees" class="hidden">Vos coordonnées</p>
+            <div id="formdatas" role="group" aria-labelledby="coordonnees">
+              <p id="coordonnees" class="hidden">Vos coordonnées</p>
 
-              <label for="Prenom" id="form_prenom">Prénom</label>
-              <input type="text" name="prenom" id="prenom" aria-labelledby="form_prenom" />
-              
-              <label for="Nom" id="form_nom">Nom</label>
-              <input type="text" name="nom" id="nom" aria-labelledby="form_nom"  />
-              
-              <label for="Email" id="form_email">Email</label>
-              <input type="email" name="email" id="email" aria-labelledby="form_email" />
-              
-              <label for="Message" id="form_message">Votre message</label>
-              <textarea name="message" id="message" aria-labelledby="form_message" rows="5" ></textarea>
-					
-					</div>
-          <button class="contact_button" id="send_button">Envoyer</button>
-				</form>
+                <label for="Prenom" id="form_prenom">Prénom</label>
+                <input type="text" name="prenom" id="prenom" aria-labelledby="form_prenom" />
+                
+                <label for="Nom" id="form_nom">Nom</label>
+                <input type="text" name="nom" id="nom" aria-labelledby="form_nom"  />
+                
+                <label for="Email" id="form_email">Email</label>
+                <input type="email" name="email" id="email" aria-labelledby="form_email" />
+                
+                <label for="Message" id="form_message">Votre message</label>
+                <textarea name="message" id="message" aria-labelledby="form_message" rows="5" ></textarea>
+            
+            </div>
+            <button class="contact_button" id="send_button">Envoyer</button>
+          </form>
+      </aside role="form">
 			</div>
 		</div>
     <header aria-label="Main header" role="banner">

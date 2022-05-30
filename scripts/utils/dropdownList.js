@@ -109,6 +109,7 @@ function FilteringMedias(e) {
 
     //on ajoute la classe active à newSelect(change le sens du chevron)
     newSelect.classList.toggle("active");
+    selectDiv.classList.toggle("active");
 
 }
 
