@@ -8,7 +8,7 @@ let clickedLikes=0;
 let previousButton;
 let nextButton;
 let arrMedias = [];
-console.log(arrMedias);
+
 
 async function getPhotographerId() {
     

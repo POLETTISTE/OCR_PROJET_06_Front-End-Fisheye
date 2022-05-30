@@ -114,7 +114,7 @@ function MediasGalleryPageFactory(data) {
         closeLightbox.addEventListener('click', () => { closeTheLightBox()});
 
         // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
-        document.addEventListener('keyup', EscapeLightbox);
+        document.addEventListener('keydown', EscapeLightbox);
 
         function EscapeLightbox(e) {
             if(e.key === "Escape") {
@@ -128,6 +128,7 @@ function MediasGalleryPageFactory(data) {
 
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
         const medias = document.querySelectorAll('.media-element');
+
 
         medias.forEach(media => {
             let img = document.createElement('div');
@@ -175,16 +176,21 @@ function MediasGalleryPageFactory(data) {
 
 
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
-                prevLightbox.addEventListener('click', () => {
-                    
+                prevLightbox.addEventListener('click', (previous));
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key=="ArrowLeft") {
+                       previous();
+                    }
+                });
+
+                    function previous() {
                     if (arrMedias.indexOf(actualMedia) === 0) {
                         previousIndex = ((arrMedias.length) -1);
                     }else {
                         previousIndex = arrMedias.indexOf(actualMedia) - 1;
-
                     }
                     console.log(previousIndex);
-                    
                     actualMedia = arrMedias[previousIndex];
                     console.log(actualMedia);                    
                     console.log(media);
@@ -193,24 +199,32 @@ function MediasGalleryPageFactory(data) {
                     closeLightbox.remove();
                     nextLightbox.remove();
                     prevLightbox.remove();
-                    
-                });
+                };
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
-                nextLightbox.addEventListener('click', () => {
+                nextLightbox.addEventListener('click', (next));
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key=="ArrowRight") {
+                       next();
+                    }
+                });
+
+
+                function next() {
                     if (arrMedias.indexOf(actualMedia) === (arrMedias.length)-1) {
                         nextIndex = 0;
                     }else {
                         nextIndex = arrMedias.indexOf(actualMedia) + 1;
                     }
-                
                     actualMedia = arrMedias[nextIndex];
                     media.setAttribute("src", actualMedia);
                     closeLightbox.remove();
                     nextLightbox.remove();
                     prevLightbox.remove();
                     media.click();
-                });
+                };
+
 
                 /* 
                    AU CHARGEMENT DU MEDIA DANS LA LIGHBOX, IL EST

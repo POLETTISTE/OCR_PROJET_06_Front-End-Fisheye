@@ -17,7 +17,7 @@ function closeModal() {
     modal.style.display = "none";
 };
 
-document.addEventListener('keyup', EscapeModal);
+document.addEventListener('keydown', EscapeModal);
 
 function EscapeModal(e) {
     if(e.key === "Escape") {
