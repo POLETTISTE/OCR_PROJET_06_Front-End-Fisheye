@@ -127,14 +127,13 @@ function MediasGalleryPageFactory(data) {
         lightbox.addEventListener('click', function(e) { if (e.target === e.currentTarget) return closeTheLightBox()});
 
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
-        const medias = document.querySelectorAll('.media-element');
+        const mediasGallery = document.querySelectorAll('.media-element');
 
 
-        medias.forEach(media => {
+        mediasGallery.forEach(media => {
             let img = document.createElement('div');
             let vid = document.createElement('div');
             let actualMedia = media.getAttribute('src');
-            let actualMediaIndex;
             let previousIndex;
             let nextIndex;
 
@@ -150,28 +149,19 @@ function MediasGalleryPageFactory(data) {
                 const prevLightbox = document.createElement('div');
                 prevLightbox.classList.add('lightbox__prev');
                 prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
+
                 // SI LE MEDIA A LA CLASS IMAGE-CARD:
-
                 if(media.classList=="media-element image-card") {
-
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = actualMedia;    
  
-
                   // SI L'IMAGE A LA CLASSE VIDEO-CARD
                 } else if (media.classList=="media-element video-card") {
-
                     vid = document.createElement('video');
                     vid.controls = true;
                     vid.classList.add('media-lightbox');
                     vid.src = actualMedia;
-                    
-                    actualMediaIndex = (arrMedias.indexOf(actualMedia));
-
-
-                } else {
-                    console.log('error')
                 };
 
 
@@ -190,15 +180,13 @@ function MediasGalleryPageFactory(data) {
                     }else {
                         previousIndex = arrMedias.indexOf(actualMedia) - 1;
                     }
-                    console.log(previousIndex);
-                    actualMedia = arrMedias[previousIndex];
-                    console.log(actualMedia);                    
-                    console.log(media);
-                    media.click();
-                    // media.setAttribute("src", actualMedia);
+                    actualMedia = arrMedias[previousIndex];                    
+                    media.setAttribute("src", actualMedia);
                     closeLightbox.remove();
                     nextLightbox.remove();
                     prevLightbox.remove();
+                    media.click();
+
                 };
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
@@ -209,7 +197,6 @@ function MediasGalleryPageFactory(data) {
                        next();
                     }
                 });
-
 
                 function next() {
                     if (arrMedias.indexOf(actualMedia) === (arrMedias.length)-1) {

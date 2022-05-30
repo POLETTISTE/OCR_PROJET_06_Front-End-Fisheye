@@ -92,7 +92,6 @@ async function displayMediasInGalleryPage(medias) {
 
     medias.forEach((media) => { 
 
-
         const mediasGalleryModel = MediasGalleryPageFactory(media);
         const element = mediasGalleryModel.getMediasOfPhotographer();
         mediasMain.appendChild(element);
