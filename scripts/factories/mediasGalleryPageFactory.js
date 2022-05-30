@@ -110,11 +110,21 @@ function MediasGalleryPageFactory(data) {
         closeLightbox.classList.add('lightbox__close');
         closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`;  
         
+        // CREATION BOUTON SUIVANT:
+        const nextLightbox = document.createElement('div');
+        nextLightbox.classList.add('lightbox__next');
+        nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
+
+        // CREATION BOUTON PRECEDENT:
+        const prevLightbox = document.createElement('div');
+        prevLightbox.classList.add('lightbox__prev');
+        prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
+
         // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
         closeLightbox.addEventListener('click', () => { closeTheLightBox()});
 
         // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
-        document.addEventListener('keydown', EscapeLightbox);
+        document.addEventListener('keyup', EscapeLightbox);
 
         function EscapeLightbox(e) {
             if(e.key === "Escape") {
@@ -140,15 +150,6 @@ function MediasGalleryPageFactory(data) {
             media.addEventListener("click", () => {
                 lightbox.classList.add('active');
 
-                // CREATION BOUTON SUIVANT:
-                const nextLightbox = document.createElement('div');
-                nextLightbox.classList.add('lightbox__next');
-                nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
-
-                // CREATION BOUTON PRECEDENT:
-                const prevLightbox = document.createElement('div');
-                prevLightbox.classList.add('lightbox__prev');
-                prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
 
                 // SI LE MEDIA A LA CLASS IMAGE-CARD:
                 if(media.classList=="media-element image-card") {
@@ -168,7 +169,7 @@ function MediasGalleryPageFactory(data) {
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', (previous));
 
-                document.addEventListener('keydown', (e) => {
+                document.addEventListener('keyup', (e) => {
                     if (e.key=="ArrowLeft") {
                        previous();
                     }
@@ -182,21 +183,17 @@ function MediasGalleryPageFactory(data) {
                     }
                     actualMedia = arrMedias[previousIndex];                    
                     media.setAttribute("src", actualMedia);
+                    //que si le type de media qui était affcihé avant etait le meme
+
                     closeLightbox.remove();
-                    nextLightbox.remove();
-                    prevLightbox.remove();
-                    media.click();
+                    // nextLightbox.remove();
+                    // prevLightbox.remove();
+                    // media.click();
 
                 };
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
                 nextLightbox.addEventListener('click', (next));
-
-                document.addEventListener('keydown', (e) => {
-                    if (e.key=="ArrowRight") {
-                       next();
-                    }
-                });
 
                 function next() {
                     if (arrMedias.indexOf(actualMedia) === (arrMedias.length)-1) {
@@ -205,11 +202,12 @@ function MediasGalleryPageFactory(data) {
                         nextIndex = arrMedias.indexOf(actualMedia) + 1;
                     }
                     actualMedia = arrMedias[nextIndex];
+                    console.log(actualMedia);
                     media.setAttribute("src", actualMedia);
                     closeLightbox.remove();
-                    nextLightbox.remove();
-                    prevLightbox.remove();
-                    media.click();
+                    // nextLightbox.remove();
+                    // prevLightbox.remove();
+                    // media.click();
                 };
 
 
@@ -237,6 +235,14 @@ function MediasGalleryPageFactory(data) {
                 newSelect.click();
                 newSelect.click();
             }
+
+             document.addEventListener('keyup', (e) => {
+                 if (e.key=="ArrowRight") {
+                    next();
+                 }
+             });
+
+
         });
         
         return (lightbox);
