@@ -39,27 +39,35 @@
     }
 }
 
-
 .custom-select {
     color:white;
     width: 170px;
     height:150px;
     z-index: 2;
+
 }
 /* On masque le select basique */
 .custom-select select{
     display: none;
 }
 
-.new-select {
-    background-color:#901C1C;
-    position:relative;
-    padding: 14px;
+.custom-select-global {
+    background-color: #901C1C;
+    justify-content: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.new-select {
+    background-color:#901C1C;
+    position:relative;
+    padding: 14px;
     font-weight: 700;
+    /* width: 80%; */
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .new-select.active {
@@ -86,14 +94,17 @@
 }
 
 .select-items {
-    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .select-items div {
+
+    width: 80%;
     background-color:#901C1C;
     padding:14px;
     height:33%;
-    border-top: 2px solid white;
+    border-top: 1px solid white;
     cursor: pointer;
 }
 

@@ -1,5 +1,7 @@
 //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)
 const selectDiv = document.querySelector('.custom-select');
+
+constSelectDivGlobal = document.querySelector('.custom-select-global');
 // on recupere le select (caché en display none car pas joli)
 const selectElt = document.querySelector('select');
 
@@ -12,7 +14,7 @@ newSelect.classList.add('new-select');
 newSelect.innerHTML = selectElt.options[selectElt.selectedIndex].innerHTML;
 
 // on cree l'element dans le DOM
-selectDiv.appendChild(newSelect);
+constSelectDivGlobal.appendChild(newSelect);
 
 // on cree le menu deroulant
 const newMenu = document.createElement('div');
@@ -49,7 +51,7 @@ for (let option of selectElt.options) {
 }
 
 // on affiche le menu
-selectDiv.appendChild(newMenu);
+constSelectDivGlobal.appendChild(newMenu);
 
 // on ajoute l'écouteur d'evenement click sur newSelect
 
