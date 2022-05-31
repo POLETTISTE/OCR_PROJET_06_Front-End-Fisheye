@@ -15,7 +15,7 @@ body {
 }
 
 
-header {
+#header-main-page {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -24,19 +24,19 @@ header {
 }
 
 @media screen and (max-width: 767px){
-    header {
+    #header-main-page {
         flex-direction: column;
         margin-top:20px;
     }
 }
 
-header > h1 {
+#header-main-page > h1 {
 
     margin-right: 100px;
     color: #901C1C;
 }
 @media screen and (max-width: 768px) {
-    header > h1 {
+    #header-main-page > h1 {
         margin:0;
         font-size: 20px;
     }
