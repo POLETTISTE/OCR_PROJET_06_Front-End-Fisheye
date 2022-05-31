@@ -60,7 +60,7 @@ newSelect.addEventListener("click", FilteringMedias)
 function FilteringMedias(e) {
     // on empeche la propagation du click
     e.stopPropagation();
-
+    arrMedias = [];
     newSelectValue = newSelect.textContent;
     
     switch (newSelectValue) {

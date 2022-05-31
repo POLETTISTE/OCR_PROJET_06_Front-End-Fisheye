@@ -146,6 +146,8 @@ function MediasGalleryPageFactory(data) {
             let actualMedia = media.getAttribute('src');
             let previousIndex;
             let nextIndex;
+            let typeOfOld;
+            let typeOfNew;
 
             media.addEventListener("click", () => {
                 lightbox.classList.add('active');
@@ -167,17 +169,65 @@ function MediasGalleryPageFactory(data) {
 
 
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
-                prevLightbox.addEventListener('click', (previous));
+                prevLightbox.addEventListener('click', (previousArrow));
 
-                    function previous() {
+                    function previousArrow() {
                     if (arrMedias.indexOf(actualMedia) === 0) {
                         previousIndex = ((arrMedias.length) -1);
+
                     }else {
                         previousIndex = arrMedias.indexOf(actualMedia) - 1;
                     }
-                    actualMedia = arrMedias[previousIndex];    
+                    console.log(previousIndex);
+                    "AFFICHE NUMERO INDEX DU NEW" 
+
+                    previousMedia = arrMedias[previousIndex]; 
+
+                    console.log(previousMedia);
+                    "AFFICHE LA SOURCE DU NEW"
+
                     console.log(actualMedia);
-                
+                    "AFFICHE LA SOURCE DU OLD"
+
+                    typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
+                    typeOfOld = typeOfOld.split(".");
+                    typeOfOld = typeOfOld[typeOfOld.length-1];            
+                    console.log(typeOfOld);
+                    "AFFICHE TYPE DE MEDIA OLD"
+
+                    typeOfNew = arrMedias[arrMedias.indexOf(actualMedia)-1]
+                    typeOfNew = typeOfNew.split(".");
+                    typeOfNew = typeOfNew[typeOfNew.length-1]
+                    console.log(typeOfNew);
+                    "AFFICHE TYPE DE MEDIA NEW"
+
+
+
+                    if ( typeOfOld === 'jpg' && typeOfNew ==='jpg' ) {
+                        // actualMedia = arrMedias[previousIndex];    
+                        console.log(`actualMedia is ` + actualMedia);
+                        console.log(`previousMedia is` + previousMedia);
+                        console.log(`typeOfOld is ` + typeOfOld);
+
+                    }else if (typeOfOld === 'jpg' && typeOfNew === 'mp4') {
+                        // actualMedia = arrMedias[previousIndex];    
+
+                        console.log('build element video and delete img')
+                    }else if (typeOfOld ==='mp4' && typeOfNew === 'jpg') {
+                        // actualMedia = arrMedias[previousIndex];    
+
+                        console.log('build img and delete video')
+                    }else if (typeOfOld ==='mp4' && typeOfNew==='mp4') {
+                        // actualMedia = arrMedias[previousIndex];    
+
+                        console.log('change src');
+                    }
+                    
+
+                    
+
+
+
                     media.setAttribute("src", actualMedia);
                     //que si le type de media qui était affcihé avant etait le meme
 
@@ -189,9 +239,9 @@ function MediasGalleryPageFactory(data) {
                 };
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
-                nextLightbox.addEventListener('click', (next));
+                nextLightbox.addEventListener('click', (nextArrow));
 
-                function next() {
+                function nextArrow() {
                     if (arrMedias.indexOf(actualMedia) === (arrMedias.length)-1) {
                         nextIndex = 0;
                     }else {
