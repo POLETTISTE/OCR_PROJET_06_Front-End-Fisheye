@@ -144,10 +144,9 @@ function MediasGalleryPageFactory(data) {
             let img = document.createElement('div');
             let vid = document.createElement('div');
             let actualMedia = media.getAttribute('src');
-            let previousIndex;
-            let nextIndex;
+            let oldIndex;
             let typeOfOld;
-            let typeOfNew;
+            let typeOfActual;
 
             media.addEventListener("click", () => {
                 lightbox.classList.add('active');
@@ -171,71 +170,56 @@ function MediasGalleryPageFactory(data) {
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', (previousArrow));
 
-                    function previousArrow() {
+                function previousArrow() {
                     if (arrMedias.indexOf(actualMedia) === 0) {
-                        previousIndex = ((arrMedias.length) -1);
-
+                        oldIndex = ((arrMedias.length) -1);
+                        
                     }else {
-                        previousIndex = arrMedias.indexOf(actualMedia) - 1;
+                        oldIndex = arrMedias.indexOf(actualMedia) - 1;
                     }
-                    console.log(previousIndex);
-                    "AFFICHE NUMERO INDEX DU NEW" 
-
-                    previousMedia = arrMedias[previousIndex]; 
-
-                    console.log(previousMedia);
-                    "AFFICHE LA SOURCE DU NEW"
-
-                    console.log(actualMedia);
-                    "AFFICHE LA SOURCE DU OLD"
+                    
+                    newMedia = arrMedias[oldIndex]; 
 
                     typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
                     typeOfOld = typeOfOld.split(".");
                     typeOfOld = typeOfOld[typeOfOld.length-1];            
-                    console.log(typeOfOld);
-                    "AFFICHE TYPE DE MEDIA OLD"
 
-                    typeOfNew = arrMedias[arrMedias.indexOf(actualMedia)-1]
-                    typeOfNew = typeOfNew.split(".");
-                    typeOfNew = typeOfNew[typeOfNew.length-1]
-                    console.log(typeOfNew);
-                    "AFFICHE TYPE DE MEDIA NEW"
+                    typeOfActual = arrMedias[arrMedias.indexOf(newMedia)]
+                    typeOfActual = typeOfActual.split(".");
+                    typeOfActual = typeOfActual[typeOfActual.length-1]
 
+                    if ( typeOfOld === 'jpg' && typeOfActual ==='jpg' ) {
+                        // console.log("CHANGER LA SOURCE DE L'IMAGE D'AVANT PAR LA SOURCE DE LA NOUVELLE IMAGE");
+                        actualMedia = arrMedias[oldIndex];    
+                        img.src = actualMedia; 
 
+                    }else if (typeOfOld === 'jpg' && typeOfActual === 'mp4') {
 
-                    if ( typeOfOld === 'jpg' && typeOfNew ==='jpg' ) {
-                        // actualMedia = arrMedias[previousIndex];    
-                        console.log(`actualMedia is ` + actualMedia);
-                        console.log(`previousMedia is` + previousMedia);
-                        console.log(`typeOfOld is ` + typeOfOld);
+                        // console.log('SUPPRIMER IMAGE ET CONSTRUIRE VIDEO')
+                        actualMedia = arrMedias[oldIndex];  
+                        lightboxContainer.replaceChild(document.createElement("video"), img); 
+                        vid = document.querySelector("#lightbox > div > video");
+                        vid.controls = true;
+                        vid.classList.add('media-lightbox');
+                        vid.src = actualMedia;
+                        img.remove();
+                        // console.log("VIDEO CREEE")
 
-                    }else if (typeOfOld === 'jpg' && typeOfNew === 'mp4') {
-                        // actualMedia = arrMedias[previousIndex];    
+                    }else if (typeOfOld ==='mp4' && typeOfActual === 'jpg') {
+                        // console.log('SUPPRIMER VIDEO ET CONSTRUIRE IMAGE')
+                        actualMedia = arrMedias[oldIndex];  
+                        lightboxContainer.replaceChild(document.createElement("img"), vid); 
+                        img = document.querySelector("#lightbox > div > img");
+                        img.classList.add('media-lightbox');
+                        img.src = actualMedia;
+                        vid.remove();
+                        // console.log("IMAGE CREEE")
 
-                        console.log('build element video and delete img')
-                    }else if (typeOfOld ==='mp4' && typeOfNew === 'jpg') {
-                        // actualMedia = arrMedias[previousIndex];    
-
-                        console.log('build img and delete video')
-                    }else if (typeOfOld ==='mp4' && typeOfNew==='mp4') {
-                        // actualMedia = arrMedias[previousIndex];    
-
-                        console.log('change src');
+                    }else if (typeOfOld ==='mp4' && typeOfActual==='mp4') {
+                        // console.log("CHANGER LA SOURCE DE LA VIDEO D'AVANT PAR LA SOURCE DE LA NOUVELLE VIDEO");
+                        actualMedia = arrMedias[oldIndex];    
+                        vid.src = actualMedia; 
                     }
-                    
-
-                    
-
-
-
-                    media.setAttribute("src", actualMedia);
-                    //que si le type de media qui était affcihé avant etait le meme
-
-                    // closeLightbox.remove();
-                    // nextLightbox.remove();
-                    // prevLightbox.remove();
-                    // media.click();
-
                 };
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
@@ -243,17 +227,56 @@ function MediasGalleryPageFactory(data) {
 
                 function nextArrow() {
                     if (arrMedias.indexOf(actualMedia) === (arrMedias.length)-1) {
-                        nextIndex = 0;
+                        oldIndex = 0;
                     }else {
-                        nextIndex = arrMedias.indexOf(actualMedia) + 1;
+                        oldIndex = arrMedias.indexOf(actualMedia) + 1;
                     }
-                    actualMedia = arrMedias[nextIndex];
-                    console.log(actualMedia);
-                    media.setAttribute("src", actualMedia);
-                    // closeLightbox.remove();
-                    // nextLightbox.remove();
-                    // prevLightbox.remove();
-                    // media.click();
+                    
+                    newMedia = arrMedias[oldIndex]; 
+
+                    typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
+                    typeOfOld = typeOfOld.split(".");
+                    typeOfOld = typeOfOld[typeOfOld.length-1];            
+
+                    typeOfActual = arrMedias[arrMedias.indexOf(newMedia)]
+                    typeOfActual = typeOfActual.split(".");
+                    typeOfActual = typeOfActual[typeOfActual.length-1]
+
+                    if ( typeOfOld === 'jpg' && typeOfActual ==='jpg' ) {
+                        // console.log("CHANGER LA SOURCE DE L'IMAGE D'AVANT PAR LA SOURCE DE LA NOUVELLE IMAGE");
+                        actualMedia = arrMedias[oldIndex];    
+                        img.src = actualMedia; 
+
+                    }else if (typeOfOld === 'jpg' && typeOfActual === 'mp4') {
+
+                        // console.log('SUPPRIMER IMAGE ET CONSTRUIRE VIDEO')
+                        actualMedia = arrMedias[oldIndex];  
+                        lightboxContainer.replaceChild(document.createElement("video"), img); 
+                        vid = document.querySelector("#lightbox > div > video");
+                        vid.controls = true;
+                        vid.classList.add('media-lightbox');
+                        vid.src = actualMedia;
+                        img.remove();
+                        // console.log("VIDEO CREEE")
+
+                    }else if (typeOfOld ==='mp4' && typeOfActual === 'jpg') {
+                        // console.log('SUPPRIMER VIDEO ET CONSTRUIRE IMAGE')
+                        actualMedia = arrMedias[oldIndex];  
+                        lightboxContainer.replaceChild(document.createElement("img"), vid); 
+                        img = document.querySelector("#lightbox > div > img");
+                        img.classList.add('media-lightbox');
+                        img.src = actualMedia;
+                        vid.remove();
+                        // console.log("IMAGE CREEE")
+
+                    }else if (typeOfOld ==='mp4' && typeOfActual==='mp4') {
+                        // console.log("CHANGER LA SOURCE DE LA VIDEO D'AVANT PAR LA SOURCE DE LA NOUVELLE VIDEO");
+                        actualMedia = arrMedias[oldIndex];    
+                        vid.src = actualMedia; 
+                    }
+                    
+
+
                 };
 
 
@@ -275,6 +298,8 @@ function MediasGalleryPageFactory(data) {
                 lightboxContainer.appendChild(nextLightbox);
                 lightboxContainer.appendChild(closeLightbox);
             })
+            
+
             closeTheLightBox = () => {
                 lightbox.classList.remove('active');
                 lightbox.innerHTML="";
