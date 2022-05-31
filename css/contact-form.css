@@ -68,16 +68,13 @@
     }
 }
 
-#modal header {
+#modal #header-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
     height: fit-content;
 }
-
-
-
 
 #modal .header-title {
     width:100%;
@@ -91,11 +88,11 @@
     }
 }
 
-#modal header img {
+#modal #header-form img {
     cursor: pointer;
 }
 
-#modal header h2 {
+#modal #header-form h2 {
     font-size: 64px;
     font-weight: normal;
     margin:0;
@@ -103,7 +100,7 @@
 }
 
 @media all and (max-width:767px) {
-    #modal header h2 {
+    #modal #header-form h2 {
         line-height: normal;
         display: flex;
         justify-content: left;

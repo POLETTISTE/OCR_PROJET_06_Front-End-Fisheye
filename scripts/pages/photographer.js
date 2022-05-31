@@ -39,7 +39,7 @@ async function getPhotographerId() {
 
 async function displayNamePhotographerContactForm(photographers) {
 
-    const photographerNameForm = document.querySelector("#contact_modal > div > header");
+    const photographerNameForm = document.querySelector("#contact_modal > div > #header-form");
 
     photographers.forEach((photographer) => {
         const photographerFormContactName = PhotographerGalleryPageFactory(photographer);
