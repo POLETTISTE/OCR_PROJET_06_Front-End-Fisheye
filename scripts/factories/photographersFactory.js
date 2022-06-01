@@ -14,14 +14,14 @@ function PhotographersFactory(data) {
         // CONSTRUCTION CARD PHOTOGRAPHE LIEN VERS PAGE DEDIEE:
         const avatarPictureAndName = document.createElement ('a');
         avatarPictureAndName.setAttribute('href', `photographer.html?id=${id}`);
-        avatarPictureAndName.setAttribute('aria-label', 'collection des photos du photographe');
+        avatarPictureAndName.setAttribute('aria-label', name);
         avatarPictureAndName.setAttribute('aria-current', 'page');
         avatarPictureAndName.classList.add('photographer__avatar');
 
         // CONSTRUCTION AVATAR PHOTOGRAPHE:
         const img = document.createElement( 'img');
         img.setAttribute("src", picture);
-        img.setAttribute("alt", name);
+        img.setAttribute("alt", " ");
         img.classList.add('photographer__avatar-picture','photographer__avatar-picture-index' );
 
         // CONSTRUCTION NOM PHOTOGRAPHE:

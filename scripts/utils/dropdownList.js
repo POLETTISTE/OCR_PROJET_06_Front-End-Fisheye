@@ -1,10 +1,11 @@
+const inputLabel = (document.querySelector("#filter > h2"));
+
 //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)
 const selectDiv = document.querySelector('.custom-select');
 
 constSelectDivGlobal = document.querySelector('.custom-select-global');
 // on recupere le select (caché en display none car pas joli)
 const selectElt = document.querySelector('select');
-
 
 // on crée le nouveau select (design personnalisé)
 const newSelect = document.createElement('div');
@@ -14,11 +15,18 @@ newSelect.classList.add('new-select');
 newSelect.innerHTML = selectElt.options[selectElt.selectedIndex].innerHTML;
 
 newSelect.setAttribute('tabindex', "0");
-newSelect.setAttribute('role', 'menu');
-newSelect.setAttribute('label', 'tri');
+newSelect.setAttribute('role', 'button');
+newSelect.setAttribute('aria-haspopup', 'listbox');
+newSelect.setAttribute('aria-expanded', 'false');
+newSelect.setAttribute('label', newSelect.textContent);
+inputLabel.setAttribute('role', newSelect.textContent);
+newSelect.addEventListener('keydown', (e) => {
+    if (e.key=="Enter") {
+       newSelect.click();
+    }
+});
 
-newSelect.setAttribute('aria-haspopup', 'true');
-
+inputLabel.setAttribute('role', newSelect.textContent);
 
 
 // on cree l'element dans le DOM
@@ -29,15 +37,25 @@ const newMenu = document.createElement('div');
 newMenu.classList.add("select-items", "select-hide");
 
 // on va boucler sur toutes les options dans le select et les copier dans la div
-let number=0;
 for (let option of selectElt.options) {
     // on cree une div pour cette option
     const newOption = document.createElement("div");
+    newOption.addEventListener('keydown', (e) => {
+        if (e.key=="Enter") {
+           newOption.click();
+        }
+    });
+    
+
 
     // on copie le contenu de l'option
     newOption.innerHTML = option.innerHTML;
-    newOption.setAttribute('role', 'menu-item');
-    newOption.setAttribute('tabindex', "-1");
+    newOption.setAttribute('role', 'listbox');
+    newOption.setAttribute('label', newOption.textContent);
+    newOption.setAttribute('aria-activedescendant',newOption.textContent);
+    newOption.setAttribute('aria-selected',newOption.textContent);
+    newOption.setAttribute('aria-labelledBy',newOption.textContent);
+    newOption.setAttribute('tabindex', "0");
 
 
     //on ajoute un écouteur d'evenement click sur l'option
@@ -56,6 +74,7 @@ for (let option of selectElt.options) {
         }
         // on simule un click sur 'newSelect'
         newSelect.click();
+        
 
     });
 
@@ -127,6 +146,10 @@ function FilteringMedias(e) {
         newSelect.setAttribute('aria-expanded', 'true');
     }else{
         newSelect.setAttribute('aria-expanded', 'false');
+        newSelect.setAttribute('label', newSelect.textContent);
+        inputLabel.setAttribute('role', newSelect.textContent);
+
+
     };
 
 }

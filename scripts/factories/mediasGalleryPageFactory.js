@@ -7,6 +7,7 @@ function MediasGalleryPageFactory(data) {
     // DEFINITION DES VARIABLES GLOBALES
     const mediaImage = `assets/images/${photographerId}/${image}`;
     const mediaVideo = `assets/images/${photographerId}/${video}`;
+    const mediaTitle = title;
     let img = document.createElement('div');
     let vid = document.createElement('div');
     let totalOfLikes;
@@ -37,11 +38,15 @@ function MediasGalleryPageFactory(data) {
 
             img = document.createElement('img');
             img.setAttribute("src", mediaImage);
-            img.setAttribute("alt",'photo de la gallerie du photographe');
+            img.setAttribute("aria-label",`${title}, closeup view`);
             img.setAttribute('tabindex', "0");
+            img.setAttribute('role', "image link");
+
             img.classList.add('media-element');
             img.classList.add('image-card');
             arrMedias.push(mediaImage);
+            arrMediasTitle.push(mediaTitle);
+
 
             img.addEventListener('keydown', (e) => {
                 if (e.key=="Enter") {
@@ -54,11 +59,15 @@ function MediasGalleryPageFactory(data) {
 
             vid = document.createElement('video');
             vid.setAttribute("src", mediaVideo);
+            vid.setAttribute("aria-label",`${title}, closeup view`);
             vid.setAttribute('type', "video/mp4");
             vid.setAttribute('tabindex', "0");
+            vid.setAttribute('role', "image link");
             vid.classList.add('media-element');
             vid.classList.add('video-card');
             arrMedias.push(mediaVideo);
+            arrMediasTitle.push(mediaTitle);
+
 
             vid.addEventListener('keydown', (e) => {
                 if (e.key=="Enter") {
@@ -74,11 +83,14 @@ function MediasGalleryPageFactory(data) {
         const imgTitle = document.createElement('h2');
         imgTitle.textContent = title;
         imgTitle.classList.add('media-title');
+        imgTitle.setAttribute('role', 'text');
 
         const imgLikes = document.createElement('h3');
         imgLikes.textContent = likes;
         imgLikes.classList.add('media-likes');
+        imgLikes.setAttribute('role', 'image');
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
+        imgLikes.setAttribute('aria-label', 'likes');
         
         // ELEMENTS D'ASSEMBLAGE
         article.appendChild(img);
@@ -112,6 +124,9 @@ function MediasGalleryPageFactory(data) {
 
         const lightboxContainer= document.createElement('div');
         lightboxContainer.classList.add('lightbox__container');
+        lightboxContainer.setAttribute('role', 'dialog');
+
+
         
         // CREATION BOUTON FERMER:
         const closeLightbox = document.createElement('div');
@@ -158,13 +173,13 @@ function MediasGalleryPageFactory(data) {
 
             media.addEventListener("click", () => {
                 lightbox.classList.add('active');
-
-
+                
                 // SI LE MEDIA A LA CLASS IMAGE-CARD:
                 if(media.classList=="media-element image-card") {
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
-                    img.src = actualMedia;    
+                    img.src = actualMedia;
+
  
                   // SI L'IMAGE A LA CLASSE VIDEO-CARD
                 } else if (media.classList=="media-element video-card") {
@@ -194,6 +209,9 @@ function MediasGalleryPageFactory(data) {
                     }
                     
                     newMedia = arrMedias[oldIndex]; 
+                    newMediaTitle = arrMediasTitle[oldIndex];
+                    console.log(newMediaTitle);
+
 
                     typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
                     typeOfOld = typeOfOld.split(".");
@@ -206,6 +224,8 @@ function MediasGalleryPageFactory(data) {
                     if ( typeOfOld === 'jpg' && typeOfActual ==='jpg' ) {
                         actualMedia = arrMedias[oldIndex];    
                         img.src = actualMedia; 
+                        img.setAttribute('aria-label', newMediaTitle);
+
 
                     }else if (typeOfOld === 'jpg' && typeOfActual === 'mp4') {
 
@@ -215,6 +235,8 @@ function MediasGalleryPageFactory(data) {
                         vid.controls = true;
                         vid.classList.add('media-lightbox');
                         vid.src = actualMedia;
+                        vid.setAttribute('aria-label', newMediaTitle);
+
                         img.remove();
 
                     }else if (typeOfOld ==='mp4' && typeOfActual === 'jpg') {
@@ -222,13 +244,17 @@ function MediasGalleryPageFactory(data) {
                         lightboxContainer.replaceChild(document.createElement("img"), vid); 
                         img = document.querySelector("#lightbox > div > img");
                         img.classList.add('media-lightbox');
+                        img.setAttribute('aria-label', newMediaTitle);
                         img.src = actualMedia;
                         vid.remove();
 
                     }else if (typeOfOld ==='mp4' && typeOfActual==='mp4') {
                         actualMedia = arrMedias[oldIndex];    
+                        vid.setAttribute('aria-label', newMediaTitle);
                         vid.src = actualMedia; 
+
                     }
+                    
                 };
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
@@ -248,6 +274,8 @@ function MediasGalleryPageFactory(data) {
                     }
                     
                     newMedia = arrMedias[oldIndex]; 
+                    newMediaTitle = arrMediasTitle[oldIndex];
+
 
                     typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
                     typeOfOld = typeOfOld.split(".");
@@ -260,14 +288,19 @@ function MediasGalleryPageFactory(data) {
                     if ( typeOfOld === 'jpg' && typeOfActual ==='jpg' ) {
                         actualMedia = arrMedias[oldIndex];    
                         img.src = actualMedia; 
+                        img.setAttribute('aria-label', newMediaTitle);
+
 
                     }else if (typeOfOld === 'jpg' && typeOfActual === 'mp4') {
+
                         actualMedia = arrMedias[oldIndex];  
                         lightboxContainer.replaceChild(document.createElement("video"), img); 
                         vid = document.querySelector("#lightbox > div > video");
                         vid.controls = true;
                         vid.classList.add('media-lightbox');
                         vid.src = actualMedia;
+                        vid.setAttribute('aria-label', newMediaTitle);
+
                         img.remove();
 
                     }else if (typeOfOld ==='mp4' && typeOfActual === 'jpg') {
@@ -275,12 +308,15 @@ function MediasGalleryPageFactory(data) {
                         lightboxContainer.replaceChild(document.createElement("img"), vid); 
                         img = document.querySelector("#lightbox > div > img");
                         img.classList.add('media-lightbox');
+                        img.setAttribute('aria-label', newMediaTitle);
                         img.src = actualMedia;
                         vid.remove();
 
                     }else if (typeOfOld ==='mp4' && typeOfActual==='mp4') {
                         actualMedia = arrMedias[oldIndex];    
+                        vid.setAttribute('aria-label', newMediaTitle);
                         vid.src = actualMedia; 
+
                     }
                 };
 

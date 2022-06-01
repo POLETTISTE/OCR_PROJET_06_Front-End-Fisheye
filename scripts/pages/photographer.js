@@ -8,6 +8,7 @@ let clickedLikes=0;
 let previousButton;
 let nextButton;
 let arrMedias = [];
+let arrMediasTitle= [];
 
 
 async function getPhotographerId() {
@@ -133,6 +134,7 @@ function addLikes() {
                 countOfLikePerPicture = countOfLikePerPicture.toString();
                 mediasInfo.innerHTML ="";
                 medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
+
                 alreadyLiked=true;
                 clickedLikes += 1;
                 
