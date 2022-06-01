@@ -32,6 +32,7 @@ function PhotographersFactory(data) {
         // CONSTRUCTION DIV INFORMATIONS PHOTOGRAPHE:
         const infos = document.createElement ('div');
         infos.classList.add('photographer__infos');
+        infos.setAttribute('role',"contentinfo");
 
         // CONSTRUCTION INFORMATIONS VILLE + PAYS PHOTOGRAPHE
         const paragraphCityCountry = document.createElement('p');

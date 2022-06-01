@@ -13,6 +13,14 @@ newSelect.classList.add('new-select');
 // on lui donne le contenu de l'option actuellement choisie dans le select
 newSelect.innerHTML = selectElt.options[selectElt.selectedIndex].innerHTML;
 
+newSelect.setAttribute('tabindex', "0");
+newSelect.setAttribute('role', 'menu');
+newSelect.setAttribute('label', 'tri');
+
+newSelect.setAttribute('aria-haspopup', 'true');
+
+
+
 // on cree l'element dans le DOM
 constSelectDivGlobal.appendChild(newSelect);
 
@@ -21,12 +29,16 @@ const newMenu = document.createElement('div');
 newMenu.classList.add("select-items", "select-hide");
 
 // on va boucler sur toutes les options dans le select et les copier dans la div
+let number=0;
 for (let option of selectElt.options) {
     // on cree une div pour cette option
     const newOption = document.createElement("div");
-    
+
     // on copie le contenu de l'option
     newOption.innerHTML = option.innerHTML;
+    newOption.setAttribute('role', 'menu-item');
+    newOption.setAttribute('tabindex', "-1");
+
 
     //on ajoute un écouteur d'evenement click sur l'option
     newOption.addEventListener('click', function() {
@@ -44,6 +56,7 @@ for (let option of selectElt.options) {
         }
         // on simule un click sur 'newSelect'
         newSelect.click();
+
     });
 
     //on ajoute l'option dans le newMenu
@@ -110,6 +123,11 @@ function FilteringMedias(e) {
     //on ajoute la classe active à newSelect(change le sens du chevron)
     newSelect.classList.toggle("active");
     selectDiv.classList.toggle("active");
+    if (newSelect.classList.contains('active')){
+        newSelect.setAttribute('aria-expanded', 'true');
+    }else{
+        newSelect.setAttribute('aria-expanded', 'false');
+    };
 
 }
 

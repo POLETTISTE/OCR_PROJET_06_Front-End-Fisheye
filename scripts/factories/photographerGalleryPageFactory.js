@@ -15,6 +15,7 @@ function PhotographerGalleryPageFactory(data) {
         // HEADER LEFT:
         const headerLeft = document.createElement ('div');
         headerLeft.classList.add('photographer-introduction');
+        headerLeft.setAttribute('role',"contentinfo");
         const headerLeftName = document.createElement('h1');
         headerLeftName.classList.add('photographer-name');
         headerLeftName.textContent = name;

@@ -38,26 +38,34 @@ function MediasGalleryPageFactory(data) {
             img = document.createElement('img');
             img.setAttribute("src", mediaImage);
             img.setAttribute("alt",'photo de la gallerie du photographe');
+            img.setAttribute('tabindex', "0");
             img.classList.add('media-element');
             img.classList.add('image-card');
-
             arrMedias.push(mediaImage);
+
+            img.addEventListener('keydown', (e) => {
+                if (e.key=="Enter") {
+                   img.click();
+                }
+            });
+
             
         }else if(data.hasOwnProperty('video')){
 
             vid = document.createElement('video');
             vid.setAttribute("src", mediaVideo);
             vid.setAttribute('type', "video/mp4");
+            vid.setAttribute('tabindex', "0");
             vid.classList.add('media-element');
             vid.classList.add('video-card');
-
             arrMedias.push(mediaVideo);
 
-
-        }else{ 
-
-            console.log('error in function getMediasOfPhotographer()')
-        };
+            vid.addEventListener('keydown', (e) => {
+                if (e.key=="Enter") {
+                   vid.click();
+                };
+            });
+        }
 
         // AFFICHAGE INFOS CARD MEDIAS 
         const imgInfos = document.createElement('div');
@@ -134,7 +142,7 @@ function MediasGalleryPageFactory(data) {
         };
 
         // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
-        lightbox.addEventListener('click', function(e) { if (e.target === e.currentTarget) return closeTheLightBox()});
+        // lightbox.addEventListener('click', function(e) { if (e.target === e.currentTarget) return closeTheLightBox()});
 
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
         const mediasGallery = document.querySelectorAll('.media-element');
@@ -169,11 +177,13 @@ function MediasGalleryPageFactory(data) {
 
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', (previousArrow));
+                
                 document.addEventListener('keydown', (e) => {
-                    if (e.key=="ArrowRight") {
-                       nextArrow();
+                    if (e.key=="ArrowLeft") {
+                       previousArrow();
                     }
                 });
+
    
                 function previousArrow() {
                     if (arrMedias.indexOf(actualMedia) === 0) {
@@ -224,10 +234,11 @@ function MediasGalleryPageFactory(data) {
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
                 nextLightbox.addEventListener('click', (nextArrow));
                 document.addEventListener('keydown', (e) => {
-                    if (e.key=="ArrowLeft") {
-                       previousArrow();
+                    if (e.key=="ArrowRight") {
+                       nextArrow();
                     }
                 });
+
 
                 function nextArrow() {
                     if (arrMedias.indexOf(actualMedia) === (arrMedias.length)-1) {
