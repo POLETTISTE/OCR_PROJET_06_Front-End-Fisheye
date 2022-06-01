@@ -179,6 +179,10 @@ function MediasGalleryPageFactory(data) {
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = actualMedia;
+                    img.setAttribute('aria-label', media.getAttribute('aria-label'));
+                    lightboxContainer.setAttribute('aria-label', media.getAttribute('aria-label'));
+
+                    
 
  
                   // SI L'IMAGE A LA CLASSE VIDEO-CARD
@@ -187,6 +191,9 @@ function MediasGalleryPageFactory(data) {
                     vid.controls = true;
                     vid.classList.add('media-lightbox');
                     vid.src = actualMedia;
+                    vid.setAttribute('aria-label', media.getAttribute('aria-label'));
+                    lightboxContainer.setAttribute('aria-label', media.getAttribute('aria-label'));
+
                 };
 
 
@@ -224,7 +231,8 @@ function MediasGalleryPageFactory(data) {
                     if ( typeOfOld === 'jpg' && typeOfActual ==='jpg' ) {
                         actualMedia = arrMedias[oldIndex];    
                         img.src = actualMedia; 
-                        img.setAttribute('aria-label', newMediaTitle);
+                        img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
 
 
                     }else if (typeOfOld === 'jpg' && typeOfActual === 'mp4') {
@@ -235,7 +243,8 @@ function MediasGalleryPageFactory(data) {
                         vid.controls = true;
                         vid.classList.add('media-lightbox');
                         vid.src = actualMedia;
-                        vid.setAttribute('aria-label', newMediaTitle);
+                        vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
 
                         img.remove();
 
@@ -244,14 +253,18 @@ function MediasGalleryPageFactory(data) {
                         lightboxContainer.replaceChild(document.createElement("img"), vid); 
                         img = document.querySelector("#lightbox > div > img");
                         img.classList.add('media-lightbox');
-                        img.setAttribute('aria-label', newMediaTitle);
+                        img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         img.src = actualMedia;
+                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+
                         vid.remove();
 
                     }else if (typeOfOld ==='mp4' && typeOfActual==='mp4') {
                         actualMedia = arrMedias[oldIndex];    
-                        vid.setAttribute('aria-label', newMediaTitle);
+                        vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         vid.src = actualMedia; 
+                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+
 
                     }
                     
@@ -288,7 +301,8 @@ function MediasGalleryPageFactory(data) {
                     if ( typeOfOld === 'jpg' && typeOfActual ==='jpg' ) {
                         actualMedia = arrMedias[oldIndex];    
                         img.src = actualMedia; 
-                        img.setAttribute('aria-label', newMediaTitle);
+                        img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
 
 
                     }else if (typeOfOld === 'jpg' && typeOfActual === 'mp4') {
@@ -299,7 +313,8 @@ function MediasGalleryPageFactory(data) {
                         vid.controls = true;
                         vid.classList.add('media-lightbox');
                         vid.src = actualMedia;
-                        vid.setAttribute('aria-label', newMediaTitle);
+                        vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
 
                         img.remove();
 
@@ -308,14 +323,17 @@ function MediasGalleryPageFactory(data) {
                         lightboxContainer.replaceChild(document.createElement("img"), vid); 
                         img = document.querySelector("#lightbox > div > img");
                         img.classList.add('media-lightbox');
-                        img.setAttribute('aria-label', newMediaTitle);
+                        img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         img.src = actualMedia;
+                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+
                         vid.remove();
 
                     }else if (typeOfOld ==='mp4' && typeOfActual==='mp4') {
                         actualMedia = arrMedias[oldIndex];    
-                        vid.setAttribute('aria-label', newMediaTitle);
+                        vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         vid.src = actualMedia; 
+                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
 
                     }
                 };
