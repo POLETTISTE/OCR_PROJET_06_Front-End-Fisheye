@@ -38,6 +38,13 @@
     position:relative;
 }
 
+.lightbox__container-media-title p{
+    font-size: 24px;
+    color:#901C1C;
+    width:75%;
+    text-align: left;
+}
+
 
 
 .media-lightbox {
