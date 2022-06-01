@@ -126,7 +126,11 @@ function MediasGalleryPageFactory(data) {
         lightboxContainer.classList.add('lightbox__container');
         lightboxContainer.setAttribute('role', 'dialog');
 
+        // CREATION DIV QUI ENGLOBE MEDIA ET TITRE DU MEDIA
 
+        const lightboxContainerMediaAndTitle = document.createElement('div');
+        lightboxContainerMediaAndTitle.classList.add('lightbox__container-media-title');
+        lightboxContainerMediaAndTitle.setAttribute('role', 'dialog');
         
         // CREATION BOUTON FERMER:
         const closeLightbox = document.createElement('div');
@@ -156,9 +160,6 @@ function MediasGalleryPageFactory(data) {
             }
         };
 
-        // EVENEMENT AU CLIC SUR LA ZONE AUTOUR DE L'IMAGE -> FERMETURE DE LA LIGHTBOX
-        // lightbox.addEventListener('click', function(e) { if (e.target === e.currentTarget) return closeTheLightBox()});
-
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
         const mediasGallery = document.querySelectorAll('.media-element');
 
@@ -166,6 +167,7 @@ function MediasGalleryPageFactory(data) {
         mediasGallery.forEach(media => {
             let img = document.createElement('div');
             let vid = document.createElement('div');
+            let titleMedia = document.createElement('p');
             let actualMedia = media.getAttribute('src');
             let oldIndex;
             let typeOfOld;
@@ -179,9 +181,11 @@ function MediasGalleryPageFactory(data) {
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = actualMedia;
+                    img.setAttribute('role', 'image');
                     img.setAttribute('aria-label', media.getAttribute('aria-label'));
                     lightboxContainer.setAttribute('aria-label', media.getAttribute('aria-label'));
-
+                    titleMedia = document.createElement('p');
+                    titleMedia.textContent=media.getAttribute('aria-label');
                     
 
  
@@ -191,6 +195,7 @@ function MediasGalleryPageFactory(data) {
                     vid.controls = true;
                     vid.classList.add('media-lightbox');
                     vid.src = actualMedia;
+                    img.setAttribute('role', 'image');
                     vid.setAttribute('aria-label', media.getAttribute('aria-label'));
                     lightboxContainer.setAttribute('aria-label', media.getAttribute('aria-label'));
 
@@ -233,6 +238,7 @@ function MediasGalleryPageFactory(data) {
                         img.src = actualMedia; 
                         img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        titleMedia.textContent = newMediaTitle;
 
 
                     }else if (typeOfOld === 'jpg' && typeOfActual === 'mp4') {
@@ -245,6 +251,7 @@ function MediasGalleryPageFactory(data) {
                         vid.src = actualMedia;
                         vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        titleMedia.textContent = newMediaTitle;
 
                         img.remove();
 
@@ -256,6 +263,7 @@ function MediasGalleryPageFactory(data) {
                         img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         img.src = actualMedia;
                         lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        titleMedia.textContent = newMediaTitle;
 
                         vid.remove();
 
@@ -264,6 +272,7 @@ function MediasGalleryPageFactory(data) {
                         vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         vid.src = actualMedia; 
                         lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        titleMedia.textContent = newMediaTitle;
 
 
                     }
@@ -303,6 +312,7 @@ function MediasGalleryPageFactory(data) {
                         img.src = actualMedia; 
                         img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        titleMedia.textContent = newMediaTitle;
 
 
                     }else if (typeOfOld === 'jpg' && typeOfActual === 'mp4') {
@@ -315,6 +325,7 @@ function MediasGalleryPageFactory(data) {
                         vid.src = actualMedia;
                         vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        titleMedia.textContent = newMediaTitle;
 
                         img.remove();
 
@@ -326,6 +337,7 @@ function MediasGalleryPageFactory(data) {
                         img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         img.src = actualMedia;
                         lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        titleMedia.textContent = newMediaTitle;
 
                         vid.remove();
 
@@ -334,6 +346,7 @@ function MediasGalleryPageFactory(data) {
                         vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
                         vid.src = actualMedia; 
                         lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
+                        titleMedia.textContent = newMediaTitle;
 
                     }
                 };
@@ -352,10 +365,13 @@ function MediasGalleryPageFactory(data) {
                 // ELEMENTS D'ASSEMBLAGE
                 lightbox.appendChild(lightboxContainer)
                 lightboxContainer.appendChild(prevLightbox);
-                lightboxContainer.appendChild(img);
-                lightboxContainer.appendChild(vid);
+                lightboxContainer.appendChild(lightboxContainerMediaAndTitle);
+                lightboxContainerMediaAndTitle.appendChild(img);
+                lightboxContainerMediaAndTitle.appendChild(vid);
+                lightboxContainerMediaAndTitle.appendChild(titleMedia);
                 lightboxContainer.appendChild(nextLightbox);
                 lightboxContainer.appendChild(closeLightbox);
+
             })
             
 
