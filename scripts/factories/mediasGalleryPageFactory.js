@@ -12,7 +12,24 @@ function MediasGalleryPageFactory(data) {
     let vid = document.createElement('div');
     let totalOfLikes;
     let mediasLikes;
-        
+    
+    function closeTheLightBox() {
+        lightbox.remove();
+        displayLightbox(medias);
+    };
+
+    // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
+    document.addEventListener('keydown', EscapeLightbox);
+
+    function EscapeLightbox(e) {
+        if(e.key === "Escape") {
+            e.preventDefault();
+            e.stopPropagation();
+            closeTheLightBox();           
+        }
+    };
+    
+    
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
     function mediaLikesCalcul() {
         mediasLikes = 0;
@@ -49,8 +66,12 @@ function MediasGalleryPageFactory(data) {
 
 
             img.addEventListener('keydown', (e) => {
-                if (e.key=="Enter") {
-                   img.click();
+                if (e.key=="Enter" && lightbox.classList.contains('active')) {
+
+
+                }else{
+                    closeTheLightBox();
+                    img.click();
                 }
             });
 
@@ -71,6 +92,7 @@ function MediasGalleryPageFactory(data) {
 
             vid.addEventListener('keydown', (e) => {
                 if (e.key=="Enter") {
+                    vid.remove();
                    vid.click();
                 };
             });
@@ -198,24 +220,7 @@ function MediasGalleryPageFactory(data) {
                 // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
                 closeLightbox.addEventListener('click', closeTheLightBox);
                 
-                function closeTheLightBox() {
-                    lightbox.remove();
 
-                    displayLightbox(medias);
-
-
-                }
-
-                // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
-                document.addEventListener('keydown', EscapeLightbox);
-
-                function EscapeLightbox(e) {
-                    if(e.key === "Escape") {
-                        e.preventDefault();
-                        closeTheLightBox();           
-                    }
-                };
-        
 
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', (previousArrow));
