@@ -16,6 +16,9 @@ function MediasGalleryPageFactory(data) {
     function closeTheLightBox() {
         lightbox.remove();
         displayLightbox(medias);
+        let tri = document.querySelector("#filter > div > div > div.new-select");
+        tri.click();
+        tri.click();
     };
 
     // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
@@ -96,7 +99,7 @@ function MediasGalleryPageFactory(data) {
                 if (e.key=="Enter") {
                     e.preventDefault();
                     vid.remove();
-                   vid.click();
+                    vid.click();
                 };
             });
         }
