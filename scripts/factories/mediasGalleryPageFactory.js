@@ -60,7 +60,7 @@ function MediasGalleryPageFactory(data) {
             img.setAttribute("src", mediaImage);
             img.setAttribute("aria-label",title);
             img.setAttribute('tabindex', "0");
-            img.setAttribute('role', "image link");
+            img.setAttribute('role', "img");
 
             img.classList.add('media-element');
             img.classList.add('image-card');
@@ -91,7 +91,7 @@ function MediasGalleryPageFactory(data) {
             vid.setAttribute("aria-label",title);
             vid.setAttribute('type', "video/mp4");
             vid.setAttribute('tabindex', "0");
-            vid.setAttribute('role', "image link");
+            // vid.setAttribute('role', "img");
             vid.classList.add('media-element');
             vid.classList.add('video-card');
             arrMedias.push(mediaVideo);
@@ -121,12 +121,16 @@ function MediasGalleryPageFactory(data) {
         const imgTitle = document.createElement('h2');
         imgTitle.textContent = title;
         imgTitle.classList.add('media-title');
-        imgTitle.setAttribute('role', 'text');
+        imgTitle.setAttribute('role', 'heading');
+        imgTitle.setAttribute('aria-level','2');
+
 
         const imgLikes = document.createElement('h3');
         imgLikes.textContent = likes;
         imgLikes.classList.add('media-likes');
-        imgLikes.setAttribute('role', 'image');
+        imgLikes.setAttribute('role', 'heading');
+        imgTitle.setAttribute('aria-level','3');
+
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
         imgLikes.setAttribute('aria-label', 'likes');
         imgLikes.setAttribute('tabindex', "0");
@@ -230,7 +234,7 @@ function MediasGalleryPageFactory(data) {
                     img = document.createElement('img');
                     img.classList.add('media-lightbox');
                     img.src = actualMedia;
-                    img.setAttribute('role', 'image');
+                    img.setAttribute('role', 'img');
                     img.setAttribute('aria-label', media.getAttribute('aria-label'));
                     lightboxContainer.setAttribute('aria-label', `${media.getAttribute('aria-label')}, closeup view`);
                     titleMedia = document.createElement('p');
@@ -245,7 +249,7 @@ function MediasGalleryPageFactory(data) {
                     vid.controls = true;
                     vid.classList.add('media-lightbox');
                     vid.src = actualMedia;
-                    img.setAttribute('role', 'image');
+                    // vid.setAttribute('role', 'img');
                     vid.setAttribute('aria-label', media.getAttribute('aria-label'));
                     lightboxContainer.setAttribute('aria-label', `${media.getAttribute('aria-label')}, closeup view`);
                     titleMedia = document.createElement('p');

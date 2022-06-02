@@ -15,7 +15,6 @@ function PhotographerGalleryPageFactory(data) {
         // HEADER LEFT:
         const headerLeft = document.createElement ('div');
         headerLeft.classList.add('photographer-introduction');
-        headerLeft.setAttribute('role',"contentinfo");
         const headerLeftName = document.createElement('h1');
         headerLeftName.classList.add('photographer-name');
         headerLeftName.setAttribute('role','heading');
@@ -47,7 +46,7 @@ function PhotographerGalleryPageFactory(data) {
         const imgAvatar = document.createElement('img');
         imgAvatar.setAttribute("src", srcPicture);
         imgAvatar.setAttribute("aria-label",name);
-        imgAvatar.setAttribute("role",'image');
+        imgAvatar.setAttribute("role",'img');
         imgAvatar.classList.add('photographer__avatar-picture','photographer__avatar-picture-photographer' );
 
         // FORM CONTACT

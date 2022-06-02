@@ -20,14 +20,15 @@ newSelect.setAttribute('role', 'button');
 newSelect.setAttribute('aria-haspopup', 'listbox');
 newSelect.setAttribute('aria-expanded', 'false');
 newSelect.setAttribute('label', `Order by ${newSelect.textContent}`);
-inputLabel.setAttribute('role', newSelect.textContent);
+
 newSelect.addEventListener('keydown', (e) => {
     if (e.key=="Enter") {
        newSelect.click();
     }
 });
 
-inputLabel.setAttribute('role', newSelect.textContent);
+inputLabel.setAttribute('aria-label', 'Trier par');
+
 
 
 // on cree l'element dans le DOM
@@ -151,7 +152,7 @@ function FilteringMedias(e) {
     }else{
         newSelect.setAttribute('aria-expanded', 'false');
         newSelect.setAttribute('label', newSelect.textContent);
-        inputLabel.setAttribute('role', newSelect.textContent);
+        inputLabel.setAttribute('role', 'listbox');
 
 
     };
