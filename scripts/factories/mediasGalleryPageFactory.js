@@ -70,12 +70,16 @@ function MediasGalleryPageFactory(data) {
 
             img.addEventListener('keydown', (e) => {
                 if (e.key=="Enter" && lightbox.classList.contains('active')) {
+                    e.preventDefault();
+                    e.stopPropagation();
 
                 }else if (e.key=="Enter"){
-                e.preventDefault();
-                img.remove();
-                img.click();
+                    e.preventDefault();
+                    e.stopPropagation();
+                    img.remove();
+                    img.click();
                 }else{
+                    e.preventDefault();
                 }
 
               });
@@ -96,12 +100,20 @@ function MediasGalleryPageFactory(data) {
 
 
             vid.addEventListener('keydown', (e) => {
-                if (e.key=="Enter") {
+                if (e.key=="Enter" && lightbox.classList.contains('active')) {
                     e.preventDefault();
+                    e.stopPropagation();
+
+                }else if (e.key=="Enter"){
+                    e.preventDefault();
+                    e.stopPropagation();
                     vid.remove();
                     vid.click();
-                };
-            });
+                }else{
+                    e.preventDefault();
+                }
+
+              });
         }
 
         // AFFICHAGE INFOS CARD MEDIAS 
@@ -235,6 +247,7 @@ function MediasGalleryPageFactory(data) {
                 
                 document.addEventListener('keydown', (e) => {
                     if (e.key=="ArrowLeft") {
+                        e.preventDefault();
                        previousArrow();
                     }
                 });
@@ -309,6 +322,7 @@ function MediasGalleryPageFactory(data) {
                 nextLightbox.addEventListener('click', (nextArrow));
                 document.addEventListener('keydown', (e) => {
                     if (e.key=="ArrowRight") {
+                        e.preventDefault();
                        nextArrow();
                     }
                 });
