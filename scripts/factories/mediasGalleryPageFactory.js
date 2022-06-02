@@ -79,7 +79,6 @@ function MediasGalleryPageFactory(data) {
                     img.remove();
                     img.click();
                 }else{
-                    e.preventDefault();
                 }
 
               });
@@ -110,7 +109,6 @@ function MediasGalleryPageFactory(data) {
                     vid.remove();
                     vid.click();
                 }else{
-                    e.preventDefault();
                 }
 
               });
@@ -131,6 +129,22 @@ function MediasGalleryPageFactory(data) {
         imgLikes.setAttribute('role', 'image');
         imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
         imgLikes.setAttribute('aria-label', 'likes');
+        imgLikes.setAttribute('tabindex', "0");
+
+        imgLikes.addEventListener('keydown', (e) => {
+            if (e.key=="Enter" && lightbox.classList.contains('active')) {
+                e.preventDefault();
+                e.stopPropagation();
+
+            }else if (e.key=="Enter"){
+                e.preventDefault();
+                e.stopPropagation();
+                imgLikes.click();
+            }else{
+            }
+
+          });
+
         
         // ELEMENTS D'ASSEMBLAGE
         article.appendChild(img);
