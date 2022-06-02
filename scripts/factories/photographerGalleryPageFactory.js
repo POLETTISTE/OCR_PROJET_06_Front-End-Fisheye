@@ -48,8 +48,15 @@ function PhotographerGalleryPageFactory(data) {
         imgAvatar.setAttribute("src", srcPicture);
         imgAvatar.setAttribute("aria-label",name);
         imgAvatar.setAttribute("role",'image');
-
         imgAvatar.classList.add('photographer__avatar-picture','photographer__avatar-picture-photographer' );
+
+        // FORM CONTACT
+        const modal = document.getElementById("contact_modal");
+        modal.setAttribute('aria-label', `Contact Me ${name}`);
+        
+        const headerForm = document.querySelector("#header-form > div")
+        headerForm.setAttribute('role', 'heading');
+        headerForm.setAttribute('aria-level','2');
 
         // ELEMENTS D'ASSEMBLAGE
         article.appendChild(headerLeft);

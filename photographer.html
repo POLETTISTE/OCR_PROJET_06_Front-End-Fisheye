@@ -17,7 +17,7 @@
 				<div id="header-form" aria-label="Contact form header" role="button">
           <div class="header-title">
             <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" alt="bouton fermer" onclick="closeModal()" />
+            <img src="assets/icons/close.svg" alt="bouton fermer" role="button" aria-label="Close Contact Form" onclick="closeModal()" />
           </div>
         </div>
         <!-- RAJOUTER LES CHAMPS INPUT MANQUANTS SELON MAQUETTE -->
@@ -27,20 +27,20 @@
             <div id="formdatas" role="group" aria-labelledby="coordonnees">
               <p id="coordonnees" class="hidden">Vos coordonnées</p>
 
-                <label for="Prenom" id="form_prenom">Prénom</label>
+                <label for="Prénom" id="form_prenom" role="label">Prénom</label>
                 <input type="text" name="prenom" id="prenom" aria-labelledby="form_prenom" />
                 
-                <label for="Nom" id="form_nom">Nom</label>
+                <label for="Nom" id="form_nom" role="label">Nom</label>
                 <input type="text" name="nom" id="nom" aria-labelledby="form_nom"  />
                 
-                <label for="Email" id="form_email">Email</label>
+                <label for="Email" id="form_email" role="label">Email</label>
                 <input type="email" name="email" id="email" aria-labelledby="form_email" />
                 
-                <label for="Message" id="form_message">Votre message</label>
+                <label for="Message" id="form_message" role="label">Votre message</label>
                 <textarea name="message" id="message" aria-labelledby="form_message" rows="5" ></textarea>
             
             </div>
-            <button class="contact_button" id="send_button">Envoyer</button>
+            <button class="contact_button" id="send_button" role="button" aria-label="send">Envoyer</button>
           </form>
 
 			</div>

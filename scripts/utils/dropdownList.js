@@ -19,7 +19,7 @@ newSelect.setAttribute('tabindex', "0");
 newSelect.setAttribute('role', 'button');
 newSelect.setAttribute('aria-haspopup', 'listbox');
 newSelect.setAttribute('aria-expanded', 'false');
-newSelect.setAttribute('label', newSelect.textContent);
+newSelect.setAttribute('label', `Order by ${newSelect.textContent}`);
 inputLabel.setAttribute('role', newSelect.textContent);
 newSelect.addEventListener('keydown', (e) => {
     if (e.key=="Enter") {

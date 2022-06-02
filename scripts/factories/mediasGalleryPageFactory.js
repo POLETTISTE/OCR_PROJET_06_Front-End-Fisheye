@@ -163,19 +163,23 @@ function MediasGalleryPageFactory(data) {
         // CREATION BOUTON FERMER:
         const closeLightbox = document.createElement('div');
         closeLightbox.classList.add('lightbox__close');
-        closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`;  
+        closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`; 
+        closeLightbox.setAttribute('role', 'button'); 
+        closeLightbox.setAttribute('aria-label', 'Close dialog'); 
         
-        // CREATION BOUTON SUIVANT:
-        const nextLightbox = document.createElement('div');
-        nextLightbox.classList.add('lightbox__next');
-        nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
-
         // CREATION BOUTON PRECEDENT:
         const prevLightbox = document.createElement('div');
         prevLightbox.classList.add('lightbox__prev');
         prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
+        prevLightbox.setAttribute('role', 'link');
+        prevLightbox.setAttribute('aria-label', 'Previous image');
 
-
+        // CREATION BOUTON SUIVANT:
+        const nextLightbox = document.createElement('div');
+        nextLightbox.classList.add('lightbox__next');
+        nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
+        nextLightbox.setAttribute('role', 'link');
+        nextLightbox.setAttribute('aria-label', 'Next');
 
 
 
