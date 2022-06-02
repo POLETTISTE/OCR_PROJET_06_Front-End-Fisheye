@@ -12,8 +12,8 @@
     #filter {
         flex-direction: column;
         margin:auto;
-        margin-top:20px;
-        margin-bottom:100px;
+        /* margin-top:20px; */
+        margin-bottom:40px;
         align-items: center;
     }
 }
@@ -32,7 +32,7 @@
     #filter > h2 {
         margin: 0;
         margin-bottom: 10px;
-        margin-top: 40px;
+        margin-top: 10px;
     }
 }
 
