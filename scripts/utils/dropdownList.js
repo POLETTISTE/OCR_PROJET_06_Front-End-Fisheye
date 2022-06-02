@@ -125,7 +125,8 @@ function FilteringMedias(e) {
     displayMediasLikesBottom(medias);
     displayPhotographerPriceBottom(photographers);
     displayMediasInGalleryPage(medias);
-    // displayLightbox(medias);
+    lightbox.remove();
+    displayLightbox(medias);
     addLikes(medias);
     
 
