@@ -38,7 +38,7 @@ function MediasGalleryPageFactory(data) {
 
             img = document.createElement('img');
             img.setAttribute("src", mediaImage);
-            img.setAttribute("aria-label",`${title}, closeup view`);
+            img.setAttribute("aria-label",title);
             img.setAttribute('tabindex', "0");
             img.setAttribute('role', "image link");
 
@@ -59,7 +59,7 @@ function MediasGalleryPageFactory(data) {
 
             vid = document.createElement('video');
             vid.setAttribute("src", mediaVideo);
-            vid.setAttribute("aria-label",`${title}, closeup view`);
+            vid.setAttribute("aria-label",title);
             vid.setAttribute('type', "video/mp4");
             vid.setAttribute('tabindex', "0");
             vid.setAttribute('role', "image link");
@@ -147,18 +147,9 @@ function MediasGalleryPageFactory(data) {
         prevLightbox.classList.add('lightbox__prev');
         prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
 
-        // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
-        closeLightbox.addEventListener('click', () => { closeTheLightBox()});
 
-        // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
-        document.addEventListener('keydown', EscapeLightbox);
 
-        function EscapeLightbox(e) {
-            if(e.key === "Escape") {
-                e.preventDefault();
-                closeTheLightBox();           
-            }
-        };
+
 
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
         const mediasGallery = document.querySelectorAll('.media-element');
@@ -183,10 +174,10 @@ function MediasGalleryPageFactory(data) {
                     img.src = actualMedia;
                     img.setAttribute('role', 'image');
                     img.setAttribute('aria-label', media.getAttribute('aria-label'));
-                    lightboxContainer.setAttribute('aria-label', media.getAttribute('aria-label'));
+                    lightboxContainer.setAttribute('aria-label', `${media.getAttribute('aria-label')}, closeup view`);
                     titleMedia = document.createElement('p');
                     titleMedia.setAttribute('role', 'text');
-                    titleMedia.textContent=media.getAttribute('aria-label');
+                    titleMedia.textContent = media.getAttribute('aria-label');
                     
 
  
@@ -198,12 +189,33 @@ function MediasGalleryPageFactory(data) {
                     vid.src = actualMedia;
                     img.setAttribute('role', 'image');
                     vid.setAttribute('aria-label', media.getAttribute('aria-label'));
-                    lightboxContainer.setAttribute('aria-label', media.getAttribute('aria-label'));
+                    lightboxContainer.setAttribute('aria-label', `${media.getAttribute('aria-label')}, closeup view`);
                     titleMedia = document.createElement('p');
                     titleMedia.setAttribute('role', 'text');
                     titleMedia.textContent=media.getAttribute('aria-label');
                 };
 
+                // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
+                closeLightbox.addEventListener('click', closeTheLightBox);
+                
+                function closeTheLightBox() {
+                    lightbox.remove();
+
+                    displayLightbox(medias);
+
+
+                }
+
+                // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
+                document.addEventListener('keydown', EscapeLightbox);
+
+                function EscapeLightbox(e) {
+                    if(e.key === "Escape") {
+                        e.preventDefault();
+                        closeTheLightBox();           
+                    }
+                };
+        
 
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', (previousArrow));
@@ -301,7 +313,7 @@ function MediasGalleryPageFactory(data) {
                     
                     newMedia = arrMedias[oldIndex]; 
                     newMediaTitle = arrMediasTitle[oldIndex];
-                    
+                    console.log(newMediaTitle);
                     
                     typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
                     typeOfOld = typeOfOld.split(".");
@@ -355,50 +367,6 @@ function MediasGalleryPageFactory(data) {
                     }
                 };
 
-                function scenarioPrevNext() {
-                    if ( typeOfOld === 'jpg' && typeOfActual ==='jpg' ) {
-                        actualMedia = arrMedias[oldIndex];    
-                        img.src = actualMedia; 
-                        img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
-                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
-                        titleMedia.textContent = newMediaTitle;
-
-
-                    }else if (typeOfOld === 'jpg' && typeOfActual === 'mp4') {
-
-                        actualMedia = arrMedias[oldIndex];  
-                        lightboxContainerMediaAndTitle.replaceChild(document.createElement("video"), img); 
-                        vid = document.querySelector("#lightbox > div > div.lightbox__container-media-title > video");
-                        vid.controls = true;
-                        vid.classList.add('media-lightbox');
-                        vid.src = actualMedia;
-                        vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
-                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
-                        titleMedia.textContent = newMediaTitle;
-
-                        img.remove();
-
-                    }else if (typeOfOld ==='mp4' && typeOfActual === 'jpg') {
-                        actualMedia = arrMedias[oldIndex];  
-                        lightboxContainerMediaAndTitle.replaceChild(document.createElement("img"), vid); 
-                        img = document.querySelector("#lightbox > div > div.lightbox__container-media-title > img");
-                        img.classList.add('media-lightbox');
-                        img.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
-                        img.src = actualMedia;
-                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
-                        titleMedia.textContent = newMediaTitle;
-
-                        vid.remove();
-
-                    }else if (typeOfOld ==='mp4' && typeOfActual==='mp4') {
-                        actualMedia = arrMedias[oldIndex];    
-                        vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
-                        vid.src = actualMedia; 
-                        lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
-                        titleMedia.textContent = newMediaTitle;
-
-                    }
-                }
 
 
                 /* 
@@ -423,13 +391,6 @@ function MediasGalleryPageFactory(data) {
 
             })
             
-
-            closeTheLightBox = () => {
-                lightbox.classList.remove('active');
-                lightbox.innerHTML="";
-                newSelect.click();
-                newSelect.click();
-            }
 
         });
         

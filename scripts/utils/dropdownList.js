@@ -1,3 +1,4 @@
+
 const inputLabel = (document.querySelector("#filter > h2"));
 
 //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)
@@ -93,6 +94,8 @@ function FilteringMedias(e) {
     // on empeche la propagation du click
     e.stopPropagation();
     arrMedias = [];
+    arrMediasTitle= [];
+
     newSelectValue = newSelect.textContent;
     
     switch (newSelectValue) {
@@ -122,7 +125,7 @@ function FilteringMedias(e) {
     displayMediasLikesBottom(medias);
     displayPhotographerPriceBottom(photographers);
     displayMediasInGalleryPage(medias);
-    displayLightbox(medias);
+    // displayLightbox(medias);
     addLikes(medias);
     
 

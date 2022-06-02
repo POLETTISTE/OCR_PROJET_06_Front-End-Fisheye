@@ -1,4 +1,7 @@
 #lightbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position:fixed;
     top:0;
     left:0;
@@ -25,7 +28,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position:absolute;
+
 }
 
 .lightbox__container-media-title {
@@ -35,7 +38,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position:relative;
 }
 
 .lightbox__container-media-title p{
@@ -43,6 +45,15 @@
     color:#901C1C;
     width:75%;
     text-align: left;
+    margin-bottom:0;
+}
+
+@media all and (max-width:767px) {
+    .lightbox__container-media-title p {
+        height:50px;
+        margin: 0;
+        text-align: center;
+    }
 }
 
 
@@ -53,18 +64,28 @@
     height:75%;
     object-fit: cover;
     border-radius: 5px;
+}
 
+@media all and (max-width:767px) {
+    .media-lightbox {
+        width:90%; 
+        height:90%;
+        margin-top:20px;
+    }
 }
 
 .lightbox__close {
     background: url('../assets/icons/arrow.svg');
-    position: absolute;
-    bottom:77%;
-    left:88%;
+    position: relative;
+    bottom: 37%;
+    right:12%;
     color:#901C1C;
     font-size: 48px;
-    padding:20px;
+    /* padding:20px; */
     cursor: pointer;
+    width: 0px;
+    z-index:15;
+
 
 }
 
@@ -73,11 +94,10 @@
     position: absolute;
     color:#901C1C;
     font-size: 48px;
-    padding:20px;
+    /* padding:20px; */
     cursor: pointer;
     left:88%;
-
-
+    z-index:15;
 
 }
 
@@ -85,15 +105,13 @@
     position: absolute;
     color:#901C1C;
     font-size: 48px;
-    padding:20px;
+    /* padding:20px; */
     cursor: pointer;
     right:88%;
-
-    
-    
+    z-index:15;
 }
 
-@media all and (max-width:500px) {
+@media all and (max-width:767px) {
 
     .lightbox__prev {
         position: relative;
@@ -106,9 +124,8 @@
     }
 
     .lightbox__close {
-        position: absolute;
-        bottom:75%;
-        left:84%; 
+        right: 9%;
+        bottom:44%;
     }
 
 }
