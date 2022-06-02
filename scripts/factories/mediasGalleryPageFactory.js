@@ -68,12 +68,14 @@ function MediasGalleryPageFactory(data) {
             img.addEventListener('keydown', (e) => {
                 if (e.key=="Enter" && lightbox.classList.contains('active')) {
 
-
+                }else if (e.key=="Enter"){
+                e.preventDefault();
+                img.remove();
+                img.click();
                 }else{
-                    closeTheLightBox();
-                    img.click();
                 }
-            });
+
+              });
 
             
         }else if(data.hasOwnProperty('video')){
@@ -92,6 +94,7 @@ function MediasGalleryPageFactory(data) {
 
             vid.addEventListener('keydown', (e) => {
                 if (e.key=="Enter") {
+                    e.preventDefault();
                     vid.remove();
                    vid.click();
                 };
@@ -220,8 +223,6 @@ function MediasGalleryPageFactory(data) {
                 // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
                 closeLightbox.addEventListener('click', closeTheLightBox);
                 
-
-
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', (previousArrow));
                 
@@ -318,7 +319,6 @@ function MediasGalleryPageFactory(data) {
                     
                     newMedia = arrMedias[oldIndex]; 
                     newMediaTitle = arrMediasTitle[oldIndex];
-                    console.log(newMediaTitle);
                     
                     typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
                     typeOfOld = typeOfOld.split(".");
