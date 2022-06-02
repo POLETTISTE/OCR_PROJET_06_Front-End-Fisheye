@@ -246,8 +246,6 @@ function MediasGalleryPageFactory(data) {
                     
                     newMedia = arrMedias[oldIndex]; 
                     newMediaTitle = arrMediasTitle[oldIndex];
-                    console.log(newMediaTitle);
-
 
                     typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
                     typeOfOld = typeOfOld.split(".");
