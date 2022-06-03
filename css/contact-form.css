@@ -44,15 +44,6 @@
     z-index:4;
 }
 
-@media all and (max-width:767px) {
-    #contact_modal {
-        padding-top: 10px;
-    }
-}
-
-
-
-
 #modal {
     border-radius: 5px;
     background-color: #DB8876;
