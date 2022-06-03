@@ -19,20 +19,10 @@ function MediasGalleryPageFactory(data) {
         let tri = document.querySelector("#filter > div > div > div.new-select");
         tri.click();
         tri.click();
+
     };
 
-    // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
-    document.addEventListener('keydown', EscapeLightbox);
 
-    function EscapeLightbox(e) {
-        if(e.key === "Escape") {
-            e.preventDefault();
-            e.stopPropagation();
-            closeTheLightBox();           
-        }
-    };
-    
-    
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
     function mediaLikesCalcul() {
         mediasLikes = 0;
@@ -91,7 +81,6 @@ function MediasGalleryPageFactory(data) {
             vid.setAttribute("aria-label",title);
             vid.setAttribute('type', "video/mp4");
             vid.setAttribute('tabindex', "0");
-            // vid.setAttribute('role', "img");
             vid.classList.add('media-element');
             vid.classList.add('video-card');
             arrMedias.push(mediaVideo);
@@ -177,6 +166,7 @@ function MediasGalleryPageFactory(data) {
         // CREATION MODALE:
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
+
         
         // CREATION FENETRE QUI CONTIENT LE MEDIA
 
@@ -196,7 +186,7 @@ function MediasGalleryPageFactory(data) {
         closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`; 
         closeLightbox.setAttribute('role', 'button'); 
         closeLightbox.setAttribute('aria-label', 'Close dialog'); 
-        
+
         // CREATION BOUTON PRECEDENT:
         const prevLightbox = document.createElement('div');
         prevLightbox.classList.add('lightbox__prev');
@@ -259,6 +249,17 @@ function MediasGalleryPageFactory(data) {
 
                 // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
                 closeLightbox.addEventListener('click', closeTheLightBox);
+
+                    // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
+                document.addEventListener('keydown', EscapeLightbox);
+
+                function EscapeLightbox(e) {
+                    if(e.key == "Escape") {
+                        e.preventDefault();
+                        e.preventDefault();
+                        closeTheLightBox();    
+                    }
+                };
                 
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', (previousArrow));
@@ -266,7 +267,8 @@ function MediasGalleryPageFactory(data) {
                 document.addEventListener('keydown', (e) => {
                     if (e.key=="ArrowLeft") {
                         e.preventDefault();
-                       previousArrow();
+                        e.stopPropagation();
+                        previousArrow();
                     }
                 });
 
@@ -341,7 +343,8 @@ function MediasGalleryPageFactory(data) {
                 document.addEventListener('keydown', (e) => {
                     if (e.key=="ArrowRight") {
                         e.preventDefault();
-                       nextArrow();
+                        e.stopPropagation();
+                        nextArrow();
                     }
                 });
 

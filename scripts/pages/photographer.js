@@ -114,8 +114,7 @@ async function displayLightbox(medias) {
 
 
 // LIKE UNE PHOTO + SOMME TOTALE LIKES
-function addLikes() {
-    
+async function addLikes() {
     
     let numberLike = document.querySelectorAll(".media-likes");
     let countOfLikePerPicture;

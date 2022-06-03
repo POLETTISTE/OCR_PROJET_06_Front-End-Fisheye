@@ -19,7 +19,7 @@ function closeModal() {
 document.addEventListener('keydown', EscapeModal);
 
 function EscapeModal(e) {
-    if(e.key === "Escape") {
+    if(e.key == "Escape") {
         e.preventDefault();
         e.stopPropagation();
         closeModal();           
@@ -28,16 +28,16 @@ function EscapeModal(e) {
 
 
 
-// modalCloseButton.addEventListener('keydown', EscapeModalEnter);
+modalCloseButton.addEventListener('keydown', EscapeModalEnter);
 
-// function EscapeModalEnter(e) {
-//     if(e.key === "Enter") {
-//         e.preventDefault();
-//         e.stopPropagation();
-//         closeModal();           
-//     }
+function EscapeModalEnter(e) {
+    if(e.key === "Enter") {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal();           
+    }
 
-// }
+}
 
 send.addEventListener('click', sendMessage);
 
