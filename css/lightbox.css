@@ -73,6 +73,8 @@
     cursor: pointer;
     left:9%;
     z-index:15;
+    width: fit-content;
+
 }
 
 
@@ -84,6 +86,8 @@
     cursor: pointer;
     right:9%;
     z-index:15;
+    width: fit-content;
+
 
 }
 
@@ -96,7 +100,7 @@
     font-size: 48px;
     /* padding:20px; */
     cursor: pointer;
-    width: 0px;
+    width: fit-content;
     z-index:15;
 }
 
