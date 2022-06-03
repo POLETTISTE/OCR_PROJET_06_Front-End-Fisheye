@@ -44,6 +44,12 @@
     z-index:4;
 }
 
+@media all and (max-width:767px) {
+    #contact_modal {
+        padding-top: 10px;
+    }
+}
+
 
 
 
@@ -65,6 +71,8 @@
     #modal {
         width:80%;
         justify-content: center;
+        /* padding-top:0; */
+        padding-bottom: 0;
     }
 }
 
@@ -88,6 +96,18 @@
     width:42px;
 }
 
+@media all and (max-width:991px) {
+    #modal #header-form img {
+        width:36px;
+    }
+}
+
+@media all and (max-width:767px) {
+    #modal #header-form img {
+        width:30px;
+    }
+}
+
 #modal #header-form h2 {
     font-size: 64px;
     font-weight: normal;
@@ -102,6 +122,12 @@
         justify-content: left;
         width:100%;
         font-size: 45px;
+    }
+}
+
+@media all and (max-width:767px) {
+    #modal #header-form h2 {
+        font-size: 38px;
     }
 }
 
@@ -141,6 +167,18 @@ form label {
     font-size: 36px;
 }
 
+@media all and (max-width:991px) {
+    form label {
+        font-size: 30px;
+    }
+}
+
+@media all and (max-width:767px) {
+    form label {
+        font-size: 25px;
+    }
+}
+
 #formdatas {
     display: flex;
     flex-direction: column;
@@ -152,9 +190,7 @@ form label {
 }
 
 
-
 form input {
-    /* resolution problème input vs video-card */
     font-size: 24px;
     font-weight: 700;
     z-index:2;
