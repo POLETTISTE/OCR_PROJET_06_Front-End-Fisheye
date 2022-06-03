@@ -21,7 +21,7 @@ function PhotographersFactory(data) {
         // CONSTRUCTION AVATAR PHOTOGRAPHE:
         const img = document.createElement( 'img');
         img.setAttribute("src", picture);
-        img.setAttribute("alt", " ");
+        img.setAttribute("alt", "");
         img.classList.add('photographer__avatar-picture','photographer__avatar-picture-index' );
 
         // CONSTRUCTION NOM PHOTOGRAPHE:
@@ -32,7 +32,7 @@ function PhotographersFactory(data) {
         // CONSTRUCTION DIV INFORMATIONS PHOTOGRAPHE:
         const infos = document.createElement ('div');
         infos.classList.add('photographer__infos');
-        infos.setAttribute('role',"contentinfo");
+        infos.setAttribute('role',"text");
 
         // CONSTRUCTION INFORMATIONS VILLE + PAYS PHOTOGRAPHE
         const paragraphCityCountry = document.createElement('p');

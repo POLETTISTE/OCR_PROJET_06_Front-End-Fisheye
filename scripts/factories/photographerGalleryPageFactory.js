@@ -39,6 +39,8 @@ function PhotographerGalleryPageFactory(data) {
         button.classList.add("contact_button");
         button.setAttribute('onclick', 'displayModal()');
         button.setAttribute('aria-label', 'Contact Me');
+        button.setAttribute('tabindex', '0');
+
         button.textContent = `Contactez-moi`;
 
         // HEADER RIGHT:
