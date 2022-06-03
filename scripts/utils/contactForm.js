@@ -13,7 +13,7 @@ function displayModal() {
 };
 
 function closeModal() {
-    modal.style.display = "none";
+    contactModal.style.display = "none";
 };
 
 document.addEventListener('keydown', EscapeModal);
@@ -28,16 +28,16 @@ function EscapeModal(e) {
 
 
 
-modalCloseButton.addEventListener('keydown', EscapeModalEnter);
+// modalCloseButton.addEventListener('keydown', EscapeModalEnter);
 
-function EscapeModalEnter(e) {
-    if(e.key === "Enter") {
-        e.preventDefault();
-        e.stopPropagation();
-        closeModal();           
-    }
+// function EscapeModalEnter(e) {
+//     if(e.key === "Enter") {
+//         e.preventDefault();
+//         e.stopPropagation();
+//         closeModal();           
+//     }
 
-}
+// }
 
 send.addEventListener('click', sendMessage);
 
