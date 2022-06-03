@@ -166,6 +166,8 @@ function MediasGalleryPageFactory(data) {
         // CREATION MODALE:
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
+        // lightbox.setAttribute('tabindex', '0');
+
 
         
         // CREATION FENETRE QUI CONTIENT LE MEDIA
@@ -173,19 +175,27 @@ function MediasGalleryPageFactory(data) {
         const lightboxContainer= document.createElement('div');
         lightboxContainer.classList.add('lightbox__container');
         lightboxContainer.setAttribute('role', 'dialog');
+        // lightboxContainer.setAttribute('tabindex', '0');
+        // lightboxContainer.focus();
+
+
 
         // CREATION DIV QUI ENGLOBE MEDIA ET TITRE DU MEDIA
 
         const lightboxContainerMediaAndTitle = document.createElement('div');
         lightboxContainerMediaAndTitle.classList.add('lightbox__container-media-title');
         lightboxContainerMediaAndTitle.setAttribute('role', 'dialog');
+        lightboxContainerMediaAndTitle.focus();
+
         
         // CREATION BOUTON FERMER:
         const closeLightbox = document.createElement('div');
         closeLightbox.classList.add('lightbox__close');
         closeLightbox.innerHTML = `<i class="fa-solid fa-xmark"></i>`; 
         closeLightbox.setAttribute('role', 'button'); 
-        closeLightbox.setAttribute('aria-label', 'Close dialog'); 
+        closeLightbox.setAttribute('aria-label', 'Close dialog');
+        closeLightbox.setAttribute('tabindex', '0');
+ 
 
         // CREATION BOUTON PRECEDENT:
         const prevLightbox = document.createElement('div');
@@ -193,6 +203,8 @@ function MediasGalleryPageFactory(data) {
         prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
         prevLightbox.setAttribute('role', 'link');
         prevLightbox.setAttribute('aria-label', 'Previous image');
+        prevLightbox.setAttribute('tabindex', '0');
+
 
         // CREATION BOUTON SUIVANT:
         const nextLightbox = document.createElement('div');
@@ -200,7 +212,7 @@ function MediasGalleryPageFactory(data) {
         nextLightbox.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
         nextLightbox.setAttribute('role', 'link');
         nextLightbox.setAttribute('aria-label', 'Next');
-
+        nextLightbox.setAttribute('tabindex', '0');
 
 
         // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
@@ -247,10 +259,20 @@ function MediasGalleryPageFactory(data) {
                     titleMedia.textContent=media.getAttribute('aria-label');
                 };
 
+
                 // EVENEMENT CLIC BOUTON FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
                 closeLightbox.addEventListener('click', closeTheLightBox);
 
-                    // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
+                // EVENEMENT ENTER SUR ICONE FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
+                closeLightbox.addEventListener('keydown', (e) => {
+                    if (e.key=="Enter") {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeTheLightBox();
+                    }
+                  });
+
+                // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
                 document.addEventListener('keydown', EscapeLightbox);
 
                 function EscapeLightbox(e) {
@@ -263,7 +285,8 @@ function MediasGalleryPageFactory(data) {
                 
                 // EVENEMENT AU CLIC DU BOUTON PRECEDENT DE LA LIGHTBOX
                 prevLightbox.addEventListener('click', (previousArrow));
-                
+
+                // EVENEMENT AU PRESS FLECHE GAUCHE
                 document.addEventListener('keydown', (e) => {
                     if (e.key=="ArrowLeft") {
                         e.preventDefault();
@@ -272,7 +295,16 @@ function MediasGalleryPageFactory(data) {
                     }
                 });
 
-   
+                // EVENEMENT ENTER SUR ICONE CHEVRON PRECEDENT
+                prevLightbox.addEventListener('keydown', (e) => {
+                    if (e.key=="Enter") {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        previousArrow();
+                    }
+                  });
+
+
                 function previousArrow() {
                     if (arrMedias.indexOf(actualMedia) === 0) {
                         oldIndex = ((arrMedias.length) -1);
@@ -340,6 +372,8 @@ function MediasGalleryPageFactory(data) {
                 
                 // EVENEMENT AU CLIC DU BOUTON SUIVANT DE LA LIGHTBOX
                 nextLightbox.addEventListener('click', (nextArrow));
+
+                // EVENEMENT AU PRESS FLECHE DROITE
                 document.addEventListener('keydown', (e) => {
                     if (e.key=="ArrowRight") {
                         e.preventDefault();
@@ -347,6 +381,15 @@ function MediasGalleryPageFactory(data) {
                         nextArrow();
                     }
                 });
+
+                // EVENEMENT ENTER SUR ICONE CHEVRON SUIVANT
+                nextLightbox.addEventListener('keydown', (e) => {
+                    if (e.key=="Enter") {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        nextArrow();
+                    }
+                    });
 
 
                 function nextArrow() {
