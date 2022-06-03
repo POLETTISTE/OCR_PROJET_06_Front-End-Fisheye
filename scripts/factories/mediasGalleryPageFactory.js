@@ -50,7 +50,7 @@ function MediasGalleryPageFactory(data) {
             img.setAttribute("src", mediaImage);
             img.setAttribute("aria-label",title);
             img.setAttribute('tabindex', "0");
-            img.setAttribute('role', "img");
+            img.setAttribute('role', "link");
 
             img.classList.add('media-element');
             img.classList.add('image-card');
@@ -80,6 +80,7 @@ function MediasGalleryPageFactory(data) {
             vid.setAttribute("src", mediaVideo);
             vid.setAttribute("aria-label",title);
             vid.setAttribute('type', "video/mp4");
+            // vid.setAttribute('role', "link");
             vid.setAttribute('tabindex', "0");
             vid.classList.add('media-element');
             vid.classList.add('video-card');
@@ -166,26 +167,18 @@ function MediasGalleryPageFactory(data) {
         // CREATION MODALE:
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
-        // lightbox.setAttribute('tabindex', '0');
-
-
         
         // CREATION FENETRE QUI CONTIENT LE MEDIA
 
         const lightboxContainer= document.createElement('div');
         lightboxContainer.classList.add('lightbox__container');
         lightboxContainer.setAttribute('role', 'dialog');
-        // lightboxContainer.setAttribute('tabindex', '0');
-        // lightboxContainer.focus();
-
-
 
         // CREATION DIV QUI ENGLOBE MEDIA ET TITRE DU MEDIA
 
         const lightboxContainerMediaAndTitle = document.createElement('div');
         lightboxContainerMediaAndTitle.classList.add('lightbox__container-media-title');
         lightboxContainerMediaAndTitle.setAttribute('role', 'dialog');
-        lightboxContainerMediaAndTitle.focus();
 
         
         // CREATION BOUTON FERMER:
@@ -203,6 +196,7 @@ function MediasGalleryPageFactory(data) {
         prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
         prevLightbox.setAttribute('role', 'link');
         prevLightbox.setAttribute('aria-label', 'Previous image');
+        prevLightbox.focus();
         prevLightbox.setAttribute('tabindex', '0');
 
 

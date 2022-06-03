@@ -4,7 +4,9 @@ const inputLabel = (document.querySelector("#filter > h2"));
 //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)
 const selectDiv = document.querySelector('.custom-select');
 
-constSelectDivGlobal = document.querySelector('.custom-select-global');
+const SelectDivGlobal = document.querySelector('.custom-select-global');
+SelectDivGlobal.setAttribute('role', 'group')
+
 // on recupere le select (caché en display none car pas joli)
 const selectElt = document.querySelector('select');
 
@@ -32,7 +34,7 @@ inputLabel.setAttribute('aria-label', 'Trier par');
 
 
 // on cree l'element dans le DOM
-constSelectDivGlobal.appendChild(newSelect);
+ SelectDivGlobal.appendChild(newSelect);
 
 // on cree le menu deroulant
 const newMenu = document.createElement('div');
@@ -55,7 +57,7 @@ for (let option of selectElt.options) {
     newOption.setAttribute('role', 'listbox');
     newOption.setAttribute('label', newOption.textContent);
     newOption.setAttribute('aria-activedescendant',newOption.textContent);
-    newOption.setAttribute('aria-selected',newOption.textContent);
+    newOption.setAttribute('aria-selected',option);
     newOption.setAttribute('aria-labelledBy',newOption.textContent);
     newOption.setAttribute('tabindex', "0");
 
@@ -85,7 +87,7 @@ for (let option of selectElt.options) {
 }
 
 // on affiche le menu
-constSelectDivGlobal.appendChild(newMenu);
+SelectDivGlobal.appendChild(newMenu);
 
 // on ajoute l'écouteur d'evenement click sur newSelect
 
