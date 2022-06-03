@@ -160,7 +160,7 @@ function MediasGalleryPageFactory(data) {
         // CREATION MODALE:
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
-        lightbox.setAttribute('tabindex', '0');
+        lightbox.setAttribute('tabindex', '-1');
 
         
         // CREATION FENETRE QUI CONTIENT LE MEDIA
