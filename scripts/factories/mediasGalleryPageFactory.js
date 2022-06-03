@@ -13,15 +13,6 @@ function MediasGalleryPageFactory(data) {
     let totalOfLikes;
     let mediasLikes;
     
-    function closeTheLightBox() {
-        lightbox.remove();
-        displayLightbox(medias);
-        let tri = document.querySelector("#filter > div > div > div.new-select");
-        tri.click();
-        tri.click();
-
-    };
-
 
     // SOMME DES LIKES DES PHOTOS DU PHOTOGRAPHE:
     function mediaLikesCalcul() {
@@ -80,7 +71,6 @@ function MediasGalleryPageFactory(data) {
             vid.setAttribute("src", mediaVideo);
             vid.setAttribute("aria-label",title);
             vid.setAttribute('type', "video/mp4");
-            // vid.setAttribute('role', "link");
             vid.setAttribute('tabindex', "0");
             vid.classList.add('media-element');
             vid.classList.add('video-card');
@@ -164,15 +154,21 @@ function MediasGalleryPageFactory(data) {
     // AFFICHAGE LIGHTBOX: 
     function getLightbox() {
 
+
+
+
         // CREATION MODALE:
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
+        lightbox.setAttribute('tabindex', '0');
+
         
         // CREATION FENETRE QUI CONTIENT LE MEDIA
 
         const lightboxContainer= document.createElement('div');
         lightboxContainer.classList.add('lightbox__container');
         lightboxContainer.setAttribute('role', 'dialog');
+
 
         // CREATION DIV QUI ENGLOBE MEDIA ET TITRE DU MEDIA
 
@@ -196,7 +192,6 @@ function MediasGalleryPageFactory(data) {
         prevLightbox.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
         prevLightbox.setAttribute('role', 'link');
         prevLightbox.setAttribute('aria-label', 'Previous image');
-        prevLightbox.focus();
         prevLightbox.setAttribute('tabindex', '0');
 
 
@@ -222,9 +217,14 @@ function MediasGalleryPageFactory(data) {
             let typeOfOld;
             let typeOfActual;
 
+            function clickToOpenLightbox() {
+                document.getElementById("lightbox").focus();
+            }
+
             media.addEventListener("click", () => {
                 lightbox.classList.add('active');
-                
+                clickToOpenLightbox();
+
                 // SI LE MEDIA A LA CLASS IMAGE-CARD:
                 if(media.classList=="media-element image-card") {
                     img = document.createElement('img');
@@ -251,6 +251,15 @@ function MediasGalleryPageFactory(data) {
                     titleMedia = document.createElement('p');
                     titleMedia.setAttribute('role', 'text');
                     titleMedia.textContent=media.getAttribute('aria-label');
+                };
+
+                // FERMETURE DE LA LIGHTBOX
+                function closeTheLightBox() {
+                    lightbox.remove();
+                    displayLightbox(medias);
+                    let tri = document.querySelector("#filter > div > div > div.new-select");
+                    tri.click();
+                    tri.click();
                 };
 
 
