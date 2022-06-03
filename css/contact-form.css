@@ -80,16 +80,12 @@
     width:100%;
     display: flex;
     justify-content: space-between;
-}
-@media all and (max-width:767px) {
-    #modal .header-title {
-        flex-wrap: wrap-reverse;
-        justify-content: end;
-    }
+    align-items: flex-start;
 }
 
 #modal #header-form img {
     cursor: pointer;
+    width:42px;
 }
 
 #modal #header-form h2 {
@@ -99,7 +95,7 @@
     line-height: 83.33px;
 }
 
-@media all and (max-width:767px) {
+@media all and (max-width:991px) {
     #modal #header-form h2 {
         line-height: normal;
         display: flex;
@@ -180,6 +176,8 @@ textarea {
     font-size: 24px;
     font-weight: 700;
     color:rgba(0, 0, 0, 0.7);
+    font-family: "DM Sans", sans-serif;
+
 }
 
 #send_button:hover,
