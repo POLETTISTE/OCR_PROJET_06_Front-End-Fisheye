@@ -1,6 +1,6 @@
 
 
-const inputLabel = (document.querySelector("#filter > h2"));
+const inputLabel = document.querySelector("#filter > label > h2");
 
 //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)
 const selectDiv = document.querySelector('.custom-select');
@@ -30,7 +30,7 @@ newSelect.addEventListener('keydown', (e) => {
   }
 });
 
-inputLabel.setAttribute('aria-label', 'Trier par');
+inputLabel.setAttribute('aria-label','Trier par');
 
 
 
