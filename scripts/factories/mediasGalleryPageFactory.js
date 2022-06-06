@@ -210,7 +210,7 @@ function MediasGalleryPageFactory(data) {
         clickToOpenLightbox();
 
         // SI LE MEDIA A LA CLASS IMAGE-CARD:
-        if(media.classList==="media-element image-card") {
+        if(media.classList=="media-element image-card") {
           img = document.createElement('img');
           img.classList.add('media-lightbox');
           img.src = actualMedia;
@@ -224,7 +224,7 @@ function MediasGalleryPageFactory(data) {
 
  
           // SI L'IMAGE A LA CLASSE VIDEO-CARD
-        } else if (media.classList==="media-element video-card") {
+        } else if (media.classList=="media-element video-card") {
           vid = document.createElement('video');
           vid.controls = true;
           vid.classList.add('media-lightbox');
