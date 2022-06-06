@@ -58,7 +58,7 @@ for (let option of selectElt.options) {
   newOption.setAttribute('role', 'listbox');
   newOption.setAttribute('label', newOption.textContent);
   newOption.setAttribute('aria-activedescendant',newOption.textContent);
-  newOption.setAttribute('aria-selected',option);
+  newOption.setAttribute('aria-selected',newOption.textContent);
   newOption.setAttribute('aria-labelledBy',newOption.textContent);
   newOption.setAttribute('tabindex', "0");
 
