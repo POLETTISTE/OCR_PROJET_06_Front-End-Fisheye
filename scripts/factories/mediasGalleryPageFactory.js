@@ -47,11 +47,11 @@ function MediasGalleryPageFactory(data) {
       arrMediasTitle.push(mediaTitle);
 
       img.addEventListener('keydown', (e) => {
-        if (e.key=="Enter" && lightbox.classList.contains('active')) {
+        if (e.key==="Enter" && lightbox.classList.contains('active')) {
           e.preventDefault();
           e.stopPropagation();
 
-        }else if (e.key=="Enter"){
+        }else if (e.key==="Enter"){
           e.preventDefault();
           e.stopPropagation();
           img.remove();
@@ -73,11 +73,11 @@ function MediasGalleryPageFactory(data) {
 
 
       vid.addEventListener('keydown', (e) => {
-        if (e.key=="Enter" && lightbox.classList.contains('active')) {
+        if (e.key==="Enter" && lightbox.classList.contains('active')) {
           e.preventDefault();
           e.stopPropagation();
 
-        }else if (e.key=="Enter"){
+        }else if (e.key==="Enter"){
           e.preventDefault();
           e.stopPropagation();
           vid.remove();
@@ -96,7 +96,6 @@ function MediasGalleryPageFactory(data) {
     imgTitle.setAttribute('role', 'heading');
     imgTitle.setAttribute('aria-level','2');
 
-
     const imgLikes = document.createElement('h3');
     imgLikes.textContent = likes;
     imgLikes.classList.add('media-likes');
@@ -108,11 +107,11 @@ function MediasGalleryPageFactory(data) {
     imgLikes.setAttribute('tabindex', "0");
 
     imgLikes.addEventListener('keydown', (e) => {
-      if (e.key=="Enter" && lightbox.classList.contains('active')) {
+      if (e.key==="Enter" && lightbox.classList.contains('active')) {
         e.preventDefault();
         e.stopPropagation();
 
-      }else if (e.key=="Enter"){
+      }else if (e.key==="Enter"){
         e.preventDefault();
         e.stopPropagation();
         imgLikes.click();
@@ -211,7 +210,7 @@ function MediasGalleryPageFactory(data) {
         clickToOpenLightbox();
 
         // SI LE MEDIA A LA CLASS IMAGE-CARD:
-        if(media.classList=="media-element image-card") {
+        if(media.classList==="media-element image-card") {
           img = document.createElement('img');
           img.classList.add('media-lightbox');
           img.src = actualMedia;
@@ -225,7 +224,7 @@ function MediasGalleryPageFactory(data) {
 
  
           // SI L'IMAGE A LA CLASSE VIDEO-CARD
-        } else if (media.classList=="media-element video-card") {
+        } else if (media.classList==="media-element video-card") {
           vid = document.createElement('video');
           vid.controls = true;
           vid.classList.add('media-lightbox');
@@ -252,7 +251,7 @@ function MediasGalleryPageFactory(data) {
 
         // EVENEMENT ENTER SUR ICONE FERMER DE LA LIGHTBOX -> FERMETURE DE LA LIGHTBOX
         closeLightbox.addEventListener('keydown', (e) => {
-          if (e.key=="Enter") {
+          if (e.key==="Enter") {
             e.preventDefault();
             e.stopPropagation();
             closeTheLightBox();
@@ -263,7 +262,7 @@ function MediasGalleryPageFactory(data) {
         lightbox.addEventListener('keydown', EscapeLightbox);
 
         function EscapeLightbox(e) {
-          if(e.key == "Escape") {
+          if(e.key === "Escape") {
             e.preventDefault();
             e.preventDefault();
             closeTheLightBox();    
@@ -275,7 +274,7 @@ function MediasGalleryPageFactory(data) {
 
         // EVENEMENT AU PRESS FLECHE GAUCHE
         lightbox.addEventListener('keydown', (e) => {
-          if (e.key=="ArrowLeft") {
+          if (e.key==="ArrowLeft") {
             e.preventDefault();
             e.stopPropagation();
             previousArrow();
@@ -284,7 +283,7 @@ function MediasGalleryPageFactory(data) {
 
         // EVENEMENT ENTER SUR ICONE CHEVRON PRECEDENT
         prevLightbox.addEventListener('keydown', (e) => {
-          if (e.key=="Enter") {
+          if (e.key==="Enter") {
             e.preventDefault();
             e.stopPropagation();
             previousArrow();
@@ -362,7 +361,7 @@ function MediasGalleryPageFactory(data) {
 
         // EVENEMENT AU PRESS FLECHE DROITE
         lightbox.addEventListener('keydown', (e) => {
-          if (e.key=="ArrowRight") {
+          if (e.key==="ArrowRight") {
             e.preventDefault();
             e.stopPropagation();
             nextArrow();
