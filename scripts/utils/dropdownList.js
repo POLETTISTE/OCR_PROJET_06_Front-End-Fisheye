@@ -55,7 +55,7 @@ for (let option of selectElt.options) {
 
   // on copie le contenu de l'option
   newOption.innerHTML = option.innerHTML;
-  newOption.setAttribute('role', 'listbox');
+  newOption.setAttribute('role', 'text');
   newOption.setAttribute('label', newOption.textContent);
   newOption.setAttribute('aria-activedescendant',newOption.textContent);
   newOption.setAttribute('aria-selected',newOption.textContent);
