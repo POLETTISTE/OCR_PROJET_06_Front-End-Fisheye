@@ -22,31 +22,31 @@
         </div>
         <!-- RAJOUTER LES CHAMPS INPUT MANQUANTS SELON MAQUETTE -->
         
-          <form method="post" action="">
+          <form method="post" action="traitement.js">
 
             <div id="formdatas" role="group" aria-labelledby="coordonnees">
               <p id="coordonnees" class="hidden">Vos coordonnées</p>
 
-                <label for="Prénom" id="form_prenom" role="label">Prénom</label>
-                <input type="text" name="prenom" id="prenom" aria-labelledby="form_prenom" />
+                <label for="prenom">Prénom</label>
+                <input type="text" name="prenom" id="prenom" aria-labelledby="prenom" />
                 
-                <label for="Nom" id="form_nom" role="label">Nom</label>
-                <input type="text" name="nom" id="nom" aria-labelledby="form_nom"  />
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" id="nom" aria-labelledby="nom"  />
                 
-                <label for="Email" id="form_email" role="label">Email</label>
-                <input type="email" name="email" id="email" aria-labelledby="form_email" />
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" aria-labelledby="email" />
                 
-                <label for="Message" id="form_message" role="label">Votre message</label>
-                <textarea name="message" id="message" aria-labelledby="form_message" rows="5" ></textarea>
+                <label for="message">Votre message</label>
+                <textarea name="message" id="message" aria-labelledby="message" rows="5" ></textarea>
             
             </div>
-            <button class="contact_button" id="send_button" role="button" aria-label="send">Envoyer</button>
+            <button class="contact_button" id="send_button" aria-label="send">Envoyer</button>
           </form>
 
 			</div>
 		</div>
     <div id="header-main-page" aria-label="Main header" role="banner">
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" aria-label="Fisheye Home page" aria-current="page" role='link'/></a>
+      <a href="index.html"><img src="assets/images/logo.png" alt="" class="logo" aria-label="Fisheye Home page"/></a>
     </div>
     <main id="main">
       <div class="photograph-header">
@@ -55,7 +55,7 @@
         <h2>Trier par</h2>
         <div class="custom-select">
           <div class="custom-select-global">
-            <select name="" id="">
+            <select>
               <option>Popularité</option>
               <option>Date</option>
               <option>Titre</option>
@@ -66,7 +66,7 @@
         
       <div class="medias-main">
       </div>
-      <div class="medias-info" role="text">
+      <div class="medias-info" role="contentinfo">
       </div>
     </main>
 
