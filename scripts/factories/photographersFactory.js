@@ -3,7 +3,6 @@
 function PhotographersFactory(data) {
 
   const { name, id, city, country, tagline, price, portrait} = data;
-    
   const picture = `assets/photographers/${portrait}`;
     
   // CREATION DES CARDS DES PHOTOGRAPHES:
