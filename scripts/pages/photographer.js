@@ -1,5 +1,7 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE PHOTOGRAPHER.HTML *****
 
+/*global PhotographerGalleryPageFactory, MediasGalleryPageFactory*/
+/*eslint no-undef: "error"*/
 
 
 let photographers;
@@ -117,7 +119,8 @@ async function addLikes() {
     
   let numberLike = document.querySelectorAll(".media-likes");
   let countOfLikePerPicture;
-  mediasInfo = document.querySelector(".medias-info");
+  const mediasInfo = document.querySelector(".medias-info");
+  
     
     
   numberLike.forEach((medias) => {
@@ -132,7 +135,6 @@ async function addLikes() {
         countOfLikePerPicture = countOfLikePerPicture.toString();
         mediasInfo.innerHTML ="";
         medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
-
         alreadyLiked=true;
         clickedLikes += 1;
                 

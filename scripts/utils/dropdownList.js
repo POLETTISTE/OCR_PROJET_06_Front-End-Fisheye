@@ -1,4 +1,5 @@
 
+
 const inputLabel = (document.querySelector("#filter > h2"));
 
 //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)
@@ -99,7 +100,7 @@ function FilteringMedias(e) {
   arrMedias = [];
   arrMediasTitle= [];
 
-  newSelectValue = newSelect.textContent;
+  let newSelectValue = newSelect.textContent;
     
   switch (newSelectValue) {
     case 'Popularité':
