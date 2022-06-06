@@ -32,10 +32,11 @@ async function getPhotographerId() {
   paramsId = new URLSearchParams(window.location.search).get("id");
 
   // DONNEES API EN FONCTION DE L'ID DU PHOTOGRAPHE DANS URL:
-  photographers = photographers.filter(photographer=> photographer["id"] == paramsId);
+  photographers = photographers.filter(photographer=> photographer["id"] === parseInt(paramsId));
+
 
   // DONNEES API EN FONCTION DE L'ID DU PHOTOGRAPHE DANS L'URL:
-  medias = medias.filter(media => media["photographerId"] == paramsId);
+  medias = medias.filter(media => media["photographerId"] === parseInt(paramsId));
 }
 
 

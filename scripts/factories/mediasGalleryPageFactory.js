@@ -371,7 +371,7 @@ function MediasGalleryPageFactory(data) {
 
         // EVENEMENT ENTER SUR ICONE CHEVRON SUIVANT
         nextLightbox.addEventListener('keydown', (e) => {
-          if (e.key=="Enter") {
+          if (e.key==="Enter") {
             e.preventDefault();
             e.stopPropagation();
             nextArrow();
