@@ -1,5 +1,7 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE PHOTOGRAPHER.HTML *****
 
+
+
 let photographers;
 let medias;
 let paramsId;
