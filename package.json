@@ -4,7 +4,8 @@
   "description": "projet 06 OCR",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --max-warnings=0 ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/POLETTISTE/OCR_PROJET_06_Front-End-Fisheye/issues"
   },
-  "homepage": "https://github.com/POLETTISTE/OCR_PROJET_06_Front-End-Fisheye#readme"
+  "homepage": "https://github.com/POLETTISTE/OCR_PROJET_06_Front-End-Fisheye#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.17.0"
+  }
 }
