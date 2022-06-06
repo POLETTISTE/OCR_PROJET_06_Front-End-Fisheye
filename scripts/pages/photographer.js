@@ -3,10 +3,7 @@
 let photographers;
 let medias;
 let paramsId;
-// let mediaLikes = 0;
 let clickedLikes=0;
-// let previousButton;
-// let nextButton;
 let arrMedias = [];
 let arrMediasTitle= [];
 
@@ -32,7 +29,7 @@ async function getPhotographerId() {
 
   // DONNEES API EN FONCTION DE L'ID DU PHOTOGRAPHE DANS URL:
   photographers = photographers.filter(photographer=> photographer["id"] == paramsId);
-    
+
   // DONNEES API EN FONCTION DE L'ID DU PHOTOGRAPHE DANS L'URL:
   medias = medias.filter(media => media["photographerId"] == paramsId);
 }
