@@ -65,8 +65,6 @@ function MediasGalleryPageFactory(data) {
       vid.setAttribute("src", mediaVideo);
       vid.setAttribute("aria-label",title);
       vid.setAttribute('type', "video/mp4");
-      vid.setAttribute('poster', mediaVideo);
-
       vid.setAttribute('tabindex', "0");
       vid.classList.add('media-element');
       vid.classList.add('video-card');
@@ -232,7 +230,6 @@ function MediasGalleryPageFactory(data) {
           vid.controls = true;
           vid.classList.add('media-lightbox');
           vid.src = actualMedia;
-          vid.setAttribute('poster', mediaVideo);
           vid.setAttribute('aria-label', media.getAttribute('aria-label'));
           lightboxContainer.setAttribute('aria-label', `${media.getAttribute('aria-label')}, closeup view`);
           titleMedia = document.createElement('p');
@@ -331,8 +328,6 @@ function MediasGalleryPageFactory(data) {
             vid.classList.add('media-lightbox');
             vid.src = actualMedia;
             vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
-            vid.setAttribute('poster', actualMedia);
-
             lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
             titleMedia.textContent = newMediaTitle;
 
@@ -354,7 +349,6 @@ function MediasGalleryPageFactory(data) {
             actualMedia = arrMedias[oldIndex];    
             vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
             vid.src = actualMedia; 
-            vid.setAttribute('poster', actualMedia);
             lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
             titleMedia.textContent = newMediaTitle;
 
@@ -421,7 +415,6 @@ function MediasGalleryPageFactory(data) {
             vid.controls = true;
             vid.classList.add('media-lightbox');
             vid.src = actualMedia;
-            vid.setAttribute('poster', actualMedia);
             vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
             lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
             titleMedia.textContent = newMediaTitle;
@@ -444,7 +437,6 @@ function MediasGalleryPageFactory(data) {
             actualMedia = arrMedias[oldIndex];    
             vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
             vid.src = actualMedia; 
-            vid.setAttribute('poster', actualMedia);
             lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
             titleMedia.textContent = newMediaTitle;
 
