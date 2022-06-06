@@ -153,9 +153,6 @@ function MediasGalleryPageFactory(data) {
   // AFFICHAGE LIGHTBOX: 
   function getLightbox() {
 
-
-
-
     // CREATION MODALE:
     const lightbox = document.createElement('div');
     lightbox.id = 'lightbox';
@@ -163,14 +160,12 @@ function MediasGalleryPageFactory(data) {
 
         
     // CREATION FENETRE QUI CONTIENT LE MEDIA
-
     const lightboxContainer= document.createElement('div');
     lightboxContainer.classList.add('lightbox__container');
     lightboxContainer.setAttribute('role', 'dialog');
 
 
     // CREATION DIV QUI ENGLOBE MEDIA ET TITRE DU MEDIA
-
     const lightboxContainerMediaAndTitle = document.createElement('div');
     lightboxContainerMediaAndTitle.classList.add('lightbox__container-media-title');
     lightboxContainerMediaAndTitle.setAttribute('role', 'dialog');
@@ -275,7 +270,7 @@ function MediasGalleryPageFactory(data) {
         });
 
         // EVENEMENT PRESS ECHAP FERMETURE DE LA LIGHTBOX
-        document.addEventListener('keydown', EscapeLightbox);
+        lightbox.addEventListener('keydown', EscapeLightbox);
 
         function EscapeLightbox(e) {
           if(e.key == "Escape") {
@@ -289,7 +284,7 @@ function MediasGalleryPageFactory(data) {
         prevLightbox.addEventListener('click', (previousArrow));
 
         // EVENEMENT AU PRESS FLECHE GAUCHE
-        document.addEventListener('keydown', (e) => {
+        lightbox.addEventListener('keydown', (e) => {
           if (e.key=="ArrowLeft") {
             e.preventDefault();
             e.stopPropagation();
@@ -376,7 +371,7 @@ function MediasGalleryPageFactory(data) {
         nextLightbox.addEventListener('click', (nextArrow));
 
         // EVENEMENT AU PRESS FLECHE DROITE
-        document.addEventListener('keydown', (e) => {
+        lightbox.addEventListener('keydown', (e) => {
           if (e.key=="ArrowRight") {
             e.preventDefault();
             e.stopPropagation();
@@ -395,6 +390,7 @@ function MediasGalleryPageFactory(data) {
 
 
         function nextArrow() {
+
           if (arrMedias.indexOf(actualMedia) === (arrMedias.length)-1) {
             oldIndex = 0;
           }else {
@@ -456,9 +452,6 @@ function MediasGalleryPageFactory(data) {
 
           }
         }
-
-
-
         /* 
                    AU CHARGEMENT DU MEDIA DANS LA LIGHBOX, IL EST
                    IMMEDIATEMENT SUPPRIME MAIS RESTE AFFICHE.
