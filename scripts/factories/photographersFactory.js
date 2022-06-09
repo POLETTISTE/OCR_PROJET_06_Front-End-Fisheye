@@ -1,6 +1,6 @@
 // ***** AFFICHAGE DE LA PAGE INDEX.HTML *****
 
-function PhotographersFactory(data) {
+function photographersFactory(data) {
 
   const { name, id, city, country, tagline, price, portrait} = data;
   const picture = `assets/photographers/${portrait}`;
