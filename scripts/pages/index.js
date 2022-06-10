@@ -1,5 +1,8 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE INDEX.HTML *****
 
+let photographers;
+
+
 async function getPhotographers() {
   await fetch('data/photographers.json')
     .then(function(res) {
@@ -15,7 +18,7 @@ async function getPhotographers() {
       console.log('error in the function getPhotographerId()', err);
     });
 
-  return (photographers);
+  return {photographers};
 
 }
 

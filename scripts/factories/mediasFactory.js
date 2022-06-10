@@ -8,7 +8,13 @@ function mediasFactory(data) {
   const mediaImage = `assets/images/${photographerId}/${image}`;
   const mediaVideo = `assets/images/${photographerId}/${video}`;
   const mediaTitle = title;
-
+  let arrMedias = [];
+  let arrMediasTitle = [];
+  let newMediaTitle;
+  let newMedia;
+  let lightbox;
+  let totalOfLikes;
+  // let displayLightbox;
 
 
 
@@ -17,16 +23,12 @@ function mediasFactory(data) {
 
     const article = document.createElement( 'article' );
     article.classList.add('media-card');
-
     let img = document.createElement('div');
-  let vid = document.createElement('div');
+    let vid = document.createElement('div');
 
-    let arrMedias = [];
-    let arrMediasTitle = [];
 
 
     // AFFICHAGE CARD MEDIAS AVEC DISTINCTION DES DATA IMAGES ET DATA VIDEOS
-
     if (Object.prototype.hasOwnProperty.call(data,'image')) {
       img = document.createElement('img');
       img.setAttribute("src", mediaImage);
@@ -35,7 +37,7 @@ function mediasFactory(data) {
       img.setAttribute('role', "link");
       img.classList.add('media-element');
       img.classList.add('image-card');
-      arrMedias.push(mediaImage);
+      arrMedias.push(data);
       arrMediasTitle.push(mediaTitle);
 
       img.addEventListener('keydown', (e) => {
@@ -60,7 +62,7 @@ function mediasFactory(data) {
       vid.setAttribute('tabindex', "0");
       vid.classList.add('media-element');
       vid.classList.add('video-card');
-      arrMedias.push(mediaVideo);
+      arrMedias.push(data);
       arrMediasTitle.push(mediaTitle);
 
 
@@ -127,7 +129,7 @@ function mediasFactory(data) {
 
     const insertLikes = document.createElement('p');
     insertLikes.classList.add('insert-likes');
-    insertLikes.innerHTML=`${likes} <i class='fa-solid fa-heart'></i>`;
+    insertLikes.innerHTML=`${totalOfLikes} <i class='fa-solid fa-heart'></i>`;
     return (insertLikes);
   }
 
@@ -137,7 +139,7 @@ function mediasFactory(data) {
   function getLightbox() {
 
     // CREATION MODALE:
-    const lightbox = document.createElement('div');
+    lightbox = document.createElement('div');
     lightbox.id = 'lightbox';
     lightbox.setAttribute('tabindex', '-1');
 
@@ -184,20 +186,22 @@ function mediasFactory(data) {
     // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
     const mediasGallery = document.querySelectorAll('.media-element');
 
+    arrMedias.push(data);
+    console.log(arrMedias);
+
     mediasGallery.forEach(media => {
-      let img = document.createElement('div');
-      let vid = document.createElement('div');
+      let img = document.createElement('img');
+      let vid = document.createElement('video');
       let titleMedia = document.createElement('p');
       let actualMedia = media.getAttribute('src');
       let oldIndex;
       let typeOfOld;
       let typeOfActual;
-    
 
+  
       function clickToOpenLightbox() {
         document.getElementById("lightbox").focus();
       }
-
       media.addEventListener("click", () => {
         lightbox.classList.add('active');
         clickToOpenLightbox();
@@ -232,11 +236,16 @@ function mediasFactory(data) {
 
         // FERMETURE DE LA LIGHTBOX
         function closeTheLightBox() {
-          lightbox.remove();
-          displayLightbox(medias);
-          let tri = document.querySelector("#filter > div > div > div.new-select");
-          tri.click();
-          tri.click();
+          lightboxContainerMediaAndTitle.remove();
+          lightboxContainer.remove();
+          lightbox.classList.remove('active');
+
+          // getMediasOfPhotographer();
+          // displayLightbox(data);
+          // let tri = document.querySelector("#filter > div > div > div.new-select");
+          // tri.click();
+          // tri.click();
+
         }
 
 
@@ -249,6 +258,7 @@ function mediasFactory(data) {
             e.preventDefault();
             e.stopPropagation();
             closeTheLightBox();
+
           }
         });
 
@@ -286,6 +296,15 @@ function mediasFactory(data) {
 
 
         function previousArrow() {
+          console.log(media);
+          console.log(actualMedia);
+          console.log(actualIndex);
+          
+          console.log(arrMedias)
+          console.log(medias);
+          console.log(arrMedias.indexOf(actualMedia));
+
+          
           if (arrMedias.indexOf(actualMedia) === 0) {
             oldIndex = ((arrMedias.length) -1);
                         
@@ -294,9 +313,11 @@ function mediasFactory(data) {
           }
                     
           newMedia = arrMedias[oldIndex]; 
+          console.log(newMedia);
           newMediaTitle = arrMediasTitle[oldIndex];
-
-          typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
+          console.log(newMediaTitle);
+          typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];   
+          console.log(typeOfOld); 
           typeOfOld = typeOfOld.split(".");
           typeOfOld = typeOfOld[typeOfOld.length-1];            
 
@@ -373,6 +394,8 @@ function mediasFactory(data) {
 
 
         function nextArrow() {
+          console.log(arrMedias);
+          console.log(actualMedia);
 
           if (arrMedias.indexOf(actualMedia) === (arrMedias.length)-1) {
             oldIndex = 0;
@@ -382,9 +405,9 @@ function mediasFactory(data) {
 
                     
           newMedia = arrMedias[oldIndex]; 
-          newMediaTitle = arrMediasTitle[oldIndex];
-                    
+          newMediaTitle = arrMediasTitle[oldIndex];          
           typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
+          // console.log(typeOfOld);
           typeOfOld = typeOfOld.split(".");
           typeOfOld = typeOfOld[typeOfOld.length-1];            
                     
@@ -411,7 +434,6 @@ function mediasFactory(data) {
             vid.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
             lightboxContainer.setAttribute('aria-label', `${newMediaTitle}, closeup view`);
             titleMedia.textContent = newMediaTitle;
-
             img.remove();
 
           }else if (typeOfOld ==='mp4' && typeOfActual === 'jpg') {
@@ -435,7 +457,7 @@ function mediasFactory(data) {
 
           }
         }
-      /* 
+        /* 
 //                  AU CHARGEMENT DU MEDIA DANS LA LIGHBOX, IL EST
 //                  IMMEDIATEMENT SUPPRIME MAIS RESTE AFFICHE.
 //                  CELA PERMET DE NE PAS AVOIR PLUSIEURS MEDIAS
@@ -454,8 +476,8 @@ function mediasFactory(data) {
         lightboxContainerMediaAndTitle.appendChild(titleMedia);
         lightboxContainer.appendChild(nextLightbox);
         lightboxContainer.appendChild(closeLightbox);
+      });
     });
-  });
         
     return (lightbox);
   }

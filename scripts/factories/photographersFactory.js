@@ -1,5 +1,4 @@
 // ***** AFFICHAGE DES ELEMENTS DES PHOTOGRAPHES ET MEDIAS *****
-
 function photographersFactory(data) {
 
   const { name, id, city, country, tagline, price, portrait} = data;
@@ -145,11 +144,6 @@ function photographersFactory(data) {
     return (p);
     
   }
-
-
-
-
-
   return { getUserCardDOM, getNameFormContact, getPhotographerIdHeader, getPricePhotographer}
 }
 
