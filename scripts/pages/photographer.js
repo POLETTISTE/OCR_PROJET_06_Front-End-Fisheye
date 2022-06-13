@@ -4,8 +4,11 @@ let clickedLikes;
 let photographers;
 let medias;
 let paramsIdPhotographer;
-let totalOfLikes;
+let totalOfLikes=0;
 let arrMedias = [];
+let arrMediasTitle = [];
+
+
 
 
 
@@ -63,6 +66,8 @@ async function displayPhotographerInGalleryPage(photographers){
 
 async function displayMediasInGalleryPage(medias) {
   const MediaGallery = document.querySelector(".medias-main");
+
+
 
   medias.forEach((media) => {
     const MediaGalleryModel = mediasFactory(media);
@@ -127,7 +132,6 @@ async function addLikes() {
 async function displayMediasLikesBottom(medias) {
 
   const mediasInfo = document.querySelector(".medias-info");
-
   const infosCardDOM = mediasFactory(medias);
   const element = infosCardDOM.getFixedBottomInfos();
   mediasInfo.appendChild(element);

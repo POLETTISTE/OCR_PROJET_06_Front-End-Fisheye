@@ -7,14 +7,12 @@ function mediasFactory(data) {
   // DEFINITION DES VARIABLES GLOBALES
   const mediaImage = `assets/images/${photographerId}/${image}`;
   const mediaVideo = `assets/images/${photographerId}/${video}`;
-  const mediaTitle = title;
-
   let medias = data;
-  let arrMediasTitle = [];
   let newMediaTitle;
   let newMedia;
   let lightbox;
-  let totalOfLikes;
+
+  
   // let displayLightbox;
 
 
@@ -29,7 +27,7 @@ function mediasFactory(data) {
 
 
     // AFFICHAGE CARD MEDIAS AVEC DISTINCTION DES DATA IMAGES ET DATA VIDEOS
-    if (Object.prototype.hasOwnProperty.call(data,'image')) {
+    if (Object.prototype.hasOwnProperty.call(medias,'image')) {
       img = document.createElement('img');
       img.setAttribute("src", mediaImage);
       img.setAttribute("aria-label",title);
@@ -38,8 +36,9 @@ function mediasFactory(data) {
       img.classList.add('media-element');
       img.classList.add('image-card');
       arrMedias.push(mediaImage);
+      arrMediasTitle.push(title);
+      totalOfLikes+=parseInt(medias.likes, 10);
 
-      arrMediasTitle.push(mediaTitle);
 
       img.addEventListener('keydown', (e) => {
         if (e.key==="Enter" && lightbox.classList.contains('active')) {
@@ -54,7 +53,7 @@ function mediasFactory(data) {
         }
       });
 
-    }else if (Object.prototype.hasOwnProperty.call(data,'video')) {
+    }else if (Object.prototype.hasOwnProperty.call(medias,'video')) {
 
       vid = document.createElement('video');
       vid.setAttribute("src", mediaVideo);
@@ -64,7 +63,7 @@ function mediasFactory(data) {
       vid.classList.add('media-element');
       vid.classList.add('video-card');
       arrMedias.push(mediaVideo);
-      arrMediasTitle.push(mediaTitle);
+      arrMediasTitle.push(title);
 
 
       vid.addEventListener('keydown', (e) => {
@@ -206,9 +205,8 @@ function mediasFactory(data) {
         lightbox.classList.add('active');
         clickToOpenLightbox();
 
-
         // SI LE MEDIA A LA CLASS IMAGE-CARD:
-        if(media.classList=="media-element image-card") {
+        if(media.classList=='media-element image-card') {
           img = document.createElement('img');
           img.classList.add('media-lightbox');
           img.src = actualMedia;
@@ -219,10 +217,8 @@ function mediasFactory(data) {
           titleMedia.setAttribute('role', 'text');
           titleMedia.textContent = media.getAttribute('aria-label');
                     
-
- 
           // SI L'IMAGE A LA CLASSE VIDEO-CARD
-        } else if (media.classList=="media-element video-card") {
+        } else if (media.classList=='media-element video-card') {
           vid = document.createElement('video');
           vid.controls = true;
           vid.classList.add('media-lightbox');
@@ -243,11 +239,11 @@ function mediasFactory(data) {
           lightboxContainer.remove();
           lightbox.classList.remove('active');
 
-          // getMediasOfPhotographer();
-          // displayLightbox(data);
-          // let tri = document.querySelector("#filter > div > div > div.new-select");
-          // tri.click();
-          // tri.click();
+          getMediasOfPhotographer();
+          displayLightbox(medias);
+          let tri = document.querySelector("#filter > div > div > div.new-select");
+          tri.click();
+          tri.click();
 
         }
 
@@ -309,6 +305,9 @@ function mediasFactory(data) {
                     
           newMedia = arrMedias[oldIndex]; 
           newMediaTitle = arrMediasTitle[oldIndex];
+          console.log(oldIndex);
+          console.log(arrMediasTitle);
+          console.log(newMediaTitle);
           typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];   
           typeOfOld = typeOfOld.split(".");
           typeOfOld = typeOfOld[typeOfOld.length-1];            
