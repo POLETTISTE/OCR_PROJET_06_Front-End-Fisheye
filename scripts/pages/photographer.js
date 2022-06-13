@@ -1,10 +1,12 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE PHOTOGRAPHER.HTML *****
 
-// let clickedLikes;
-// let photographers;
-// let medias;
-// let paramsIdPhotographer;
-// let totalOfLikes;
+let clickedLikes;
+let photographers;
+let medias;
+let paramsIdPhotographer;
+let totalOfLikes;
+let arrMedias = [];
+
 
 
 
@@ -134,12 +136,9 @@ async function displayMediasLikesBottom(medias) {
 
 async function getMediaLikesCalcul() {
   let mediasLikes=0;
-  console.log(medias);
   medias.forEach((media) => { 
     mediasLikes+= media["likes"];
   });
-
-  console.log(mediasLikes);
     
   return (mediasLikes);
 
@@ -158,9 +157,9 @@ async function init() {
   await displayNamePhotographerContactForm(photographers);
   await displayPhotographerInGalleryPage(photographers);
   await displayMediasInGalleryPage(medias);
-  await displayMediasLikesBottom(medias);
   await displayPhotographerPriceBottom(photographers);
   await addLikes();
+  await displayMediasLikesBottom(medias);
   await getMediaLikesCalcul();
   await displayLightbox(medias);
 
