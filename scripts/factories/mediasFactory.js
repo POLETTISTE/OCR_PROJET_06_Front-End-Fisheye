@@ -7,14 +7,10 @@ function mediasFactory(data) {
   // DEFINITION DES VARIABLES GLOBALES
   const mediaImage = `assets/images/${photographerId}/${image}`;
   const mediaVideo = `assets/images/${photographerId}/${video}`;
-  let medias = data;
+  const medias = data;
   let newMediaTitle;
   let newMedia;
   let lightbox;
-
-  
-  // let displayLightbox;
-
 
 
   // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
@@ -64,6 +60,8 @@ function mediasFactory(data) {
       vid.classList.add('video-card');
       arrMedias.push(mediaVideo);
       arrMediasTitle.push(title);
+      totalOfLikes+=parseInt(medias.likes, 10);
+
 
 
       vid.addEventListener('keydown', (e) => {
@@ -238,12 +236,13 @@ function mediasFactory(data) {
           lightboxContainerMediaAndTitle.remove();
           lightboxContainer.remove();
           lightbox.classList.remove('active');
-          totalOfLikes=0;
-          
+          insertLikes.innerHTML=``;
+          getMediasOfPhotographer();
+          getFixedBottomInfos;
+
           let tri = document.querySelector("#filter > div > div > div.new-select");
           tri.click();
           tri.click();
-
         }
 
 

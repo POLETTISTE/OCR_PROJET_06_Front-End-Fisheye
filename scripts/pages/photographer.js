@@ -1,16 +1,12 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE PHOTOGRAPHER.HTML *****
 
-let clickedLikes;
+let clickedLikes=0;
 let photographers;
 let medias;
 let paramsIdPhotographer;
 let totalOfLikes=0;
 let arrMedias = [];
 let arrMediasTitle = [];
-
-
-
-
 
 
 async function getPhotographersMediaPage() {
@@ -107,8 +103,8 @@ async function addLikes() {
         mediasInfo.innerHTML ="";
         medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
         alreadyLiked=true;
-        clickedLikes += 1;
-                
+        // clickedLikes += 1;
+        totalOfLikes+=1          
         displayMediasLikesBottom(medias);
         displayPhotographerPriceBottom(photographers);
                 
@@ -120,10 +116,13 @@ async function addLikes() {
         mediasInfo.innerHTML ="";
         medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
         alreadyLiked=false;                    
-        clickedLikes -=1;
-                
+        // clickedLikes -=1;
+
+        totalOfLikes-=1          
+    
         displayMediasLikesBottom(medias);
         displayPhotographerPriceBottom(photographers);
+        // getMediaLikesCalcul();
       }
     });
   });
