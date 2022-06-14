@@ -86,18 +86,14 @@
     right:9%;
     z-index:15;
     width: fit-content;
-
-
 }
 
 .lightbox__close {
-    background: url('../assets/icons/arrow.svg');
     position: relative;
     bottom: 37%;
     right:12%;
     color:#901C1C;
     font-size: 48px;
-    /* padding:20px; */
     cursor: pointer;
     width: fit-content;
     z-index:15;

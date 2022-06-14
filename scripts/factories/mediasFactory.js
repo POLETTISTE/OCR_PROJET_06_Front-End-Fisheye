@@ -236,7 +236,6 @@ function mediasFactory(data) {
           lightboxContainerMediaAndTitle.remove();
           lightboxContainer.remove();
           lightbox.classList.remove('active');
-          insertLikes.innerHTML=``;
           getMediasOfPhotographer();
           getFixedBottomInfos;
 

@@ -122,7 +122,6 @@ async function addLikes() {
         displayMediasLikesBottom(medias);
         displayPhotographerPriceBottom(photographers);
 
-        // getMediaLikesCalcul();
       }
     });
   });
@@ -137,15 +136,15 @@ async function displayMediasLikesBottom(medias) {
 
 }
 
-async function getMediaLikesCalcul() {
-  let mediasLikes=0;
-  medias.forEach((media) => { 
-    mediasLikes+= media["likes"];
-  });
+// async function getMediaLikesCalcul() {
+//   let mediasLikes=0;
+//   medias.forEach((media) => { 
+//     mediasLikes+= media["likes"];
+//   });
     
-  return (mediasLikes);
+//   return (mediasLikes);
 
-}
+// }
 
 async function displayLightbox(medias) {
   const mediasLightbox = document.querySelector("#main");
@@ -162,7 +161,7 @@ async function init() {
   await displayMediasInGalleryPage(medias);
   await addLikes();
   await displayMediasLikesBottom(medias);
-  await getMediaLikesCalcul();
+  // await getMediaLikesCalcul();
   await displayPhotographerPriceBottom(photographers);
   await displayLightbox(medias);
 
