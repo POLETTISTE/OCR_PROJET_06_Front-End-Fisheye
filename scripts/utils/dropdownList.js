@@ -131,6 +131,7 @@ function FilteringMedias(e) {
   displayMediasInGalleryPage(medias);
   document.querySelector("#lightbox").remove();
   displayLightbox(medias);
+  
   addLikes(medias);
     
 
