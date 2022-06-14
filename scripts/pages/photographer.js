@@ -103,8 +103,8 @@ async function addLikes() {
         mediasInfo.innerHTML ="";
         medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
         alreadyLiked=true;
-        // clickedLikes += 1;
-        totalOfLikes+=1          
+        clickedLikes = 1;
+        totalOfLikes = totalOfLikes + clickedLikes;       
         displayMediasLikesBottom(medias);
         displayPhotographerPriceBottom(photographers);
                 
@@ -116,12 +116,12 @@ async function addLikes() {
         mediasInfo.innerHTML ="";
         medias.innerHTML = `${countOfLikePerPicture} <i class='fa-solid fa-heart'></i>`;
         alreadyLiked=false;                    
-        // clickedLikes -=1;
-
-        totalOfLikes-=1          
+        clickedLikes =-1;
+        totalOfLikes = totalOfLikes + clickedLikes;       
     
         displayMediasLikesBottom(medias);
         displayPhotographerPriceBottom(photographers);
+
         // getMediaLikesCalcul();
       }
     });

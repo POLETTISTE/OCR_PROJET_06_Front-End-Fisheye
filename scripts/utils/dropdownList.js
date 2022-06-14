@@ -100,6 +100,7 @@ function FilteringMedias(e) {
   arrMedias = [];
   arrMediasTitle= [];
 
+
   let newSelectValue = newSelect.textContent;
     
   switch (newSelectValue) {
@@ -128,12 +129,12 @@ function FilteringMedias(e) {
 
   displayMediasLikesBottom(medias);
   displayPhotographerPriceBottom(photographers);
+  totalOfLikes=0;  
   displayMediasInGalleryPage(medias);
   document.querySelector("#lightbox").remove();
   displayLightbox(medias);
   
   addLikes(medias);
-    
 
   // on retire le select-hide de notre menu
   newSelect.nextSibling.classList.toggle("select-hide");
