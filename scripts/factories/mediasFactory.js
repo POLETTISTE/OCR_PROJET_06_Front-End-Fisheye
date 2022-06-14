@@ -238,9 +238,8 @@ function mediasFactory(data) {
           lightboxContainerMediaAndTitle.remove();
           lightboxContainer.remove();
           lightbox.classList.remove('active');
-
-          getMediasOfPhotographer();
-          displayLightbox(medias);
+          totalOfLikes=0;
+          
           let tri = document.querySelector("#filter > div > div > div.new-select");
           tri.click();
           tri.click();
@@ -305,9 +304,7 @@ function mediasFactory(data) {
                     
           newMedia = arrMedias[oldIndex]; 
           newMediaTitle = arrMediasTitle[oldIndex];
-          console.log(oldIndex);
-          console.log(arrMediasTitle);
-          console.log(newMediaTitle);
+
           typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];   
           typeOfOld = typeOfOld.split(".");
           typeOfOld = typeOfOld[typeOfOld.length-1];            

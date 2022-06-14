@@ -161,10 +161,10 @@ async function init() {
   await displayNamePhotographerContactForm(photographers);
   await displayPhotographerInGalleryPage(photographers);
   await displayMediasInGalleryPage(medias);
-  await displayPhotographerPriceBottom(photographers);
   await addLikes();
   await displayMediasLikesBottom(medias);
   await getMediaLikesCalcul();
+  await displayPhotographerPriceBottom(photographers);
   await displayLightbox(medias);
 
 }
