@@ -37,11 +37,12 @@ function mediasFactory(data) {
 
 
       img.addEventListener('keydown', (e) => {
-        if (e.key==="Enter" && lightbox.classList.contains('active')) {
-          e.preventDefault();
-          e.stopPropagation();
+        // if (e.key==="Enter" && lightbox.classList.contains('active')) {
+        //   e.preventDefault();
+        //   e.stopPropagation();
 
-        }else if (e.key==="Enter"){
+        // 
+        if (e.key==="Enter"){
           e.preventDefault();
           e.stopPropagation();
           img.remove();
@@ -65,11 +66,12 @@ function mediasFactory(data) {
 
 
       vid.addEventListener('keydown', (e) => {
-        if (e.key==="Enter" && lightbox.classList.contains('active')) {
-          e.preventDefault();
-          e.stopPropagation();
+        // if (e.key==="Enter" && lightbox.classList.contains('active')) {
+        //   e.preventDefault();
+        //   e.stopPropagation();
 
-        }else if (e.key==="Enter"){
+        // }else 
+        if (e.key==="Enter"){
           e.preventDefault();
           e.stopPropagation();
           vid.remove();
@@ -204,7 +206,7 @@ function mediasFactory(data) {
         clickToOpenLightbox();
 
         // SI LE MEDIA A LA CLASS IMAGE-CARD:
-        if(media.classList=='media-element image-card') {
+        if(media.classList.contains('image-card')) {
           img = document.createElement('img');
           img.classList.add('media-lightbox');
           img.src = actualMedia;
@@ -216,7 +218,7 @@ function mediasFactory(data) {
           titleMedia.textContent = media.getAttribute('aria-label');
                     
           // SI L'IMAGE A LA CLASSE VIDEO-CARD
-        } else if (media.classList=='media-element video-card') {
+        } else if (media.classList.contains('video-card')) {
           vid = document.createElement('video');
           vid.controls = true;
           vid.classList.add('media-lightbox');
@@ -391,6 +393,7 @@ function mediasFactory(data) {
           newMedia = arrMedias[oldIndex]; 
           newMediaTitle = arrMediasTitle[oldIndex];          
           typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
+          // console.log(arrMedias[arrMedias.indexOf(actualMedia)]);
           typeOfOld = typeOfOld.split(".");
           typeOfOld = typeOfOld[typeOfOld.length-1];            
                     

@@ -136,15 +136,6 @@ async function displayMediasLikesBottom(medias) {
 
 }
 
-// async function getMediaLikesCalcul() {
-//   let mediasLikes=0;
-//   medias.forEach((media) => { 
-//     mediasLikes+= media["likes"];
-//   });
-    
-//   return (mediasLikes);
-
-// }
 
 async function displayLightbox(medias) {
   const mediasLightbox = document.querySelector("#main");
@@ -161,7 +152,6 @@ async function init() {
   await displayMediasInGalleryPage(medias);
   await addLikes();
   await displayMediasLikesBottom(medias);
-  // await getMediaLikesCalcul();
   await displayPhotographerPriceBottom(photographers);
   await displayLightbox(medias);
 
