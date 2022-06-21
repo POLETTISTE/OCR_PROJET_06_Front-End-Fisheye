@@ -11,14 +11,6 @@ class mediasFactory {
     this._likes = data.likes
   }
 
-  // DEFINITION DES VARIABLES GLOBALES
-  //  mediaVideo = `assets/images/${photographerId}/${video}`;
-  //  medias = data;
-  //  newMediaTitle;
-  //  newMedia;
-  //  lightbox;
-
-
 
   // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
   getMediasOfPhotographer() {
@@ -28,16 +20,8 @@ class mediasFactory {
     let img = document.createElement('div');
     let vid = document.createElement('div');
 
-    console.log(this);
-    console.log(this._image);
-    console.log(this.hasOwnProperty('_image'));
-    console.log(this._video);
-    console.log(this.hasOwnProperty('_video'))
-    console.log(this._video)
-    
-
     // AFFICHAGE CARD MEDIAS AVEC DISTINCTION DES DATA IMAGES ET DATA VIDEOS
-    if (this.hasOwnProperty('_image') && this._image !==undefined) {
+    if (this._image !==undefined) {
       img = document.createElement('img');
       img.setAttribute("src", `assets/images/${this._photographerId}/${this._image}`);
       img.setAttribute("aria-label",this._title);
@@ -64,9 +48,7 @@ class mediasFactory {
         }
       });
 
-    }else if (this.hasOwnProperty('_video') && this._video !==undefined) {
-
-
+    }else if ( this._video !==undefined) {
 
       vid = document.createElement('video');
       vid.setAttribute("src", `assets/images/${this._photographerId}/${this._video}`);
@@ -150,6 +132,10 @@ class mediasFactory {
 
   // // AFFICHAGE LIGHTBOX: 
   getLightbox() {
+
+    let newMedia
+    let newMediaTitle;
+
 
     // CREATION MODALE:
     const lightbox = document.createElement('div');
@@ -250,8 +236,8 @@ class mediasFactory {
           lightboxContainerMediaAndTitle.remove();
           lightboxContainer.remove();
           lightbox.classList.remove('active');
-          getMediasOfPhotographer();
-          getFixedBottomInfos;
+          // getMediasOfPhotographer();
+          // getFixedBottomInfos;
 
           let tri = document.querySelector("#filter > div > div > div.new-select");
           tri.click();
@@ -315,7 +301,7 @@ class mediasFactory {
           }
                     
           newMedia = arrMedias[oldIndex]; 
-          newMediaTitle = arrMediasTitle[oldIndex];
+          // newMediaTitle = arrMediasTitle[oldIndex];
 
           typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];   
           typeOfOld = typeOfOld.split(".");
