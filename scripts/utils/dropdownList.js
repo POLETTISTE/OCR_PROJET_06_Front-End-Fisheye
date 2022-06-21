@@ -1,5 +1,3 @@
-
-
 const inputLabel = document.querySelector("#filter > label > h2");
 
 //on récupère la div "custom-select" (qui contient tout le code du menu déroulant)

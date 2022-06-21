@@ -1,33 +1,39 @@
 // ***** AFFICHAGE DES ELEMENTS DES PHOTOGRAPHES ET MEDIAS *****
-function photographersFactory(data) {
+class photographersFactory {
 
-  const { name, id, city, country, tagline, price, portrait} = data;
-  const picture = `assets/photographers/${portrait}`;
-  
-    
+  constructor(data) {
+    this._name = data.name
+    this._id = data.id
+    this._city = data.city
+    this._country = data.country
+    this._tagline = data.tagline
+    this._price = data.price
+    this._portrait = data.portrait
+  }
+   
 
   // CREATION DES CARDS DES PHOTOGRAPHES:
-  function getUserCardDOM() {
+   getUserCardDOM() {
 
     const article = document.createElement( 'article' );
 
     // CONSTRUCTION CARD PHOTOGRAPHE LIEN VERS PAGE DEDIEE:
     const avatarPictureAndName = document.createElement ('a');
-    avatarPictureAndName.setAttribute('href', `photographer.html?id=${id}`);
-    avatarPictureAndName.setAttribute('aria-label', name);
+    avatarPictureAndName.setAttribute('href', `photographer.html?id=${this._id}`);
+    avatarPictureAndName.setAttribute('aria-label', this._name);
     avatarPictureAndName.setAttribute('aria-current', 'page');
     avatarPictureAndName.classList.add('photographer__avatar');
 
     // CONSTRUCTION AVATAR PHOTOGRAPHE:
     const img = document.createElement( 'img');
-    img.setAttribute("src", picture);
+    img.setAttribute("src", `assets/photographers/${this._portrait}`);
     img.setAttribute("alt", "");
     img.classList.add('photographer__avatar-picture','photographer__avatar-picture-index' );
 
     // CONSTRUCTION NOM PHOTOGRAPHE:
     const h2 = document.createElement( 'h2' );
     h2.classList.add('photographer__avatar-name');
-    h2.textContent = name;
+    h2.textContent = this._name;
 
     // CONSTRUCTION DIV INFORMATIONS PHOTOGRAPHE:
     const infos = document.createElement ('div');
@@ -37,17 +43,17 @@ function photographersFactory(data) {
     // CONSTRUCTION INFORMATIONS VILLE + PAYS PHOTOGRAPHE
     const paragraphCityCountry = document.createElement('p');
     paragraphCityCountry.classList.add('photographer__infos-city-country');
-    paragraphCityCountry.textContent = `${city}, ${country}`;
+    paragraphCityCountry.textContent = `${this._city}, ${this._country}`;
 
     // CONSTRUCTION TAGLINE PHOTOGRAPHE
     const paragraphTagline = document.createElement('p');
     paragraphTagline.classList.add('photographer__infos-tagline');
-    paragraphTagline.textContent = tagline;
+    paragraphTagline.textContent = this._tagline;
         
     // CONSTRUCTION PRIX JOURNALIER DU PHOTOGRAPHE
     const paragraphPrice = document.createElement('p');
     paragraphPrice.classList.add('photographer__infos-price');
-    paragraphPrice.textContent = `${price} €/jour`;
+    paragraphPrice.textContent = `${this._price} €/jour`;
 
     // ELEMENT DE CONSTRUCTION:
     article.appendChild(avatarPictureAndName);
@@ -61,16 +67,16 @@ function photographersFactory(data) {
     return (article);
   }
 
-  function getNameFormContact() {
+   getNameFormContact() {
 
     const nameForm = document.createElement('h2');
     nameForm.classList.add('photograph-form-name');
-    nameForm.textContent = name;
+    nameForm.textContent = this._name;
 
     return(nameForm);
   }
 
-  function getPhotographerIdHeader() {
+   getPhotographerIdHeader() {
 
     const article = document.createElement( 'article' );
     article.classList.add('photograph-header-banner');
@@ -82,15 +88,15 @@ function photographersFactory(data) {
     headerLeftName.classList.add('photographer-name');
     headerLeftName.setAttribute('role','heading');
     headerLeftName.setAttribute('aria-level','1');
-    headerLeftName.textContent = name;
+    headerLeftName.textContent = this._name;
     const headerLeftLocation = document.createElement('p');
     headerLeftLocation.classList.add('photographer-location');
     headerLeftLocation.setAttribute('role', 'text');
-    headerLeftLocation.textContent = `${city}, ${country}`;
+    headerLeftLocation.textContent = `${this._city}, ${this._country}`;
     const headerLeftTagline = document.createElement('p');
     headerLeftTagline.classList.add('photographer-tagline');
     headerLeftTagline.setAttribute('role', 'text');
-    headerLeftTagline.textContent = tagline;
+    headerLeftTagline.textContent = this._tagline;
 
     // HEADER CENTER:
     const headerCenterRight = document.createElement ('div');
@@ -109,14 +115,14 @@ function photographersFactory(data) {
     // HEADER RIGHT:
     const headerRight = document.createElement('div');
     const imgAvatar = document.createElement('img');
-    imgAvatar.setAttribute("src", picture);
-    imgAvatar.setAttribute("aria-label",name);
+    imgAvatar.setAttribute("src",this._picture);
+    imgAvatar.setAttribute("aria-label",this._name);
     imgAvatar.setAttribute("role",'img');
     imgAvatar.classList.add('photographer__avatar-picture','photographer__avatar-picture-photographer' );
 
     // FORM CONTACT
     const modal = document.getElementById("contact_modal");
-    modal.setAttribute('aria-label', `Contact Me ${name}`);
+    modal.setAttribute('aria-label', `Contact Me ${this._name}`);
         
     const headerForm = document.querySelector("#header-form > div")
     headerForm.setAttribute('role', 'heading');
@@ -137,14 +143,14 @@ function photographersFactory(data) {
     return (article);
   }
 
-  function getPricePhotographer() {
+   getPricePhotographer() {
     const p = document.createElement('p');
     p.classList.add('insert-rate');
-    p.textContent = `${price}€ / jour`;
+    p.textContent = `${this._price}€ / jour`;
     return (p);
     
   }
-  return { getUserCardDOM, getNameFormContact, getPhotographerIdHeader, getPricePhotographer}
+  // return { getUserCardDOM, getNameFormContact, getPhotographerIdHeader, getPricePhotographer}
 }
 
 

@@ -13,6 +13,7 @@ function mediasFactory(data) {
   let lightbox;
 
 
+
   // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
   function getMediasOfPhotographer() {
 
@@ -66,11 +67,7 @@ function mediasFactory(data) {
 
 
       vid.addEventListener('keydown', (e) => {
-        // if (e.key==="Enter" && lightbox.classList.contains('active')) {
-        //   e.preventDefault();
-        //   e.stopPropagation();
 
-        // }else 
         if (e.key==="Enter"){
           e.preventDefault();
           e.stopPropagation();
