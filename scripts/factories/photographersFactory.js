@@ -115,7 +115,7 @@ class photographersFactory {
     // HEADER RIGHT:
     const headerRight = document.createElement('div');
     const imgAvatar = document.createElement('img');
-    imgAvatar.setAttribute("src",this._picture);
+    imgAvatar.setAttribute("src",`assets/photographers/${this._portrait}`);
     imgAvatar.setAttribute("aria-label",this._name);
     imgAvatar.setAttribute("role",'img');
     imgAvatar.classList.add('photographer__avatar-picture','photographer__avatar-picture-photographer' );

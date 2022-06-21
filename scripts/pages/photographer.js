@@ -1,8 +1,8 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE PHOTOGRAPHER.HTML *****
 
 let clickedLikes=0;
-let photographers;
-let medias;
+// let photographers;
+// let medias;
 let paramsIdPhotographer;
 let totalOfLikes=0;
 let arrMedias = [];
@@ -43,7 +43,7 @@ async function displayNamePhotographerContactForm(photographers) {
   const photographerNameForm = document.querySelector("#contact_modal > div > #header-form");
   
   photographers.forEach((photographer) => {
-    const photographerFormContactName = photographersFactory(photographer);
+    const photographerFormContactName = new photographersFactory(photographer);
     const element = photographerFormContactName.getNameFormContact();
     photographerNameForm.appendChild(element);
   });
@@ -54,7 +54,7 @@ async function displayPhotographerInGalleryPage(photographers){
   const photographersHeader = document.querySelector(".photograph-header");
 
   photographers.forEach((photographer) => {
-    const photographerGalleryModel = photographersFactory(photographer);
+    const photographerGalleryModel = new photographersFactory(photographer);
     const element = photographerGalleryModel.getPhotographerIdHeader();
     photographersHeader.appendChild(element);
   });
@@ -66,7 +66,7 @@ async function displayMediasInGalleryPage(medias) {
 
 
   medias.forEach((media) => {
-    const MediaGalleryModel = mediasFactory(media);
+    const MediaGalleryModel =new mediasFactory(media);
     const elt = MediaGalleryModel.getMediasOfPhotographer();
     MediaGallery.appendChild(elt);
     
@@ -78,7 +78,7 @@ async function displayPhotographerPriceBottom(photographers) {
   const photographerPriceBottom = document.querySelector(".medias-info");
   
   photographers.forEach((photographer) => {
-    const photographerBottomCardDOM = photographersFactory(photographer);
+    const photographerBottomCardDOM = new photographersFactory(photographer);
     const element = photographerBottomCardDOM.getPricePhotographer();
     photographerPriceBottom.appendChild(element);
   });
@@ -130,7 +130,7 @@ async function addLikes() {
 async function displayMediasLikesBottom(medias) {
 
   const mediasInfo = document.querySelector(".medias-info");
-  const infosCardDOM = mediasFactory(medias);
+  const infosCardDOM = new mediasFactory(medias);
   const element = infosCardDOM.getFixedBottomInfos();
   mediasInfo.appendChild(element);
 
@@ -140,7 +140,7 @@ async function displayMediasLikesBottom(medias) {
 async function displayLightbox(medias) {
   const mediasLightbox = document.querySelector("#main");
 
-  const displayMedias = mediasFactory(medias);
+  const displayMedias = new mediasFactory(medias);
   const item = displayMedias.getLightbox();
   mediasLightbox.appendChild(item);
 }

@@ -1,40 +1,49 @@
 // ***** AFFICHAGE DE LA PAGE PHOTOGRAPHER.HTML *****
 
-function mediasFactory(data) {
+class mediasFactory {
 
-  const { photographerId, title, image, video, likes } = data;
+
+  constructor(data){
+    this._photographerId = data.photographerId
+    this._title = data.title
+    this._image = data.image
+    this._video = data.video
+    this._likes = data.likes
+  }
 
   // DEFINITION DES VARIABLES GLOBALES
-  const mediaImage = `assets/images/${photographerId}/${image}`;
-  const mediaVideo = `assets/images/${photographerId}/${video}`;
-  const medias = data;
-  let newMediaTitle;
-  let newMedia;
-  let lightbox;
+  //  mediaVideo = `assets/images/${photographerId}/${video}`;
+  //  medias = data;
+  //  newMediaTitle;
+  //  newMedia;
+  //  lightbox;
 
 
 
   // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
-  function getMediasOfPhotographer() {
+   getMediasOfPhotographer() {
 
     const article = document.createElement( 'article' );
     article.classList.add('media-card');
     let img = document.createElement('div');
     let vid = document.createElement('div');
 
+    console.log(this);
+    console.log(this.hasOwnProperty('_image'));
+
 
     // AFFICHAGE CARD MEDIAS AVEC DISTINCTION DES DATA IMAGES ET DATA VIDEOS
-    if (Object.prototype.hasOwnProperty.call(medias,'image')) {
+    if (this.hasOwnProperty('_image')) {
       img = document.createElement('img');
-      img.setAttribute("src", mediaImage);
-      img.setAttribute("aria-label",title);
+      img.setAttribute("src", `assets/images/${this._photographerId}/${this._image}`);
+      img.setAttribute("aria-label",this._title);
       img.setAttribute('tabindex', "0");
       img.setAttribute('role', "link");
       img.classList.add('media-element');
       img.classList.add('image-card');
-      arrMedias.push(mediaImage);
-      arrMediasTitle.push(title);
-      totalOfLikes+=parseInt(medias.likes, 10);
+      arrMedias.push(this._image);
+      arrMediasTitle.push(this._title);
+      totalOfLikes+=parseInt(this._likes, 10);
 
 
       img.addEventListener('keydown', (e) => {
@@ -51,18 +60,18 @@ function mediasFactory(data) {
         }
       });
 
-    }else if (Object.prototype.hasOwnProperty.call(medias,'video')) {
+    }else if (this.hasOwnProperty('_video')) {
 
       vid = document.createElement('video');
-      vid.setAttribute("src", mediaVideo);
-      vid.setAttribute("aria-label",title);
+      vid.setAttribute("src", `assets/images/${this._photographerId}/${this._video}`);
+      vid.setAttribute("aria-label",this._title);
       vid.setAttribute('type', "video/mp4");
       vid.setAttribute('tabindex', "0");
       vid.classList.add('media-element');
       vid.classList.add('video-card');
-      arrMedias.push(mediaVideo);
-      arrMediasTitle.push(title);
-      totalOfLikes+=parseInt(medias.likes, 10);
+      arrMedias.push(this._video);
+      arrMediasTitle.push(this._title);
+      totalOfLikes+=parseInt(this._likes, 10);
 
 
 
@@ -83,18 +92,18 @@ function mediasFactory(data) {
     imgInfos.classList.add("image-card-infos");
 
     const imgTitle = document.createElement('h2');
-    imgTitle.textContent = title;
+    imgTitle.textContent = this._title;
     imgTitle.classList.add('media-title');
     imgTitle.setAttribute('role', 'heading');
     imgTitle.setAttribute('aria-level','2');
 
     const imgLikes = document.createElement('h3');
-    imgLikes.textContent = likes;
+    imgLikes.textContent = this._likes;
     imgLikes.classList.add('media-likes');
     imgLikes.setAttribute('role', 'heading');
     imgTitle.setAttribute('aria-level','3');
 
-    imgLikes.innerHTML = `${likes} <i class='fa-solid fa-heart'></i>`;
+    imgLikes.innerHTML = `${this._likes} <i class='fa-solid fa-heart'></i>`;
     imgLikes.setAttribute('aria-label', 'likes');
     imgLikes.setAttribute('tabindex', "0");
 
@@ -123,7 +132,7 @@ function mediasFactory(data) {
 
 
   // AFFICHAGE SOMME DES LIKES DU PHOTOGRAPHE (VOIR LIGNE 13):
-  function getFixedBottomInfos() {
+   getFixedBottomInfos() {
 
     const insertLikes = document.createElement('p');
     insertLikes.classList.add('insert-likes');
@@ -134,10 +143,10 @@ function mediasFactory(data) {
 
 
   // // AFFICHAGE LIGHTBOX: 
-  function getLightbox() {
+   getLightbox() {
 
     // CREATION MODALE:
-    lightbox = document.createElement('div');
+    const lightbox = document.createElement('div');
     lightbox.id = 'lightbox';
     lightbox.setAttribute('tabindex', '-1');
 
@@ -465,5 +474,5 @@ function mediasFactory(data) {
     return (lightbox);
   }
 
-  return {getMediasOfPhotographer, getFixedBottomInfos, getLightbox }
+  // return {getMediasOfPhotographer, getFixedBottomInfos, getLightbox }
 }
