@@ -13,7 +13,7 @@ class photographersFactory {
    
 
   // CREATION DES CARDS DES PHOTOGRAPHES:
-   getUserCardDOM() {
+  getUserCardDOM() {
 
     const article = document.createElement( 'article' );
 
@@ -67,7 +67,7 @@ class photographersFactory {
     return (article);
   }
 
-   getNameFormContact() {
+  getNameFormContact() {
 
     const nameForm = document.createElement('h2');
     nameForm.classList.add('photograph-form-name');
@@ -76,7 +76,7 @@ class photographersFactory {
     return(nameForm);
   }
 
-   getPhotographerIdHeader() {
+  getPhotographerIdHeader() {
 
     const article = document.createElement( 'article' );
     article.classList.add('photograph-header-banner');
@@ -143,7 +143,7 @@ class photographersFactory {
     return (article);
   }
 
-   getPricePhotographer() {
+  getPricePhotographer() {
     const p = document.createElement('p');
     p.classList.add('insert-rate');
     p.textContent = `${this._price}€ / jour`;

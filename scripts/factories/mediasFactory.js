@@ -21,7 +21,7 @@ class mediasFactory {
 
 
   // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
-   getMediasOfPhotographer() {
+  getMediasOfPhotographer() {
 
     const article = document.createElement( 'article' );
     article.classList.add('media-card');
@@ -29,11 +29,15 @@ class mediasFactory {
     let vid = document.createElement('div');
 
     console.log(this);
+    console.log(this._image);
     console.log(this.hasOwnProperty('_image'));
-
+    console.log(this._video);
+    console.log(this.hasOwnProperty('_video'))
+    console.log(this._video)
+    
 
     // AFFICHAGE CARD MEDIAS AVEC DISTINCTION DES DATA IMAGES ET DATA VIDEOS
-    if (this.hasOwnProperty('_image')) {
+    if (this.hasOwnProperty('_image') && this._image !==undefined) {
       img = document.createElement('img');
       img.setAttribute("src", `assets/images/${this._photographerId}/${this._image}`);
       img.setAttribute("aria-label",this._title);
@@ -60,7 +64,9 @@ class mediasFactory {
         }
       });
 
-    }else if (this.hasOwnProperty('_video')) {
+    }else if (this.hasOwnProperty('_video') && this._video !==undefined) {
+
+
 
       vid = document.createElement('video');
       vid.setAttribute("src", `assets/images/${this._photographerId}/${this._video}`);
@@ -132,7 +138,7 @@ class mediasFactory {
 
 
   // AFFICHAGE SOMME DES LIKES DU PHOTOGRAPHE (VOIR LIGNE 13):
-   getFixedBottomInfos() {
+  getFixedBottomInfos() {
 
     const insertLikes = document.createElement('p');
     insertLikes.classList.add('insert-likes');
@@ -143,7 +149,7 @@ class mediasFactory {
 
 
   // // AFFICHAGE LIGHTBOX: 
-   getLightbox() {
+  getLightbox() {
 
     // CREATION MODALE:
     const lightbox = document.createElement('div');
