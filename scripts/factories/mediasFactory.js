@@ -3,6 +3,7 @@
 class mediasFactory {
 
 
+
   constructor(data){
     this._photographerId = data.photographerId
     this._title = data.title
@@ -11,11 +12,10 @@ class mediasFactory {
     this._likes = data.likes    
   }
 
-
-
+  
   // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
   getMediasOfPhotographer() {
-
+    
     const article = document.createElement( 'article' );
     article.classList.add('media-card');
     let img = document.createElement('div');

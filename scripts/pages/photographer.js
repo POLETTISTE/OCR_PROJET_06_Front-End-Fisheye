@@ -1,8 +1,8 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE PHOTOGRAPHER.HTML *****
 
 let clickedLikes=0;
-// let photographers;
-// let medias;
+let photographers;
+let medias;
 let paramsIdPhotographer;
 let totalOfLikes=0;
 let arrMedias = [];
