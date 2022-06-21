@@ -61,10 +61,13 @@ async function displayPhotographerInGalleryPage(photographers){
 }
 
 async function displayMediasInGalleryPage(medias) {
+
+  
+  
   const MediaGallery = document.querySelector(".medias-main");
-
-
-
+  
+  
+  
   medias.forEach((media) => {
     const MediaGalleryModel =new mediasFactory(media);
     const elt = MediaGalleryModel.getMediasOfPhotographer();

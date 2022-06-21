@@ -2,9 +2,8 @@
 
 class mediasFactory {
 
-
-
   constructor(data){
+    this._data = data
     this._photographerId = data.photographerId
     this._title = data.title
     this._image = data.image
@@ -12,10 +11,11 @@ class mediasFactory {
     this._likes = data.likes    
   }
 
-  
   // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
   getMediasOfPhotographer() {
-    
+    console.log(this._data)
+    console.log(this._image)
+    console.log(this._video)
     const article = document.createElement( 'article' );
     article.classList.add('media-card');
     let img = document.createElement('div');
@@ -296,8 +296,6 @@ class mediasFactory {
 
         function previousArrow() {
 
-
-
           if (arrMedias.indexOf(actualMedia) === 0) {
             oldIndex = ((arrMedias.length) -1);
                         
@@ -306,7 +304,7 @@ class mediasFactory {
           }
                     
           newMedia = arrMedias[oldIndex]; 
-          // newMediaTitle = arrMediasTitle[oldIndex];
+          newMediaTitle = arrMediasTitle[oldIndex];
 
           typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];   
           typeOfOld = typeOfOld.split(".");
@@ -396,7 +394,6 @@ class mediasFactory {
           newMedia = arrMedias[oldIndex]; 
           newMediaTitle = arrMediasTitle[oldIndex];          
           typeOfOld = arrMedias[arrMedias.indexOf(actualMedia)];    
-          // console.log(arrMedias[arrMedias.indexOf(actualMedia)]);
           typeOfOld = typeOfOld.split(".");
           typeOfOld = typeOfOld[typeOfOld.length-1];            
                     
@@ -471,5 +468,4 @@ class mediasFactory {
     return (lightbox);
   }
 
-  // return {getMediasOfPhotographer, getFixedBottomInfos, getLightbox }
 }
