@@ -2,6 +2,7 @@
 class photographersFactory {
 
   constructor(data) {
+    this._data = data
     this._name = data.name
     this._id = data.id
     this._city = data.city
@@ -150,7 +151,6 @@ class photographersFactory {
     return (p);
     
   }
-  // return { getUserCardDOM, getNameFormContact, getPhotographerIdHeader, getPricePhotographer}
 }
 
 

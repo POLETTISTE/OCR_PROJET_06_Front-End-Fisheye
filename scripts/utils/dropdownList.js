@@ -131,7 +131,6 @@ function FilteringMedias(e) {
   displayMediasInGalleryPage(medias);
   document.querySelector("#lightbox").remove();
   displayLightbox(medias);
-  
   addLikes(medias);
 
   // on retire le select-hide de notre menu

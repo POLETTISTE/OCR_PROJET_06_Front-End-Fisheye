@@ -13,9 +13,7 @@ class mediasFactory {
 
   // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
   getMediasOfPhotographer() {
-    console.log(this._data)
-    console.log(this._image)
-    console.log(this._video)
+
     const article = document.createElement( 'article' );
     article.classList.add('media-card');
     let img = document.createElement('div');
@@ -136,7 +134,6 @@ class mediasFactory {
 
     let newMedia
     let newMediaTitle;
-
 
     // CREATION MODALE:
     const lightbox = document.createElement('div');
