@@ -8,8 +8,9 @@ class mediasFactory {
     this._title = data.title
     this._image = data.image
     this._video = data.video
-    this._likes = data.likes
+    this._likes = data.likes    
   }
+
 
 
   // AFFICHAGE DE LA GALLERIE MEDIA DU PHOTOGRAPHE:
@@ -29,7 +30,7 @@ class mediasFactory {
       img.setAttribute('role', "link");
       img.classList.add('media-element');
       img.classList.add('image-card');
-      arrMedias.push(this._image);
+      arrMedias.push(`assets/images/${this._photographerId}/${this._image}`);
       arrMediasTitle.push(this._title);
       totalOfLikes+=parseInt(this._likes, 10);
 
@@ -57,7 +58,7 @@ class mediasFactory {
       vid.setAttribute('tabindex', "0");
       vid.classList.add('media-element');
       vid.classList.add('video-card');
-      arrMedias.push(this._video);
+      arrMedias.push(`assets/images/${this._photographerId}/${this._video}`);
       arrMediasTitle.push(this._title);
       totalOfLikes+=parseInt(this._likes, 10);
 
@@ -182,23 +183,25 @@ class mediasFactory {
     nextLightbox.setAttribute('tabindex', '0');
 
 
+    function clickToOpenLightbox() {
+      document.getElementById("lightbox").focus();
+    }
     
     // EVENEMENT CLIC SUR UN MEDIA DANS LA GALLERIE -> CHARGEMENT CONTENU LIGHTBOX
     const mediasGallery = document.querySelectorAll('.media-element');
 
     mediasGallery.forEach(media => {
+
       let img = document.createElement('span');
       let vid = document.createElement('span');
       let titleMedia = document.createElement('p');
       let actualMedia = media.getAttribute('src');
+
       let oldIndex;
       let typeOfOld;
       let typeOfActual;
 
   
-      function clickToOpenLightbox() {
-        document.getElementById("lightbox").focus();
-      }
       media.addEventListener("click", () => {
         lightbox.classList.add('active');
         clickToOpenLightbox();
@@ -292,6 +295,8 @@ class mediasFactory {
 
 
         function previousArrow() {
+
+
 
           if (arrMedias.indexOf(actualMedia) === 0) {
             oldIndex = ((arrMedias.length) -1);
