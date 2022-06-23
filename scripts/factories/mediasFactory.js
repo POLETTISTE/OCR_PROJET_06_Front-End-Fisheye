@@ -34,11 +34,6 @@ class mediasFactory {
 
 
       img.addEventListener('keydown', (e) => {
-        // if (e.key==="Enter" && lightbox.classList.contains('active')) {
-        //   e.preventDefault();
-        //   e.stopPropagation();
-
-        // 
         if (e.key==="Enter"){
           e.preventDefault();
           e.stopPropagation();
@@ -105,6 +100,10 @@ class mediasFactory {
         imgLikes.click();
       }
     });
+
+    // newSelect.click();
+    // newSelect.click();
+    
 
         
     // ELEMENTS D'ASSEMBLAGE
@@ -236,6 +235,8 @@ class mediasFactory {
           lightboxContainerMediaAndTitle.remove();
           lightboxContainer.remove();
           lightbox.classList.remove('active');
+
+          
           // getMediasOfPhotographer();
           // getFixedBottomInfos;
 

@@ -142,7 +142,6 @@ async function displayMediasLikesBottom(medias) {
 
 async function displayLightbox(medias) {
   const mediasLightbox = document.querySelector("#main");
-
   const displayMedias = new mediasFactory(medias);
   const item = displayMedias.getLightbox();
   mediasLightbox.appendChild(item);
@@ -154,9 +153,9 @@ async function init() {
   await displayPhotographerInGalleryPage(photographers);
   await displayMediasInGalleryPage(medias);
   await addLikes();
+  await displayLightbox(medias);
   await displayMediasLikesBottom(medias);
   await displayPhotographerPriceBottom(photographers);
-  await displayLightbox(medias);
 
 }
     

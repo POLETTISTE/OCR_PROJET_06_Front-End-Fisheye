@@ -24,13 +24,12 @@ newSelect.setAttribute('label', `Order by ${newSelect.textContent}`);
 
 newSelect.addEventListener('keydown', (e) => {
   if (e.key==="Enter") {
+    
     newSelect.click();
   }
 });
 
 inputLabel.setAttribute('aria-label','Trier par');
-
-
 
 // on cree l'element dans le DOM
 SelectDivGlobal.appendChild(newSelect);
@@ -78,7 +77,6 @@ for (let option of selectElt.options) {
     // on simule un click sur 'newSelect'
     newSelect.click();
         
-
   });
 
   //on ajoute l'option dans le newMenu
@@ -93,18 +91,20 @@ SelectDivGlobal.appendChild(newMenu);
 newSelect.addEventListener("click", FilteringMedias)
 
 function FilteringMedias(e) {
-  // on empeche la propagation du click
+// on empeche la propagation du click
   e.stopPropagation();
   arrMedias = [];
   arrMediasTitle= [];
+  
 
-
+  
+  
   let newSelectValue = newSelect.textContent;
-    
+  
   switch (newSelectValue) {
     case 'Popularité':
       medias = medias.sort(compare_likes);
-      break;
+    break;
     case 'Date':
       medias = medias.sort(compare_date);
       break;
@@ -115,23 +115,27 @@ function FilteringMedias(e) {
       console.log('Invalid sort');
       break;
   }
-                
-    
-  // on supprime le contenu pour insérer le contenu trié
+  let lightbox = document.querySelector("#lightbox");
+
+  if (lightbox !== undefined || lightbox !==null){
+    lightbox.remove();
+  }
+  
   let mediasInfo = document.querySelector(".medias-info");
   mediasInfo.innerHTML ="";
-
+  
   let mediasMain = document.querySelector(".medias-main");
-  mediasMain.innerHTML = "";
+  mediasMain.innerHTML = "";   
+          
+          
   clickedLikes = 0;
-
-  displayMediasLikesBottom(medias);
-  displayPhotographerPriceBottom(photographers);
   totalOfLikes=0;  
   displayMediasInGalleryPage(medias);
-  document.querySelector("#lightbox").remove();
+  displayMediasLikesBottom(medias);
+  displayPhotographerPriceBottom(photographers);
   displayLightbox(medias);
   addLikes(medias);
+  
 
   // on retire le select-hide de notre menu
   newSelect.nextSibling.classList.toggle("select-hide");
@@ -139,6 +143,7 @@ function FilteringMedias(e) {
   //on cache le newSelect pour éviter le doublon
 
   newMenu.childNodes.forEach((item) => {
+    
     if (item.textContent === newSelectValue) {
       item.classList.add("select-hide");
     }else{
@@ -155,8 +160,6 @@ function FilteringMedias(e) {
     newSelect.setAttribute('aria-expanded', 'false');
     newSelect.setAttribute('label', newSelect.textContent);
     inputLabel.setAttribute('role', 'listbox');
-
-
   }
 
 }
