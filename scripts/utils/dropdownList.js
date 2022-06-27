@@ -104,7 +104,7 @@ function FilteringMedias(e) {
   switch (newSelectValue) {
     case 'Popularité':
       medias = medias.sort(compare_likes);
-    break;
+      break;
     case 'Date':
       medias = medias.sort(compare_date);
       break;
