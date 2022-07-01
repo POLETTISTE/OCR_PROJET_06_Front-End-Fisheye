@@ -53,12 +53,13 @@
     padding: 35px;
     margin: auto;
     z-index: 4;
+    width: 50%;
 
 }
 
 @media all and (max-width:1050px) {
     #modal {
-        width:100%;
+        width:50%;
         justify-content: center;
         padding-bottom: 0;
     }
